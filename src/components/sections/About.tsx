@@ -19,13 +19,6 @@ export function About() {
         <div className="bg-obsidian-depth" />
       </div>
 
-      {/* Outlined giant 02 on the left cream side */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-16 left-2 sm:left-4 lg:left-6"
-      >
-        <span className="section-number text-obsidian/20">02</span>
-      </div>
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-16 px-6 pt-28 pb-24 sm:px-8 lg:grid-cols-[55%_45%] lg:gap-10 lg:px-14 lg:pt-32 lg:pb-32">
         {/* LEFT (cream) */}
@@ -113,7 +106,7 @@ export function About() {
 
       {/* Bottom marker */}
       <div className="relative z-10 mx-auto flex max-w-[1500px] items-center gap-3 px-6 pb-6 text-meta text-cream/60 sm:px-8 lg:px-14">
-        <span>03 / Services</span>
+        <span>Services</span>
         <span className="h-px flex-1 bg-cream/20" />
         <span className="h-1.5 w-1.5 rounded-full bg-mint" />
       </div>

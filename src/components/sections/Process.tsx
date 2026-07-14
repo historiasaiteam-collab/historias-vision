@@ -39,12 +39,6 @@ export function Process() {
         }}
       />
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-16 left-2 sm:left-4 lg:left-6"
-      >
-        <span className="section-number text-obsidian/20">05</span>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-24 sm:px-8 lg:px-14 lg:pt-28 lg:pb-28">
         <ScrollReveal>
@@ -78,13 +72,6 @@ export function Process() {
                   className={i >= 2 ? "text-cream" : "text-obsidian"}
                 >
                   <div className="mb-4 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em]">
-                    <span
-                      className={
-                        i >= 2 ? "text-cream/70" : "text-obsidian/60"
-                      }
-                    >
-                      {s.number}
-                    </span>
                     <span className={i >= 2 ? "text-cream" : "text-obsidian"}>
                       {s.title}
                     </span>
@@ -146,7 +133,7 @@ export function Process() {
                     mobile
                   />
                   <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
-                    {s.number} · {s.title}
+                    {s.title}
                   </div>
                   <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
                 </li>
@@ -197,7 +184,7 @@ export function Process() {
         </div>
 
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
-          <span>06 / Why Historias</span>
+          <span>Why Historias</span>
           <span className="h-px flex-1 bg-cream/25" />
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
         </div>

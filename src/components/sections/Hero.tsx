@@ -51,13 +51,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Outlined section number — slower parallax */}
-      <Parallax
-        offset={-40}
-        className="pointer-events-none absolute top-24 left-4 lg:left-14"
-      >
-        <span className="section-number text-cream/25">01</span>
-      </Parallax>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1500px] flex-col justify-end px-6 pt-32 pb-32 sm:px-8 lg:px-14 lg:pb-40">

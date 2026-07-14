@@ -26,12 +26,6 @@ export function Why() {
         }}
       />
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-20 left-2 sm:left-4 lg:left-6"
-      >
-        <span className="section-number text-cream/15">06</span>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-24 sm:px-8 lg:px-14 lg:pt-28 lg:pb-32">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr_1fr] lg:gap-10">
@@ -88,15 +82,6 @@ export function Why() {
                       onClick={() => setOpenId(open ? "" : r.number)}
                       className="flex w-full items-center gap-4 py-4 text-left focus-visible:outline-none focus-visible:ring-mint"
                     >
-                      <span
-                        className={cn(
-                          "font-mono text-sm",
-                          open ? "text-cream" : "text-smoke",
-                        )}
-                        aria-hidden
-                      >
-                        {r.number}
-                      </span>
                       <span
                         className={cn(
                           "flex-1 text-sm font-medium uppercase tracking-[0.14em]",
@@ -170,7 +155,7 @@ export function Why() {
         </div>
 
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
-          <span>07 / Client Stories</span>
+          <span>Client Stories</span>
           <span className="h-px flex-1 bg-cream/20" />
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
         </div>

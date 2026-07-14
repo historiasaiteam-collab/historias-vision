@@ -35,12 +35,6 @@ export function Testimonials() {
       className="relative isolate w-full overflow-hidden bg-obsidian-depth text-cream"
     >
       <div aria-hidden className="absolute inset-0 bg-grid opacity-25" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-20 left-2 sm:left-4 lg:left-6"
-      >
-        <span className="section-number text-cream/15">07</span>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-24 sm:px-8 lg:px-14 lg:pt-28 lg:pb-28">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
@@ -149,12 +143,6 @@ export function Testimonials() {
                 </button>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-mono text-sm text-mint">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="text-meta text-cream/60">
-                  / {String(total).padStart(2, "0")}
-                </span>
                 <div className="relative h-px flex-1 bg-cream/15">
                   <motion.span
                     className="absolute inset-y-0 left-0 mint-line"
@@ -227,7 +215,7 @@ export function Testimonials() {
         </div>
 
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
-          <span>08 / FAQ</span>
+          <span>FAQ</span>
           <span className="h-px flex-1 bg-cream/20" />
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
         </div>
