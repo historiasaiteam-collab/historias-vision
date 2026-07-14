@@ -146,7 +146,7 @@ export function Process() {
                       progress={progress}
                       mobile
                       active={isActive}
-                      label={`${s.number} ${s.title}`}
+                      label={s.title}
                     />
                     <div
                       className={
@@ -154,7 +154,7 @@ export function Process() {
                         (isActive ? "text-mint" : "text-obsidian/60")
                       }
                     >
-                      {s.number} · {s.title}
+                      {s.title}
                     </div>
                     <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
                   </button>
