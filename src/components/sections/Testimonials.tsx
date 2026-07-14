@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Users, Cpu, Film, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TESTIMONIALS } from "@/data/testimonials";
@@ -13,6 +13,21 @@ export function Testimonials() {
   const total = TESTIMONIALS.length;
 
   const go = (dir: 1 | -1) => setIndex((i) => (i + dir + total) % total);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      // Only respond when this section is roughly in view.
+      const section = document.getElementById("testimonials");
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < 100 || rect.top > window.innerHeight - 100) return;
+      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "ArrowRight") go(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total]);
 
   return (
     <section
@@ -46,7 +61,11 @@ export function Testimonials() {
             </p>
 
             {/* Featured testimonial + image */}
-            <div className="mt-10 grid gap-4 md:grid-cols-[1.05fr_1fr]">
+            <div
+              className="mt-10 grid gap-4 md:grid-cols-[1.05fr_1fr]"
+              aria-live="polite"
+              aria-atomic="true"
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active.id}
@@ -54,7 +73,14 @@ export function Testimonials() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.35 }}
-                  className="relative bg-cream p-6 text-obsidian cut-corners-lg sm:p-8"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.25}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x < -60 || info.velocity.x < -400) go(1);
+                    else if (info.offset.x > 60 || info.velocity.x > 400) go(-1);
+                  }}
+                  className="relative touch-pan-y bg-cream p-6 text-obsidian cut-corners-lg select-none sm:p-8"
                 >
                   <div className="mb-4 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-mint">
                     <span className="h-px w-4 bg-mint" /> Client Testimonial

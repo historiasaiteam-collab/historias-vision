@@ -37,6 +37,17 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactInput) => {
+    if (status === "sending") return; // prevent repeat submits
+    // Honeypot: real users leave `company_website` blank. Bots fill every field.
+    const hp = (
+      document.getElementById("company_website") as HTMLInputElement | null
+    )?.value;
+    if (hp) {
+      // Pretend success without sending anything.
+      setStatus("success");
+      reset();
+      return;
+    }
     setStatus("sending");
     setErrorMsg(null);
     try {
@@ -64,7 +75,21 @@ export function ContactForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="relative rounded-lg border border-edge bg-graphite/50 p-6 sm:p-8 cut-corners-lg"
       noValidate
+      aria-busy={status === "sending"}
     >
+      {/* Honeypot — visually hidden and skipped by assistive tech. */}
+      <div aria-hidden className="hidden">
+        <label>
+          Company website
+          <input
+            id="company_website"
+            type="text"
+            name="company_website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </label>
+      </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Your Name" error={errors.name?.message}>
           <input
@@ -131,18 +156,23 @@ export function ContactForm() {
         </Field>
       </div>
 
-      {status === "success" ? (
-        <div className="mt-5 flex items-center gap-3 border border-mint/40 bg-mint/10 px-4 py-3 text-sm text-mint">
-          <CheckCircle2 size={16} />
-          Brief received. We'll be in touch shortly.
-        </div>
-      ) : null}
-      {status === "error" ? (
-        <div className="mt-5 flex items-center gap-3 border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-          <AlertCircle size={16} />
-          {errorMsg ?? "Something went wrong. Please try again."}
-        </div>
-      ) : null}
+      <div role="status" aria-live="polite" className="min-h-0">
+        {status === "success" ? (
+          <div className="mt-5 flex items-center gap-3 border border-mint/40 bg-mint/10 px-4 py-3 text-sm text-mint">
+            <CheckCircle2 size={16} aria-hidden />
+            <span>
+              Brief received (demo mode). No email is sent yet — we'll wire up
+              the live inbox after final approval.
+            </span>
+          </div>
+        ) : null}
+        {status === "error" ? (
+          <div className="mt-5 flex items-center gap-3 border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+            <AlertCircle size={16} aria-hidden />
+            {errorMsg ?? "Something went wrong. Please try again."}
+          </div>
+        ) : null}
+      </div>
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-stretch">
         <CtaButton
