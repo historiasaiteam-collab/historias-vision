@@ -7,8 +7,8 @@ import {
   PROJECT_TYPES,
   TIMELINES,
   type ContactInput,
-} from "@/server/validation/contact";
-import { CONTACT_CONFIG } from "@/server/config/contact";
+} from "@/lib/contact-schema";
+import { CONTACT_CONFIG } from "@/lib/contact-config";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { cn } from "@/lib/utils";
 

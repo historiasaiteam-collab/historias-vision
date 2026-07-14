@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { json } from "@tanstack/react-start";
-import { CONTACT_SCHEMA } from "@/server/validation/contact";
+import { CONTACT_SCHEMA } from "@/lib/contact-schema";
 
 // Public endpoint. This lives under /api/contact and receives the JSON payload
 // from the site's <ContactForm />. In stage 4 we validate + persist; email/CRM
