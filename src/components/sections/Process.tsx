@@ -55,7 +55,7 @@ export function Process() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(112deg, #F8EEE3 0%, #F8EEE3 55%, #0f1413 66%, #050807 100%)",
+            "linear-gradient(180deg, #F8EEE3 0%, #F8EEE3 62%, #0f1413 78%, #050807 100%)",
         }}
       />
 
@@ -89,7 +89,7 @@ export function Process() {
               <br />
               to <span className="italic-serif">final frame.</span>
             </h2>
-            <p className="max-w-[440px] pt-3 text-[0.98rem] leading-relaxed text-cream/90 lg:pt-6">
+            <p className="max-w-[440px] pt-3 text-[0.98rem] leading-relaxed text-obsidian/80 lg:pt-6">
               One integrated workflow—creative direction, real production,
               generative technology, and post.
             </p>
@@ -101,22 +101,16 @@ export function Process() {
           {/* Desktop */}
           <div className="hidden lg:block">
             <div className="grid grid-cols-5 gap-6">
-              {PROCESS_STEPS.map((s, i) => {
-                const dark = i >= 2;
+              {PROCESS_STEPS.map((s) => {
                 return (
-                  <div key={s.number} className={dark ? "text-cream" : "text-obsidian"}>
+                  <div key={s.number} className="text-obsidian">
                     <div className="mb-2 text-[13px] font-medium tracking-[0.14em]">
-                      <span className={dark ? "text-cream/70" : "text-obsidian/60"}>
+                      <span className="text-obsidian/60">
                         {s.number}
                       </span>{" "}
                       <span className="uppercase">{s.title}</span>
                     </div>
-                    <p
-                      className={
-                        "max-w-[220px] text-[13px] leading-relaxed " +
-                        (dark ? "text-cream/75" : "text-obsidian/75")
-                      }
-                    >
+                    <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">
                       {s.body}
                     </p>
                   </div>
