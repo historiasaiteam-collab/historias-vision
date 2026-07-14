@@ -43,20 +43,6 @@ export function Process() {
         }}
       />
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-2 top-16 z-10 hidden select-none lg:block"
-      >
-        <span
-          className="block font-semibold leading-none text-transparent"
-          style={{
-            fontSize: "220px",
-            WebkitTextStroke: "1px rgba(10,10,10,0.22)",
-          }}
-        >
-          05
-        </span>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-16 sm:px-8 lg:px-14 lg:pt-28 lg:pb-20">
         <ScrollReveal>
