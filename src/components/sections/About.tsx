@@ -83,31 +83,28 @@ export function About() {
           </a>
         </ScrollReveal>
 
-        {/* RIGHT (obsidian, blended images) */}
+        {/* RIGHT (obsidian, joined images) */}
         <div className="relative min-h-[420px] lg:min-h-[620px]">
           <ScrollReveal className="relative h-full">
-            {/* Square BTS image */}
-            <div className="relative aspect-square w-full max-w-[560px] overflow-hidden">
-              <img
-                src={bts}
-                alt="Historias production crew on set"
-                width={1200}
-                height={1200}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            {/* overlapping vertical image — seamless blend, no frame */}
-            <div className="absolute -right-4 -bottom-10 w-[46%] max-w-[260px] sm:-bottom-12 lg:-right-10 lg:-bottom-16 lg:w-[46%] lg:max-w-[320px]">
-              <img
-                src={vertical}
-                alt="Cinematic still — futuristic neon corridor"
-                width={720}
-                height={1280}
-                loading="lazy"
-                className="h-auto w-full object-cover"
-              />
+            <div className="relative w-full max-w-[620px] overflow-hidden">
+              <div className="grid aspect-[4/3] grid-cols-[3fr_2fr] items-stretch">
+                <img
+                  src={bts}
+                  alt="Historias production crew on set"
+                  width={1200}
+                  height={1200}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+                <img
+                  src={vertical}
+                  alt="Cinematic still — futuristic neon corridor"
+                  width={720}
+                  height={1280}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </ScrollReveal>
         </div>
