@@ -51,7 +51,14 @@ export const FILTERS: (ProjectCategory | "All")[] = [
   "Hybrid Production",
 ];
 
-const IMAGES = [flimty, dua, dremina];
+const CATEGORY_IMAGES: Record<ProjectCategory, string[]> = {
+  Commercial: [commercial1, commercial2, commercial3],
+  "Digital Ads": [digital1, digital2, digital3],
+  "Social Content": [social1, social2, social3],
+  "Short Film": [short1, short2, short3],
+  "AI UGC": [ai1, ai2, ai3],
+  "Hybrid Production": [hybrid1, hybrid2, hybrid3],
+};
 
 type Seed = {
   brand: string;
