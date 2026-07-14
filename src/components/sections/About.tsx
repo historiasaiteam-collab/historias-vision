@@ -21,21 +21,6 @@ export function About() {
       </div>
 
 
-      {/* Giant outlined section number */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-0 top-24 z-10 hidden select-none lg:block"
-      >
-        <span
-          className="block font-semibold leading-none text-transparent"
-          style={{
-            fontSize: "220px",
-            WebkitTextStroke: "1px rgba(10,10,10,0.18)",
-          }}
-        >
-          02
-        </span>
-      </div>
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-16 px-6 pt-28 pb-24 sm:px-8 lg:grid-cols-[55%_45%] lg:gap-10 lg:px-14 lg:pt-32 lg:pb-32">
         {/* LEFT (cream) */}
