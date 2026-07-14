@@ -55,7 +55,7 @@ export function Process() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(112deg, #F8EEE3 0%, #F8EEE3 55%, #0f1413 66%, #050807 100%)",
+            "linear-gradient(180deg, #F8EEE3 0%, #F8EEE3 62%, #0f1413 78%, #050807 100%)",
         }}
       />
 
