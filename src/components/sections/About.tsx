@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import bts from "@/assets/about-bts.jpg";
-import vertical from "@/assets/about-vertical.jpg";
+import merged from "@/assets/about-merged.jpg";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { HudFrame } from "@/components/layout/HudFrame";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
@@ -87,32 +86,17 @@ export function About() {
               }}
             />
 
-            {/* Main landscape BTS image, rounded with HUD frame */}
-            <div className="relative aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-[22px]">
+            {/* Merged cinematic image — crew blended with neon corridor */}
+            <div className="relative aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-[22px]">
               <img
-                src={bts}
-                alt="Historias production crew on set"
+                src={merged}
+                alt="Historias production crew on a neon-lit cinematic set"
                 width={1200}
                 height={900}
                 loading="lazy"
                 className="h-full w-full object-cover"
               />
               <HudFrame color="mint" radius={22} notch={6} bracketSize={14} />
-            </div>
-
-            {/* Overlapping vertical image, rounded with HUD frame */}
-            <div className="absolute right-8 -bottom-8 w-[42%] max-w-[240px] overflow-hidden rounded-[22px] sm:-bottom-10 lg:right-16 lg:-bottom-14 lg:w-[44%] lg:max-w-[280px]">
-              <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[22px]">
-                <img
-                  src={vertical}
-                  alt="Cinematic still — futuristic neon corridor"
-                  width={720}
-                  height={1280}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-                <HudFrame color="mint" radius={22} notch={6} bracketSize={14} delay={0.2} />
-              </div>
             </div>
           </ScrollReveal>
         </div>
