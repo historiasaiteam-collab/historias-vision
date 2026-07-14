@@ -2,9 +2,24 @@
 // category so every filter tab renders a full featured + 2 side card layout.
 // Swap `href` and eventually `image` with real deliverables when ready.
 
-import flimty from "@/assets/work-flimty.jpg";
-import dua from "@/assets/work-dua.jpg";
-import dremina from "@/assets/work-dremina.jpg";
+import commercial1 from "@/assets/work/commercial-1.jpg";
+import commercial2 from "@/assets/work/commercial-2.jpg";
+import commercial3 from "@/assets/work/commercial-3.jpg";
+import digital1 from "@/assets/work/digital-1.jpg";
+import digital2 from "@/assets/work/digital-2.jpg";
+import digital3 from "@/assets/work/digital-3.jpg";
+import social1 from "@/assets/work/social-1.jpg";
+import social2 from "@/assets/work/social-2.jpg";
+import social3 from "@/assets/work/social-3.jpg";
+import short1 from "@/assets/work/short-1.jpg";
+import short2 from "@/assets/work/short-2.jpg";
+import short3 from "@/assets/work/short-3.jpg";
+import ai1 from "@/assets/work/ai-1.jpg";
+import ai2 from "@/assets/work/ai-2.jpg";
+import ai3 from "@/assets/work/ai-3.jpg";
+import hybrid1 from "@/assets/work/hybrid-1.jpg";
+import hybrid2 from "@/assets/work/hybrid-2.jpg";
+import hybrid3 from "@/assets/work/hybrid-3.jpg";
 
 export type ProjectCategory =
   | "Commercial"
@@ -36,7 +51,14 @@ export const FILTERS: (ProjectCategory | "All")[] = [
   "Hybrid Production",
 ];
 
-const IMAGES = [flimty, dua, dremina];
+const CATEGORY_IMAGES: Record<ProjectCategory, string[]> = {
+  Commercial: [commercial1, commercial2, commercial3],
+  "Digital Ads": [digital1, digital2, digital3],
+  "Social Content": [social1, social2, social3],
+  "Short Film": [short1, short2, short3],
+  "AI UGC": [ai1, ai2, ai3],
+  "Hybrid Production": [hybrid1, hybrid2, hybrid3],
+};
 
 type Seed = {
   brand: string;
@@ -93,7 +115,7 @@ export const PROJECTS: Project[] = (Object.keys(CATEGORY_SEEDS) as ProjectCatego
       type: seed.type,
       year: seed.year,
       category,
-      image: IMAGES[i % IMAGES.length],
+      image: CATEGORY_IMAGES[category][i % CATEGORY_IMAGES[category].length],
       href: "#",
       featured: seed.featured,
     })),
