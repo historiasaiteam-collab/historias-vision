@@ -4,7 +4,7 @@ import heroImage from "@/assets/hero.jpg";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
-import { CLIENT_STRIP } from "@/data/clients";
+import { LogoMarquee } from "@/components/animations/LogoMarquee";
 
 export function Hero() {
   const scrollTo = (id: string) => {
@@ -107,16 +107,8 @@ export function Hero() {
             <span className="text-meta text-cream/60">Trusted by leading brands</span>
             <span className="h-px flex-1 bg-cream/20" />
           </div>
-          <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
-            {CLIENT_STRIP.map((name) => (
-              <span
-                key={name}
-                className="text-sm font-medium tracking-[0.18em] text-cream/70 sm:text-base"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
+          <LogoMarquee />
+
         </div>
       </div>
     </section>
