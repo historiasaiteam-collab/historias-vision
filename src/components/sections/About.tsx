@@ -120,7 +120,7 @@ export function About() {
 
       {/* Bottom marker */}
       <div className="relative z-10 mx-auto flex max-w-[1500px] items-center gap-3 px-6 pb-6 text-meta text-cream/60 sm:px-8 lg:px-14">
-        <span className="tracking-[0.22em]">03 / SERVICES</span>
+        <span className="tracking-[0.22em]">SERVICES</span>
         <span className="h-px flex-1 bg-cream/20" />
         <span className="h-1.5 w-1.5 rounded-full bg-mint" />
       </div>
