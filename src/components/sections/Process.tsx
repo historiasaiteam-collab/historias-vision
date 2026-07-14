@@ -89,7 +89,7 @@ export function Process() {
               <br />
               to <span className="italic-serif">final frame.</span>
             </h2>
-            <p className="max-w-[440px] pt-3 text-[0.98rem] leading-relaxed text-cream/90 lg:pt-6">
+            <p className="max-w-[440px] pt-3 text-[0.98rem] leading-relaxed text-obsidian/80 lg:pt-6">
               One integrated workflow—creative direction, real production,
               generative technology, and post.
             </p>
