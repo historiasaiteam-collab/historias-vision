@@ -183,7 +183,7 @@ export function Faq() {
               </div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom strip */}
