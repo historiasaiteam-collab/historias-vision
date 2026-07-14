@@ -101,22 +101,16 @@ export function Process() {
           {/* Desktop */}
           <div className="hidden lg:block">
             <div className="grid grid-cols-5 gap-6">
-              {PROCESS_STEPS.map((s, i) => {
-                const dark = i >= 2;
+              {PROCESS_STEPS.map((s) => {
                 return (
-                  <div key={s.number} className={dark ? "text-cream" : "text-obsidian"}>
+                  <div key={s.number} className="text-obsidian">
                     <div className="mb-2 text-[13px] font-medium tracking-[0.14em]">
-                      <span className={dark ? "text-cream/70" : "text-obsidian/60"}>
+                      <span className="text-obsidian/60">
                         {s.number}
                       </span>{" "}
                       <span className="uppercase">{s.title}</span>
                     </div>
-                    <p
-                      className={
-                        "max-w-[220px] text-[13px] leading-relaxed " +
-                        (dark ? "text-cream/75" : "text-obsidian/75")
-                      }
-                    >
+                    <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">
                       {s.body}
                     </p>
                   </div>
