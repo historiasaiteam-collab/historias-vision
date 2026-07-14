@@ -83,9 +83,6 @@ export function Process() {
                     }
                   >
                     <div className="mb-2 text-[13px] font-medium tracking-[0.14em]">
-                      <span className={isActive ? "text-mint" : "text-obsidian/60"}>
-                        {s.number}
-                      </span>{" "}
                       <span className="uppercase">{s.title}</span>
                     </div>
                     <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">
