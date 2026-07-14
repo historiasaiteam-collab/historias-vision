@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ArrowRight, Plus, Minus, Package, Sliders, CheckCircle2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { FAQ_ITEMS } from "@/data/faq";
+import { Parallax } from "@/components/animations/Parallax";
 import { cn } from "@/lib/utils";
 
 export function Faq() {
+  const reduce = useReducedMotion();
   const [openId, setOpenId] = useState(FAQ_ITEMS[0].number);
   const openIndex = FAQ_ITEMS.findIndex((i) => i.number === openId);
   const counter = openIndex >= 0 ? openIndex + 1 : 1;
@@ -23,13 +25,30 @@ export function Faq() {
             "linear-gradient(112deg, #F8EEE3 0%, #F8EEE3 44%, #1a1f1e 55%, #050807 100%)",
         }}
       />
-
-      <div
+      {/* soft fog + connecting line layer */}
+      <div aria-hidden className="absolute inset-0 bg-fog opacity-70" />
+      <svg
         aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        preserveAspectRatio="none"
+        viewBox="0 0 100 100"
+      >
+        <line
+          x1="0" y1="72" x2="100" y2="28"
+          stroke="color-mix(in oklab, var(--color-mint) 50%, transparent)"
+          strokeWidth="0.08"
+          strokeDasharray="0.6 0.6"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
+      <Parallax
+        offset={-24}
+        as="div"
         className="pointer-events-none absolute top-16 left-2 sm:left-4 lg:left-6"
       >
         <span className="section-number text-obsidian/25">08</span>
-      </div>
+      </Parallax>
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-14 px-6 pt-24 pb-24 sm:px-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-14 lg:pt-28 lg:pb-28">
         {/* LEFT cream copy */}
