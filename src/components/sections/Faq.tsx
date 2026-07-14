@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, type RefObject } from "react";
 import { ArrowRight, Plus, Minus, Package, Sliders, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { FAQ_ITEMS } from "@/data/faq";
 import { Parallax } from "@/components/animations/Parallax";
+import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
 import { cn } from "@/lib/utils";
 
-export function Faq() {
+type FaqProps = {
+  /** Optional shared scroll target so the diagonal line spans FAQ+Contact. */
+  scrollRef?: RefObject<HTMLElement | null>;
+};
+
+export function Faq({ scrollRef }: FaqProps = {}) {
   const reduce = useReducedMotion();
   const [openId, setOpenId] = useState(FAQ_ITEMS[0].number);
   const openIndex = FAQ_ITEMS.findIndex((i) => i.number === openId);
@@ -25,22 +31,15 @@ export function Faq() {
             "linear-gradient(112deg, #F8EEE3 0%, #F8EEE3 44%, #1a1f1e 55%, #050807 100%)",
         }}
       />
-      {/* soft fog + connecting line layer */}
+      {/* soft fog + scroll-driven diagonal line spanning FAQ→Contact */}
       <div aria-hidden className="absolute inset-0 bg-fog opacity-70" />
-      <svg
-        aria-hidden
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        preserveAspectRatio="none"
-        viewBox="0 0 100 100"
-      >
-        <line
-          x1="0" y1="72" x2="100" y2="28"
-          stroke="color-mix(in oklab, var(--color-mint) 50%, transparent)"
-          strokeWidth="0.08"
-          strokeDasharray="0.6 0.6"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
+      <ScrollDiagonalLine
+        targetRef={scrollRef as RefObject<HTMLElement> | undefined}
+        x1={0}
+        y1={82}
+        x2={100}
+        y2={18}
+      />
 
       <Parallax
         offset={-24}

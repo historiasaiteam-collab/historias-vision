@@ -1,19 +1,34 @@
+import type { RefObject } from "react";
 import { Shield, Zap, Clock, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
+import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
 import monolith from "@/assets/contact-monolith.jpg";
 import logo from "@/assets/logo-h.png.asset.json";
 
-export function Contact() {
+type ContactProps = {
+  /** Optional shared scroll target so the diagonal line continues from FAQ. */
+  scrollRef?: RefObject<HTMLElement | null>;
+};
+
+export function Contact({ scrollRef }: ContactProps = {}) {
   return (
     <section
       id="contact"
       className="relative isolate w-full overflow-hidden bg-obsidian-depth text-cream"
     >
       <div aria-hidden className="absolute inset-0 bg-grid opacity-25" />
+      {/* continuation of the FAQ→Contact scroll-driven diagonal */}
+      <ScrollDiagonalLine
+        targetRef={scrollRef as RefObject<HTMLElement> | undefined}
+        x1={0}
+        y1={82}
+        x2={100}
+        y2={18}
+      />
       <Parallax
         offset={-30}
         as="div"
