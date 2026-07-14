@@ -5,6 +5,7 @@ import { PROJECTS, FILTERS, type Project, type ProjectCategory } from "@/data/de
 import { DEMO_VIDEOS } from "@/data/videos";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
+import { HudFrame } from "@/components/layout/HudFrame";
 import { cn } from "@/lib/utils";
 
 export function Work() {
@@ -25,6 +26,10 @@ export function Work() {
   const filterIndex = Math.max(0, FILTERS.indexOf(filter));
   const progressPct = ((filterIndex + 1) / FILTERS.length) * 100;
 
+  // Force AnimatePresence to remount cards when the filter changes so the
+  // full entrance animation (staggered brackets + image reveal) plays again.
+  const gridKey = filter;
+
   return (
     <section
       id="work"
@@ -32,7 +37,6 @@ export function Work() {
     >
       <div aria-hidden className="absolute inset-0 bg-grid opacity-30" />
 
-      {/* Giant outline section number */}
       <div
         aria-hidden
         className="pointer-events-none absolute top-16 left-2 sm:left-6 lg:left-10"
@@ -112,10 +116,8 @@ export function Work() {
 
         {/* HUD-framed grid */}
         <div className="relative mt-8 p-4 sm:p-6">
-          {/* outer bracket frame */}
           <CornerMarkers className="!inset-0" color="cream" />
 
-          {/* Right-edge vertical PROJECT label */}
           <div
             aria-hidden
             className="pointer-events-none absolute top-1/2 right-0 hidden -translate-y-1/2 translate-x-2 rotate-90 origin-center text-meta text-cream/40 lg:block"
@@ -124,87 +126,73 @@ export function Work() {
           </div>
 
           <LayoutGroup>
-            <div className="grid gap-5 lg:grid-cols-[1.55fr_auto_1fr]">
-              {/* Featured */}
-              <AnimatePresence mode="popLayout" initial={false}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={gridKey}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="grid gap-5 lg:grid-cols-[1.55fr_auto_1fr]"
+              >
                 {featured ? (
-                  <motion.div
-                    key={featured.id}
-                    layout
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <FeaturedCard project={featured} onPlay={() => openVideo(featured)} />
-                  </motion.div>
+                  <FeaturedCard project={featured} onPlay={() => openVideo(featured)} />
                 ) : (
-                  <motion.div
-                    key="empty-featured"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="grid min-h-[320px] place-items-center border border-dashed border-edge p-10 text-meta text-cream/50"
-                  >
+                  <div className="grid min-h-[320px] place-items-center border border-dashed border-edge p-10 text-meta text-cream/50">
                     No projects in this category yet.
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Cream vertical pill */}
-              <div className="hidden lg:block">
-                <FeaturedPill />
-              </div>
-
-              {/* Side cards */}
-              <div className="flex flex-col gap-5">
-                <AnimatePresence mode="popLayout" initial={false}>
-                  {others.slice(0, 2).map((p) => (
-                    <motion.div
-                      key={p.id}
-                      layout
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      <SmallCard project={p} onPlay={() => openVideo(p)} />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-                {others.length === 0 && featured ? (
-                  <div className="grid place-items-center border border-dashed border-edge p-10 text-meta text-cream/50">
-                    More projects in this category coming soon.
                   </div>
-                ) : null}
-              </div>
-            </div>
+                )}
+
+                <div className="hidden lg:block">
+                  <FeaturedPill />
+                </div>
+
+                <div className="flex flex-col gap-5">
+                  {others.slice(0, 2).map((p, i) => (
+                    <SmallCard
+                      key={p.id}
+                      project={p}
+                      onPlay={() => openVideo(p)}
+                      delay={0.2 + i * 0.12}
+                    />
+                  ))}
+                  {others.length === 0 && featured ? (
+                    <div className="grid place-items-center border border-dashed border-edge p-10 text-meta text-cream/50">
+                      More projects in this category coming soon.
+                    </div>
+                  ) : null}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </LayoutGroup>
         </div>
 
-        {/* Bottom timeline bar */}
+        {/* Bottom timeline */}
         <div className="mt-10 flex items-center gap-6">
-          <span className="whitespace-nowrap text-meta text-cream/50">
-            05 / Process
-          </span>
+          <span className="whitespace-nowrap text-meta text-cream/50">05 / Process</span>
           <div className="relative h-px flex-1">
             <div className="absolute inset-0 bg-cream/15" />
-            <div
+            <motion.div
               className="absolute inset-y-0 left-0 mint-line"
-              style={{ width: `${progressPct}%` }}
+              initial={false}
+              animate={{ width: `${progressPct}%` }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               aria-hidden
             />
-            {/* dots */}
             <div className="absolute inset-0 flex items-center justify-between">
               {FILTERS.map((f, i) => (
-                <span
+                <motion.span
                   key={f}
                   aria-hidden
+                  animate={{
+                    scale: i === filterIndex ? 1.6 : 1,
+                    backgroundColor:
+                      i <= filterIndex ? "var(--color-mint)" : "transparent",
+                  }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
-                    "h-1.5 w-1.5 rounded-full border transition-colors",
-                    i <= filterIndex
-                      ? "border-mint bg-mint"
-                      : "border-cream/30 bg-obsidian",
+                    "h-1.5 w-1.5 rounded-full border",
+                    i <= filterIndex ? "border-mint" : "border-cream/30",
                   )}
                 />
               ))}
@@ -232,7 +220,13 @@ export function Work() {
 
 function FeaturedPill() {
   return (
-    <div className="relative flex h-full min-h-[420px] w-[92px] flex-col items-center justify-between rounded-full bg-cream px-3 py-6 text-obsidian shadow-depth">
+    <motion.div
+      initial={{ opacity: 0, scaleY: 0.85 }}
+      animate={{ opacity: 1, scaleY: 1 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+      style={{ transformOrigin: "center" }}
+      className="relative flex h-full min-h-[420px] w-[92px] flex-col items-center justify-between rounded-full bg-cream px-3 py-6 text-obsidian shadow-depth"
+    >
       <div className="flex flex-col items-center gap-3">
         <span className="h-px w-6 bg-mint" />
         <div className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.22em] text-obsidian/70">
@@ -241,11 +235,14 @@ function FeaturedPill() {
           Project
         </div>
       </div>
-
       <div aria-hidden className="my-4 h-full w-px flex-1 bg-obsidian/10" />
-
       <div className="flex flex-col items-center gap-3 pb-2">
-        <ArrowDown size={14} className="text-mint" />
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2.2, ease: "easeInOut", repeat: Infinity }}
+        >
+          <ArrowDown size={14} className="text-mint" />
+        </motion.div>
         <div className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.22em] text-obsidian/70">
           Scroll to
           <br />
@@ -254,41 +251,77 @@ function FeaturedPill() {
           More
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function FeaturedCard({ project, onPlay }: { project: Project; onPlay: () => void }) {
   return (
-    <article className="group relative overflow-hidden rounded-[28px] border border-mint/25 shadow-depth">
-      <CornerMarkers color="mint" className="z-20 !inset-2" />
-      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[26px] bg-graphite">
-        <img
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative"
+    >
+      {/* HUD chamfered frame with mint corner brackets */}
+      <HudFrame color="mint" padding={6} bracketSize={16} radius={14} notch={10} />
+
+      <div
+        className="hud-clip-lg relative aspect-[16/10] w-full overflow-hidden bg-graphite shadow-depth"
+      >
+        <motion.img
           src={project.image}
           alt={`${project.brand} — ${project.title}`}
           width={1400}
           height={1000}
           loading="lazy"
-          className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+          className="h-full w-full object-cover"
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ scale: 1.04 }}
         />
         <div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"
         />
-        <button
+
+        {/* Faint HUD crosshair */}
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-40 mix-blend-screen"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, transparent calc(50% - 0.5px), color-mix(in oklab, var(--color-mint) 30%, transparent) 50%, transparent calc(50% + 0.5px)), linear-gradient(to bottom, transparent calc(50% - 0.5px), color-mix(in oklab, var(--color-mint) 30%, transparent) 50%, transparent calc(50% + 0.5px))",
+          }}
+        />
+
+        <motion.button
           onClick={onPlay}
           aria-label={`Play ${project.brand} — ${project.title}`}
-          className="absolute top-1/2 left-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-cream/60 bg-obsidian/40 backdrop-blur-md transition hover:scale-105 hover:border-mint hover:text-mint focus-visible:outline-none focus-visible:ring-mint"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+          className="absolute top-1/2 left-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-cream/60 bg-obsidian/40 backdrop-blur-md transition hover:border-mint hover:text-mint focus-visible:outline-none focus-visible:ring-mint"
         >
+          <span
+            aria-hidden
+            className="absolute inset-0 rounded-full border border-mint/60 animate-ping opacity-40"
+          />
           <Play size={22} className="ml-1 text-cream" />
-        </button>
+        </motion.button>
 
         <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6">
           <div className="max-w-[70%]">
             <h3 className="text-3xl font-semibold uppercase leading-none tracking-tight text-cream sm:text-5xl">
               {project.brand}
             </h3>
-            <div className="mt-3 h-px w-24 mint-line" aria-hidden />
+            <motion.div
+              className="mt-3 h-px w-24 mint-line origin-left"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+              aria-hidden
+            />
             <div className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-cream/85">
               {project.title}
             </div>
@@ -302,34 +335,54 @@ function FeaturedCard({ project, onPlay }: { project: Project; onPlay: () => voi
           </div>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
-function SmallCard({ project, onPlay }: { project: Project; onPlay: () => void }) {
+function SmallCard({
+  project,
+  onPlay,
+  delay = 0,
+}: {
+  project: Project;
+  onPlay: () => void;
+  delay?: number;
+}) {
   return (
-    <article className="group relative overflow-hidden rounded-[22px] border border-mint/20 shadow-depth">
-      <CornerMarkers color="mint" className="z-20 !inset-2" />
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-graphite">
-        <img
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay }}
+      className="group relative"
+    >
+      <HudFrame color="mint" padding={5} bracketSize={22} radius={16} notch={12} delay={delay} />
+
+      <div className="hud-clip relative aspect-[16/9] w-full overflow-hidden bg-graphite shadow-depth">
+        <motion.img
           src={project.image}
           alt={`${project.brand} — ${project.title}`}
           width={1200}
           height={700}
           loading="lazy"
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
+          className="h-full w-full object-cover"
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: delay + 0.1 }}
+          whileHover={{ scale: 1.05 }}
         />
         <div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent"
         />
-        <button
+        <motion.button
           onClick={onPlay}
           aria-label={`Play ${project.brand} — ${project.title}`}
-          className="absolute right-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-cream/60 bg-obsidian/50 backdrop-blur-md transition hover:scale-105 hover:border-mint focus-visible:outline-none focus-visible:ring-mint"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+          className="absolute right-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-cream/60 bg-obsidian/50 backdrop-blur-md transition hover:border-mint focus-visible:outline-none focus-visible:ring-mint"
         >
           <Play size={14} className="ml-0.5 text-cream" />
-        </button>
+        </motion.button>
         <div className="absolute bottom-4 left-4 right-20 max-w-[75%]">
           <h4 className="text-lg font-semibold uppercase leading-none tracking-tight text-cream sm:text-xl">
             {project.brand}
@@ -345,6 +398,6 @@ function SmallCard({ project, onPlay }: { project: Project; onPlay: () => void }
           YouTube / Watch Film
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
