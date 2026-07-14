@@ -1,6 +1,9 @@
 import { Shield, Zap, Clock, Sparkles } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
+import { Parallax } from "@/components/animations/Parallax";
+import { Particles } from "@/components/animations/Particles";
 import monolith from "@/assets/contact-monolith.jpg";
 import logo from "@/assets/logo-h.png.asset.json";
 
@@ -39,33 +42,8 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Monumental H logo composition */}
-          <div className="relative min-h-[420px] lg:min-h-[560px]">
-            <div className="hud-corners relative h-full w-full overflow-hidden rounded-md border border-edge cut-corners-lg">
-              <img
-                src={monolith}
-                alt="Cinematic monolithic H sculpture"
-                width={1400}
-                height={1400}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-obsidian/30"
-              />
-              <img
-                src={logo.url}
-                alt=""
-                aria-hidden
-                width={520}
-                height={520}
-                loading="lazy"
-                className="absolute top-1/2 left-1/2 w-[60%] max-w-[380px] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_30px_80px_rgba(0,0,0,0.9)]"
-              />
-              <CornerMarkers color="mint" />
-            </div>
-          </div>
+          {/* Monumental H logo scene — layered depth, no WebGL */}
+          <MonumentalScene />
         </div>
 
         {/* Bottom feature bar */}
