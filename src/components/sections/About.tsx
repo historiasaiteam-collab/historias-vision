@@ -20,6 +20,22 @@ export function About() {
       </div>
 
 
+      {/* Giant outlined section number */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-24 z-10 hidden select-none lg:block"
+      >
+        <span
+          className="block font-semibold leading-none text-transparent"
+          style={{
+            fontSize: "220px",
+            WebkitTextStroke: "1px rgba(10,10,10,0.18)",
+          }}
+        >
+          02
+        </span>
+      </div>
+
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-16 px-6 pt-28 pb-24 sm:px-8 lg:grid-cols-[55%_45%] lg:gap-10 lg:px-14 lg:pt-32 lg:pb-32">
         {/* LEFT (cream) */}
         <ScrollReveal className="text-obsidian">
@@ -68,36 +84,41 @@ export function About() {
         </ScrollReveal>
 
         {/* RIGHT (obsidian, layered images) */}
-        <div className="relative min-h-[420px] lg:min-h-[560px]">
+        <div className="relative min-h-[420px] lg:min-h-[620px]">
           <ScrollReveal className="relative h-full">
-            <div className="hud-corners relative aspect-square w-full max-w-[560px] overflow-hidden rounded-md border border-edge/70 cut-corners">
-              <img
-                src={bts}
-                alt="Historias production crew on set"
-                width={1200}
-                height={1200}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-              {/* mint connector line */}
-              <span
-                aria-hidden
-                className="absolute -right-6 top-1/2 hidden h-px w-24 mint-line lg:block"
-              />
+            {/* Outer device-style frame */}
+            <div className="relative w-full max-w-[600px] rounded-2xl border border-cream/15 bg-cream/[0.03] p-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
+              <div className="hud-corners relative aspect-square w-full overflow-hidden rounded-lg border border-edge/70 cut-corners">
+                <img
+                  src={bts}
+                  alt="Historias production crew on set"
+                  width={1200}
+                  height={1200}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+                {/* mint connector line */}
+                <span
+                  aria-hidden
+                  className="absolute -right-6 top-1/2 hidden h-px w-24 mint-line lg:block"
+                />
+              </div>
             </div>
 
             {/* overlapping vertical frame */}
-            <div className="absolute right-0 -bottom-8 w-[45%] max-w-[240px] sm:-bottom-10 lg:right-4 lg:bottom-4 lg:w-[36%] lg:max-w-[260px]">
-              <div className="relative overflow-hidden rounded-md border border-mint/40 cut-corners">
-                <img
-                  src={vertical}
-                  alt="Cinematic still — futuristic neon corridor"
-                  width={720}
-                  height={1280}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                />
-                <CornerMarkers color="mint" />
+            <div className="absolute -right-2 -bottom-16 w-[42%] max-w-[240px] sm:-bottom-20 lg:-right-8 lg:-bottom-24 lg:w-[42%] lg:max-w-[300px]">
+              <div className="relative rounded-2xl border border-cream/15 bg-cream/[0.03] p-2 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
+                <div className="relative overflow-hidden rounded-lg border border-mint/40 cut-corners">
+                  <img
+                    src={vertical}
+                    alt="Cinematic still — futuristic neon corridor"
+                    width={720}
+                    height={1280}
+                    loading="lazy"
+                    className="h-auto w-full object-cover"
+                  />
+                  <CornerMarkers color="mint" />
+                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -106,7 +127,7 @@ export function About() {
 
       {/* Bottom marker */}
       <div className="relative z-10 mx-auto flex max-w-[1500px] items-center gap-3 px-6 pb-6 text-meta text-cream/60 sm:px-8 lg:px-14">
-        <span>Services</span>
+        <span className="tracking-[0.22em]">03 / SERVICES</span>
         <span className="h-px flex-1 bg-cream/20" />
         <span className="h-1.5 w-1.5 rounded-full bg-mint" />
       </div>
