@@ -21,21 +21,6 @@ export function About() {
       </div>
 
 
-      {/* Giant outlined section number */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-0 top-24 z-10 hidden select-none lg:block"
-      >
-        <span
-          className="block font-semibold leading-none text-transparent"
-          style={{
-            fontSize: "220px",
-            WebkitTextStroke: "1px rgba(10,10,10,0.18)",
-          }}
-        >
-          02
-        </span>
-      </div>
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-16 px-6 pt-28 pb-24 sm:px-8 lg:grid-cols-[55%_45%] lg:gap-10 lg:px-14 lg:pt-32 lg:pb-32">
         {/* LEFT (cream) */}
@@ -135,7 +120,7 @@ export function About() {
 
       {/* Bottom marker */}
       <div className="relative z-10 mx-auto flex max-w-[1500px] items-center gap-3 px-6 pb-6 text-meta text-cream/60 sm:px-8 lg:px-14">
-        <span className="tracking-[0.22em]">03 / SERVICES</span>
+        <span className="tracking-[0.22em]">SERVICES</span>
         <span className="h-px flex-1 bg-cream/20" />
         <span className="h-1.5 w-1.5 rounded-full bg-mint" />
       </div>

@@ -43,20 +43,6 @@ export function Process() {
         }}
       />
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-2 top-16 z-10 hidden select-none lg:block"
-      >
-        <span
-          className="block font-semibold leading-none text-transparent"
-          style={{
-            fontSize: "220px",
-            WebkitTextStroke: "1px rgba(10,10,10,0.22)",
-          }}
-        >
-          05
-        </span>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-16 sm:px-8 lg:px-14 lg:pt-28 lg:pb-20">
         <ScrollReveal>
@@ -97,9 +83,6 @@ export function Process() {
                     }
                   >
                     <div className="mb-2 text-[13px] font-medium tracking-[0.14em]">
-                      <span className={isActive ? "text-mint" : "text-obsidian/60"}>
-                        {s.number}
-                      </span>{" "}
                       <span className="uppercase">{s.title}</span>
                     </div>
                     <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">
@@ -128,7 +111,7 @@ export function Process() {
                     progress={progress}
                     active={i === activeStep}
                     onClick={() => setActiveStep(i)}
-                    label={`${s.number} ${s.title}`}
+                    label={s.title}
                   />
                 );
               })}
@@ -163,7 +146,7 @@ export function Process() {
                       progress={progress}
                       mobile
                       active={isActive}
-                      label={`${s.number} ${s.title}`}
+                      label={s.title}
                     />
                     <div
                       className={
@@ -171,7 +154,7 @@ export function Process() {
                         (isActive ? "text-mint" : "text-obsidian/60")
                       }
                     >
-                      {s.number} · {s.title}
+                      {s.title}
                     </div>
                     <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
                   </button>
@@ -199,7 +182,7 @@ export function Process() {
               className="aspect-[16/9] w-full object-cover"
             />
             <div className="absolute left-4 top-4 text-[10px] font-medium uppercase tracking-[0.22em] text-cream">
-              {PROCESS_STEPS[activeStep].number} · {PROCESS_STEPS[activeStep].title}
+              {PROCESS_STEPS[activeStep].title}
             </div>
             <div className="absolute left-4 bottom-4 text-[9px] font-medium uppercase tracking-[0.22em] text-cream/85">
               {STEP_IMAGES[activeStep].caption}
@@ -269,7 +252,7 @@ export function Process() {
         </div>
 
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
-          <span className="tracking-[0.22em]">06 / WHY HISTORIAS</span>
+          <span className="tracking-[0.22em]">WHY HISTORIAS</span>
           <span className="h-px flex-1 bg-cream/25" />
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
         </div>
