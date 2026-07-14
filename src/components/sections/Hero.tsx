@@ -2,6 +2,8 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero.jpg";
 import { CtaButton } from "@/components/ui/CtaButton";
+import { Parallax } from "@/components/animations/Parallax";
+import { Particles } from "@/components/animations/Particles";
 import { CLIENT_STRIP } from "@/data/clients";
 
 export function Hero() {
