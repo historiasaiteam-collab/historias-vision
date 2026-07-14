@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TESTIMONIALS } from "@/data/testimonials";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
-import arch from "@/assets/testimonials-arch.jpg";
 import { cn } from "@/lib/utils";
 
 export function Testimonials() {
@@ -108,14 +107,21 @@ export function Testimonials() {
                 </AnimatePresence>
               </div>
               <div className="hud-corners relative overflow-hidden rounded-md border border-edge cut-corners-lg shadow-depth">
-                <img
-                  src={arch}
-                  alt="Cinematic architectural still"
-                  width={1400}
-                  height={1000}
-                  loading="lazy"
-                  className="h-full min-h-[260px] w-full object-cover"
-                />
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={active.id}
+                    src={active.image}
+                    alt={`${active.client} — cinematic still`}
+                    width={1400}
+                    height={1000}
+                    loading="lazy"
+                    initial={{ opacity: 0, scale: 1.06 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="h-full min-h-[260px] w-full object-cover"
+                  />
+                </AnimatePresence>
                 <div
                   aria-hidden
                   className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent"
