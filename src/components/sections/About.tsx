@@ -84,19 +84,40 @@ export function About() {
           </a>
         </ScrollReveal>
 
-        {/* RIGHT (obsidian, joined images) */}
+        {/* RIGHT (obsidian, HUD-framed overlapping images) */}
         <div className="relative min-h-[420px] lg:min-h-[620px]">
           <ScrollReveal className="relative h-full">
-            <div className="relative w-full max-w-[620px] overflow-hidden">
-              <div className="grid aspect-[4/3] grid-cols-[3fr_2fr] items-stretch">
-                <img
-                  src={bts}
-                  alt="Historias production crew on set"
-                  width={1200}
-                  height={1200}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
+            {/* Perspective grid backdrop */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-30"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, color-mix(in oklab, var(--color-mint) 22%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--color-mint) 22%, transparent) 1px, transparent 1px)",
+                backgroundSize: "36px 36px",
+                transform: "perspective(700px) rotateX(38deg)",
+                transformOrigin: "50% 100%",
+                maskImage:
+                  "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
+              }}
+            />
+
+            {/* Main landscape BTS image, rounded with HUD frame */}
+            <div className="relative aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-[22px]">
+              <img
+                src={bts}
+                alt="Historias production crew on set"
+                width={1200}
+                height={900}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <HudFrame color="mint" radius={22} notch={6} bracketSize={14} />
+            </div>
+
+            {/* Overlapping vertical image, rounded with HUD frame */}
+            <div className="absolute -right-2 -bottom-8 w-[42%] max-w-[240px] overflow-hidden rounded-[22px] sm:-bottom-10 lg:-right-8 lg:-bottom-14 lg:w-[44%] lg:max-w-[280px]">
+              <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[22px]">
                 <img
                   src={vertical}
                   alt="Cinematic still — futuristic neon corridor"
@@ -105,6 +126,7 @@ export function About() {
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
+                <HudFrame color="mint" radius={22} notch={6} bracketSize={14} delay={0.2} />
               </div>
             </div>
           </ScrollReveal>
