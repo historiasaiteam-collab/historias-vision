@@ -30,17 +30,13 @@ export function LogoMarquee() {
         style={{ animation: "marquee-right 40s linear infinite" }}
       >
         {row.map((logo, i) => (
-          <div
+          <img
             key={`${logo.alt}-${i}`}
-            className="flex h-14 shrink-0 items-center justify-center rounded-lg bg-cream/95 px-5 py-2 shadow-sm ring-1 ring-cream/10 transition-transform hover:scale-[1.03] sm:h-16 sm:px-6"
-          >
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              loading="lazy"
-              className="h-full max-h-10 w-auto object-contain sm:max-h-12"
-            />
-          </div>
+            src={logo.src}
+            alt={logo.alt}
+            loading="lazy"
+            className="h-10 w-auto shrink-0 object-contain transition-transform hover:scale-[1.03] sm:h-12 md:h-14"
+          />
         ))}
       </div>
     </div>
