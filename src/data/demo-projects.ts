@@ -115,7 +115,7 @@ export const PROJECTS: Project[] = (Object.keys(CATEGORY_SEEDS) as ProjectCatego
       type: seed.type,
       year: seed.year,
       category,
-      image: IMAGES[i % IMAGES.length],
+      image: CATEGORY_IMAGES[category][i % CATEGORY_IMAGES[category].length],
       href: "#",
       featured: seed.featured,
     })),
