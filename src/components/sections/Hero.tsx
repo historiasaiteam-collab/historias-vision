@@ -5,6 +5,7 @@ import { CtaButton } from "@/components/ui/CtaButton";
 import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { LogoMarquee } from "@/components/animations/LogoMarquee";
+import { ThreeBackground } from "@/components/animations/ThreeBackground";
 
 export function Hero() {
   const scrollTo = (id: string) => {
