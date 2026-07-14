@@ -111,7 +111,7 @@ export function Process() {
                     progress={progress}
                     active={i === activeStep}
                     onClick={() => setActiveStep(i)}
-                    label={`${s.number} ${s.title}`}
+                    label={s.title}
                   />
                 );
               })}
