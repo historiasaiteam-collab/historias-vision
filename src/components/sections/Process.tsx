@@ -1,37 +1,20 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ArrowRight, Calendar, Clock, Clapperboard, MapPin } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { PROCESS_STEPS } from "@/data/faq";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import bts from "@/assets/about-bts.jpg";
-import servicePost from "@/assets/service-post.jpg";
-import serviceProduct from "@/assets/service-product.jpg";
-import serviceCar from "@/assets/service-car.jpg";
-import serviceHybrid from "@/assets/service-hybrid.jpg";
+import step01 from "@/assets/process-01-discover.jpg";
+import step02 from "@/assets/process-02-concept.jpg";
+import step03 from "@/assets/process-03-production.jpg";
+import step04 from "@/assets/process-04-post.jpg";
+import step05 from "@/assets/process-05-delivery.jpg";
 
-type CardKind = "text" | "sketch" | "image";
-type CardDef = {
-  label: string;
-  kind: CardKind;
-  image?: string;
-  logline?: string;
-  caption?: string;
-  active?: boolean;
-  footer?: { format?: string; audio?: string; deliverables?: string };
-};
-
-const CARDS: CardDef[] = [
-  { label: "Treatment", kind: "text", logline: "UNTAMED DRIVE" },
-  { label: "Storyboard", kind: "sketch" },
-  { label: "Generative", kind: "image", image: serviceProduct, caption: "PREVIS QUALITY CONCEPT" },
-  { label: "Live Action", kind: "image", image: bts, caption: "ACTIVE PRODUCTION STILL", active: true },
-  { label: "Edit", kind: "image", image: servicePost },
-  {
-    label: "Master",
-    kind: "image",
-    image: serviceCar,
-    footer: { format: "16:9 / 4K", audio: "5.1 MIX", deliverables: "FINAL MASTER" },
-  },
+const STEP_IMAGES = [
+  { src: step01, caption: "ALIGNMENT · BRIEF & OBJECTIVE" },
+  { src: step02, caption: "TREATMENT · REFERENCES & PLAN" },
+  { src: step03, caption: "ACTIVE PRODUCTION STILL" },
+  { src: step04, caption: "EDIT · COLOR · SOUND" },
+  { src: step05, caption: "MULTI-FORMAT MASTERS" },
 ];
 
 export function Process() {
@@ -44,12 +27,13 @@ export function Process() {
   const lineWidth = useTransform(progress, [0, 1], ["0%", "100%"]);
   const lineHeight = useTransform(progress, [0, 1], ["0%", "100%"]);
 
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <section
       id="process"
       className="relative isolate w-full overflow-hidden bg-cream text-obsidian"
     >
-      {/* Diagonal wash cream -> obsidian (matches reference split) */}
       <div
         aria-hidden
         className="absolute inset-0"
@@ -59,7 +43,6 @@ export function Process() {
         }}
       />
 
-      {/* Giant outlined section number "05" */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-2 top-16 z-10 hidden select-none lg:block"
@@ -101,11 +84,20 @@ export function Process() {
           {/* Desktop */}
           <div className="hidden lg:block">
             <div className="grid grid-cols-5 gap-6">
-              {PROCESS_STEPS.map((s) => {
+              {PROCESS_STEPS.map((s, i) => {
+                const isActive = i === activeStep;
                 return (
-                  <div key={s.number} className="text-obsidian">
+                  <button
+                    key={s.number}
+                    type="button"
+                    onClick={() => setActiveStep(i)}
+                    className={
+                      "group text-left transition " +
+                      (isActive ? "text-obsidian" : "text-obsidian hover:opacity-90")
+                    }
+                  >
                     <div className="mb-2 text-[13px] font-medium tracking-[0.14em]">
-                      <span className="text-obsidian/60">
+                      <span className={isActive ? "text-mint" : "text-obsidian/60"}>
                         {s.number}
                       </span>{" "}
                       <span className="uppercase">{s.title}</span>
@@ -113,12 +105,11 @@ export function Process() {
                     <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">
                       {s.body}
                     </p>
-                  </div>
+                  </button>
                 );
               })}
             </div>
 
-            {/* Line + concentric nodes */}
             <div className="relative mt-8 h-6">
               <span aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-obsidian/25" />
               <motion.span
@@ -126,7 +117,7 @@ export function Process() {
                 className="absolute left-0 h-px mint-line"
                 style={{ width: lineWidth, top: "50%" }}
               />
-              {PROCESS_STEPS.map((_, i) => {
+              {PROCESS_STEPS.map((s, i) => {
                 const left = `${(i / (PROCESS_STEPS.length - 1)) * 100}%`;
                 const stepThreshold = i / (PROCESS_STEPS.length - 1);
                 return (
@@ -135,7 +126,9 @@ export function Process() {
                     left={left}
                     threshold={stepThreshold}
                     progress={progress}
-                    active={i === 3}
+                    active={i === activeStep}
+                    onClick={() => setActiveStep(i)}
+                    label={`${s.number} ${s.title}`}
                   />
                 );
               })}
@@ -155,40 +148,97 @@ export function Process() {
             />
             {PROCESS_STEPS.map((s, i) => {
               const stepThreshold = i / Math.max(PROCESS_STEPS.length - 1, 1);
+              const isActive = i === activeStep;
               return (
                 <li key={s.number} className="relative pl-8">
-                  <ProcessNode
-                    left="8px"
-                    top="4px"
-                    threshold={stepThreshold}
-                    progress={progress}
-                    mobile
-                  />
-                  <div className="text-[11px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
-                    {s.number} · {s.title}
-                  </div>
-                  <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep(i)}
+                    className="block text-left"
+                  >
+                    <ProcessNode
+                      left="8px"
+                      top="4px"
+                      threshold={stepThreshold}
+                      progress={progress}
+                      mobile
+                      active={isActive}
+                      label={`${s.number} ${s.title}`}
+                    />
+                    <div
+                      className={
+                        "text-[11px] font-medium uppercase tracking-[0.22em] " +
+                        (isActive ? "text-mint" : "text-obsidian/60")
+                      }
+                    >
+                      {s.number} · {s.title}
+                    </div>
+                    <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
+                  </button>
                 </li>
               );
             })}
           </ol>
         </div>
 
-        {/* Layered production cards */}
-        <div className="mt-14 hidden lg:block">
-          <div className="flex items-start -space-x-6">
-            {CARDS.map((c, i) => (
-              <div
-                key={c.label}
-                className="relative"
-                style={{
-                  zIndex: c.active ? 40 : 10 + i,
-                  transform: c.active ? "translateY(-16px)" : "translateY(0)",
-                }}
-              >
-                <ProductionCard card={c} />
-              </div>
-            ))}
+        {/* Active step image */}
+        <div className="mt-14">
+          <motion.div
+            key={activeStep}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="relative mx-auto max-w-[960px] overflow-hidden rounded-md border border-cream/15 bg-graphite shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]"
+          >
+            <img
+              src={STEP_IMAGES[activeStep].src}
+              alt={`${PROCESS_STEPS[activeStep].number} — ${PROCESS_STEPS[activeStep].title}`}
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="aspect-[16/9] w-full object-cover"
+            />
+            <div className="absolute left-4 top-4 text-[10px] font-medium uppercase tracking-[0.22em] text-cream">
+              {PROCESS_STEPS[activeStep].number} · {PROCESS_STEPS[activeStep].title}
+            </div>
+            <div className="absolute left-4 bottom-4 text-[9px] font-medium uppercase tracking-[0.22em] text-cream/85">
+              {STEP_IMAGES[activeStep].caption}
+            </div>
+            <CardCornerMarkers tone="mint" />
+          </motion.div>
+
+          {/* Thumbnail strip */}
+          <div className="mt-6 grid grid-cols-5 gap-3">
+            {STEP_IMAGES.map((img, i) => {
+              const isActive = i === activeStep;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setActiveStep(i)}
+                  aria-label={`Show ${PROCESS_STEPS[i].number} ${PROCESS_STEPS[i].title}`}
+                  className={
+                    "group relative overflow-hidden rounded-sm border transition " +
+                    (isActive
+                      ? "border-mint shadow-[0_0_0_1px_var(--color-mint)]"
+                      : "border-cream/20 hover:border-cream/50")
+                  }
+                >
+                  <img
+                    src={img.src}
+                    alt=""
+                    className={
+                      "aspect-[16/10] w-full object-cover transition " +
+                      (isActive ? "opacity-100" : "opacity-70 group-hover:opacity-100")
+                    }
+                    loading="lazy"
+                  />
+                  <span className="absolute left-1.5 top-1.5 text-[9px] font-medium tracking-[0.2em] text-cream">
+                    {PROCESS_STEPS[i].number}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -213,13 +263,11 @@ export function Process() {
           </button>
         </div>
 
-        {/* Caption */}
         <div className="mt-6 flex items-center gap-3 text-sm text-obsidian">
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
           <span>Every timeline is built around the brief.</span>
         </div>
 
-        {/* Bottom marker */}
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
           <span className="tracking-[0.22em]">06 / WHY HISTORIAS</span>
           <span className="h-px flex-1 bg-cream/25" />
@@ -227,138 +275,6 @@ export function Process() {
         </div>
       </div>
     </section>
-  );
-}
-
-function ProductionCard({ card }: { card: CardDef }) {
-  const w = "w-[220px]";
-  const activeRing = card.active
-    ? "shadow-[0_0_0_1px_var(--color-mint),0_20px_60px_-20px_rgba(0,0,0,0.6)]"
-    : "shadow-[0_10px_30px_-20px_rgba(0,0,0,0.6)]";
-
-  if (card.kind === "text") {
-    return (
-      <div
-        className={`${w} overflow-hidden rounded-md border border-obsidian/15 bg-cream p-4 ${activeRing}`}
-      >
-        <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
-          {card.label}
-        </div>
-        <div className="mt-2 text-[13px] font-semibold uppercase tracking-wide text-obsidian">
-          {card.logline}
-        </div>
-        <div className="mt-3 space-y-1.5">
-          <span className="block h-1 w-full rounded bg-obsidian/15" />
-          <span className="block h-1 w-11/12 rounded bg-obsidian/15" />
-          <span className="block h-1 w-10/12 rounded bg-obsidian/15" />
-        </div>
-        <div className="mt-4 flex gap-4">
-          <div>
-            <div className="text-[8px] font-medium uppercase tracking-[0.22em] text-obsidian/50">
-              Logline
-            </div>
-            <div className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-obsidian">
-              Untamed Drive
-            </div>
-          </div>
-          <div>
-            <div className="text-[8px] font-medium uppercase tracking-[0.22em] text-obsidian/50">
-              Mood
-            </div>
-            <div className="mt-1 space-y-1">
-              <span className="block h-1 w-14 rounded bg-obsidian/15" />
-              <span className="block h-1 w-12 rounded bg-obsidian/15" />
-            </div>
-          </div>
-        </div>
-        <div className="mt-4 space-y-1.5">
-          <span className="block h-1 w-full rounded bg-obsidian/10" />
-          <span className="block h-1 w-9/12 rounded bg-obsidian/10" />
-        </div>
-        <CardCornerMarkers tone="dark" />
-      </div>
-    );
-  }
-
-  if (card.kind === "sketch") {
-    return (
-      <div
-        className={`${w} overflow-hidden rounded-md border border-obsidian/15 bg-cream p-3 ${activeRing}`}
-      >
-        <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
-          {card.label}
-        </div>
-        <div className="mt-3 grid grid-cols-3 gap-1.5">
-          {[0, 1, 2, 3, 4, 5].map((n) => (
-            <div
-              key={n}
-              className="aspect-[4/3] rounded-[3px] border border-obsidian/40 bg-cream"
-            >
-              <svg viewBox="0 0 40 30" className="h-full w-full text-obsidian/60">
-                <path
-                  d="M2 22 L14 10 L22 18 L30 8 L38 20"
-                  stroke="currentColor"
-                  strokeWidth="0.6"
-                  fill="none"
-                />
-                <circle cx="30" cy="8" r="1.4" fill="currentColor" />
-              </svg>
-            </div>
-          ))}
-        </div>
-        <div className="mt-3 h-2 w-2/3 rounded bg-obsidian/10" />
-        <CardCornerMarkers tone="dark" />
-      </div>
-    );
-  }
-
-  // image card
-  const isMaster = !!card.footer;
-  return (
-    <div
-      className={`${w} overflow-hidden rounded-md border border-cream/15 bg-graphite ${activeRing}`}
-    >
-      <div className="relative">
-        <img
-          src={card.image}
-          alt={card.label}
-          className={
-            (isMaster ? "aspect-[4/3]" : "aspect-[4/3]") +
-            " w-full object-cover"
-          }
-          loading="lazy"
-        />
-        <div className="absolute left-3 top-3 text-[10px] font-medium uppercase tracking-[0.22em] text-cream">
-          {card.label}
-        </div>
-        {card.caption && (
-          <div className="absolute left-3 bottom-3 text-[9px] font-medium uppercase tracking-[0.22em] text-cream/85">
-            {card.caption}
-          </div>
-        )}
-      </div>
-      {isMaster && (
-        <div className="grid grid-cols-3 gap-2 bg-obsidian p-3 text-cream">
-          <FooterCell label="Format" value={card.footer!.format!} />
-          <FooterCell label="Audio" value={card.footer!.audio!} />
-          <FooterCell label="Deliverables" value={card.footer!.deliverables!} />
-        </div>
-      )}
-      <CardCornerMarkers tone={card.active ? "mint" : "cream"} />
-    </div>
-  );
-}
-
-function FooterCell({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <div className="text-[8px] font-medium uppercase tracking-[0.22em] text-cream/50">
-        {label}
-      </div>
-      <div className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-cream">
-        {value}
-      </div>
-    </div>
   );
 }
 
@@ -399,6 +315,8 @@ function ProcessNode({
   progress,
   mobile = false,
   active = false,
+  onClick,
+  label,
 }: {
   left: string;
   top?: string;
@@ -406,6 +324,8 @@ function ProcessNode({
   progress: ReturnType<typeof useSpring>;
   mobile?: boolean;
   active?: boolean;
+  onClick?: () => void;
+  label?: string;
 }) {
   const scale = useTransform(progress, (v) => (v >= threshold - 0.02 ? 1.1 : 1));
   const bg = useTransform(progress, (v) =>
@@ -427,22 +347,18 @@ function ProcessNode({
     );
   }
 
-  return (
+  const node = (
     <span
       aria-hidden
-      className="absolute -translate-x-1/2 -translate-y-1/2"
-      style={{ left, top }}
+      className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2"
+      style={{ left: "50%", top: "50%" }}
     >
-      {/* Outer ring — larger for active */}
       <span
         className={
           "block rounded-full border " +
-          (active
-            ? "h-8 w-8 border-mint/70"
-            : "h-6 w-6 border-obsidian/25")
+          (active ? "h-8 w-8 border-mint/70" : "h-6 w-6 border-obsidian/25")
         }
       />
-      {/* Middle ring */}
       <span
         className={
           "absolute inset-0 m-auto rounded-full border " +
@@ -450,7 +366,6 @@ function ProcessNode({
         }
         style={{ top: 0, left: 0, right: 0, bottom: 0 }}
       />
-      {/* Core dot */}
       <motion.span
         style={{ backgroundColor: bg, boxShadow, scale }}
         className={
@@ -459,5 +374,17 @@ function ProcessNode({
         }
       />
     </span>
+  );
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="absolute h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full"
+      style={{ left, top }}
+    >
+      {node}
+    </button>
   );
 }
