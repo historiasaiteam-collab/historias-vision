@@ -49,14 +49,6 @@ export function Services() {
                   >
                     <span
                       className={cn(
-                        "font-mono text-sm",
-                        isActive ? "text-cream" : "text-smoke",
-                      )}
-                    >
-                      {s.number}
-                    </span>
-                    <span
-                      className={cn(
                         "relative flex-1 text-sm font-medium uppercase tracking-[0.14em] transition-colors sm:text-base",
                         isActive ? "text-cream" : "text-cream/60 group-hover:text-cream",
                       )}
