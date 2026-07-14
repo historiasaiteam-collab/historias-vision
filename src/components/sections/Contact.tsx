@@ -143,18 +143,8 @@ function MonumentalScene() {
         className="absolute left-1/2 top-[44%] w-[58%] max-w-[360px] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_40px_100px_rgba(0,0,0,0.95)] motion-safe:[animation:float-slow_9s_ease-in-out_infinite]"
       />
 
-      {/* Human silhouette for scale — pure SVG, sits at ground plane */}
-      <svg
-        aria-hidden
-        viewBox="0 0 40 90"
-        className="absolute bottom-[14%] left-[16%] h-[10%] w-auto opacity-70"
-        preserveAspectRatio="xMidYEnd meet"
-      >
-        <path
-          fill="#050807"
-          d="M20 8c3.3 0 6-2.7 6-6s-2.7-6-6-6-6 2.7-6 6 2.7 6 6 6zm-4 4c-3 0-6 2-6 6v22c0 1.5 1 3 3 3h1v33c0 2 2 4 4 4s4-2 4-4V45h4v33c0 2 2 4 4 4s4-2 4-4V45h1c2 0 3-1.5 3-3V18c0-4-3-6-6-6H16z"
-        />
-      </svg>
+
+
 
       {/* Ground reflection band + hard ground line */}
       <div
