@@ -245,6 +245,36 @@
   );
 }
 
+/* HUD chamfered clip: rounded TL/BR corners are handled by border-radius,
+   TR/BL get 45° notches via clip-path. Combine with `rounded-[Xpx]` where
+   needed — this utility supplies the shape only. */
+@utility hud-clip {
+  border-top-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  clip-path: polygon(
+    18px 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px),
+    0 18px
+  );
+}
+@utility hud-clip-lg {
+  border-top-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  clip-path: polygon(
+    24px 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px),
+    0 24px
+  );
+}
+
 /* diagonal split background: cream (left) → obsidian (right) */
 @utility bg-diagonal-split {
   background:
