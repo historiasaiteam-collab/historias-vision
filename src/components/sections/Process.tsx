@@ -252,7 +252,7 @@ export function Process() {
         </div>
 
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
-          <span className="tracking-[0.22em]">06 / WHY HISTORIAS</span>
+          <span className="tracking-[0.22em]">WHY HISTORIAS</span>
           <span className="h-px flex-1 bg-cream/25" />
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
         </div>
