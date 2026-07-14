@@ -101,7 +101,7 @@ export function About() {
             </div>
 
             {/* Overlapping vertical image, rounded with HUD frame */}
-            <div className="absolute -right-2 -bottom-8 w-[42%] max-w-[240px] overflow-hidden rounded-[22px] sm:-bottom-10 lg:-right-8 lg:-bottom-14 lg:w-[44%] lg:max-w-[280px]">
+            <div className="absolute right-8 -bottom-8 w-[42%] max-w-[240px] overflow-hidden rounded-[22px] sm:-bottom-10 lg:right-16 lg:-bottom-14 lg:w-[44%] lg:max-w-[280px]">
               <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[22px]">
                 <img
                   src={vertical}
