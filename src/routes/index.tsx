@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
@@ -76,6 +77,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const faqContactRef = useRef<HTMLDivElement>(null);
   return (
     <div className="relative min-h-screen bg-obsidian text-cream">
       <LoadingScreen />
@@ -88,8 +90,12 @@ function Index() {
         <Process />
         <Why />
         <Testimonials />
-        <Faq />
-        <Contact />
+        {/* Sections 08–09 share a scroll target so the diagonal connecting
+            line can be driven by their combined scroll progress. */}
+        <div ref={faqContactRef} className="relative">
+          <Faq scrollRef={faqContactRef} />
+          <Contact scrollRef={faqContactRef} />
+        </div>
       </main>
       <Footer />
     </div>
