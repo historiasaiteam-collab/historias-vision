@@ -29,13 +29,6 @@ export function Contact({ scrollRef }: ContactProps = {}) {
         x2={100}
         y2={18}
       />
-      <Parallax
-        offset={-30}
-        as="div"
-        className="pointer-events-none absolute top-20 left-2 sm:left-4 lg:left-6"
-      >
-        <span className="section-number text-cream/15">09</span>
-      </Parallax>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-16 sm:px-8 lg:px-14 lg:pt-28 lg:pb-20">
         <div className="mb-6 flex items-center gap-3">

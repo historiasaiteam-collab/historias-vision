@@ -37,12 +37,6 @@ export function Work() {
     >
       <div aria-hidden className="absolute inset-0 bg-grid opacity-30" />
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-16 left-2 sm:left-6 lg:left-10"
-      >
-        <span className="section-number text-cream/15">04</span>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-20 sm:px-8 lg:px-16 lg:pt-28 lg:pb-24">
         {/* Header */}
@@ -122,7 +116,7 @@ export function Work() {
             aria-hidden
             className="pointer-events-none absolute top-1/2 right-0 hidden -translate-y-1/2 translate-x-2 rotate-90 origin-center text-meta text-cream/40 lg:block"
           >
-            PROJECT 0{Math.min(others.length + 1, 9)}
+            PROJECT
           </div>
 
           <LayoutGroup>
@@ -169,7 +163,7 @@ export function Work() {
 
         {/* Bottom timeline */}
         <div className="mt-10 flex items-center gap-6">
-          <span className="whitespace-nowrap text-meta text-cream/50">05 / Process</span>
+          <span className="whitespace-nowrap text-meta text-cream/50">Process</span>
           <div className="relative h-px flex-1">
             <div className="absolute inset-0 bg-cream/15" />
             <motion.div

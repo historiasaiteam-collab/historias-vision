@@ -17,23 +17,9 @@ export function Services() {
     >
       <div aria-hidden className="absolute inset-0 bg-grid opacity-30" />
 
-      {/* Outlined section number */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-24 left-2 sm:left-4 lg:left-6"
-      >
-        <span className="section-number text-cream/15">03</span>
-      </div>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-[38%] left-2 hidden sm:left-4 lg:left-6 lg:block"
-      >
-        <span className="section-number text-cream/10">03</span>
-      </div>
-
       {/* HUD label right */}
       <div className="absolute top-24 right-6 hidden text-meta text-cream/50 lg:block">
-        Active Service / 01
+        Active Service
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-28 sm:px-8 lg:px-14 lg:pt-28 lg:pb-32">
@@ -118,8 +104,7 @@ export function Services() {
                   className="relative bg-cream p-6 text-obsidian cut-corners-lg"
                 >
                   <div className="mb-3 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
-                    <span>{active.number}</span>
-                    <span>/ Service</span>
+                    <span>Service</span>
                   </div>
                   <h3 className="text-xl font-semibold uppercase leading-tight tracking-wide text-obsidian">
                     {active.title}
@@ -157,7 +142,7 @@ export function Services() {
 
         {/* Inactive services collapse indicator (mobile helper) */}
         <div className="mt-16 flex items-center gap-3 text-meta text-cream/50">
-          <span>04 / Selected Work</span>
+          <span>Selected Work</span>
           <span className="h-px flex-1 bg-cream/20" />
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
         </div>

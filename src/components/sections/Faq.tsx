@@ -41,13 +41,6 @@ export function Faq({ scrollRef }: FaqProps = {}) {
         y2={18}
       />
 
-      <Parallax
-        offset={-24}
-        as="div"
-        className="pointer-events-none absolute top-16 left-2 sm:left-4 lg:left-6"
-      >
-        <span className="section-number text-obsidian/25">08</span>
-      </Parallax>
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-14 px-6 pt-24 pb-24 sm:px-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-14 lg:pt-28 lg:pb-28">
         {/* LEFT cream copy */}
@@ -94,9 +87,6 @@ export function Faq({ scrollRef }: FaqProps = {}) {
                 />
               </div>
               <div className="flex flex-col gap-1 pt-1">
-                <div className="text-sm font-mono text-obsidian">
-                  {String(counter).padStart(2, "0")} / {String(FAQ_ITEMS.length).padStart(2, "0")}
-                </div>
                 <div className="text-meta text-obsidian/60">Scroll Questions</div>
               </div>
             </div>
@@ -135,16 +125,6 @@ export function Faq({ scrollRef }: FaqProps = {}) {
                     onClick={() => setOpenId(open ? "" : f.number)}
                     className="flex w-full items-start gap-5 px-5 py-4 text-left focus-visible:outline-none focus-visible:ring-mint sm:px-6"
                   >
-                    <span
-                      className={cn(
-                        "font-mono text-lg leading-none",
-                        open ? "text-obsidian" : "text-smoke",
-                      )}
-                      aria-hidden
-                    >
-                      {f.number}
-                      <span className="text-mint">.</span>
-                    </span>
                     <span
                       className={cn(
                         "flex-1 text-sm font-semibold uppercase leading-snug tracking-[0.06em] sm:text-[15px]",
@@ -193,7 +173,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
         <Divider />
         <BottomItem icon={<Package size={14} />} label="Commercial-Ready Delivery" />
         <span className="ml-auto flex items-center gap-3 text-meta text-cream/60">
-          <span>09 / Contact</span>
+          <span>Contact</span>
           <span className="h-px w-24 bg-cream/20" />
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
         </span>
