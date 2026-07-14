@@ -104,8 +104,15 @@ export function Faq() {
           </div>
         </div>
 
-        {/* RIGHT obsidian accordion */}
-        <div className="flex flex-col gap-3" role="list">
+        {/* RIGHT obsidian accordion — enters slowly from visual depth */}
+        <motion.div
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, scale: 0.96, filter: "blur(6px)" }}
+          whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col gap-3"
+          role="list"
+        >
           {FAQ_ITEMS.map((f) => {
             const open = openId === f.number;
             const panelId = `faq-panel-${f.number}`;
