@@ -83,43 +83,31 @@ export function About() {
           </a>
         </ScrollReveal>
 
-        {/* RIGHT (obsidian, layered images) */}
+        {/* RIGHT (obsidian, blended images) */}
         <div className="relative min-h-[420px] lg:min-h-[620px]">
           <ScrollReveal className="relative h-full">
-            {/* Outer device-style frame */}
-            <div className="relative w-full max-w-[600px] rounded-2xl border border-cream/15 bg-cream/[0.03] p-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
-              <div className="hud-corners relative aspect-square w-full overflow-hidden rounded-lg border border-edge/70 cut-corners">
-                <img
-                  src={bts}
-                  alt="Historias production crew on set"
-                  width={1200}
-                  height={1200}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-                {/* mint connector line */}
-                <span
-                  aria-hidden
-                  className="absolute -right-6 top-1/2 hidden h-px w-24 mint-line lg:block"
-                />
-              </div>
+            {/* Square BTS image */}
+            <div className="relative aspect-square w-full max-w-[560px] overflow-hidden">
+              <img
+                src={bts}
+                alt="Historias production crew on set"
+                width={1200}
+                height={1200}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
             </div>
 
-            {/* overlapping vertical frame */}
-            <div className="absolute -right-2 -bottom-16 w-[42%] max-w-[240px] sm:-bottom-20 lg:-right-8 lg:-bottom-24 lg:w-[42%] lg:max-w-[300px]">
-              <div className="relative rounded-2xl border border-cream/15 bg-cream/[0.03] p-2 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
-                <div className="relative overflow-hidden rounded-lg border border-mint/40 cut-corners">
-                  <img
-                    src={vertical}
-                    alt="Cinematic still — futuristic neon corridor"
-                    width={720}
-                    height={1280}
-                    loading="lazy"
-                    className="h-auto w-full object-cover"
-                  />
-                  <CornerMarkers color="mint" />
-                </div>
-              </div>
+            {/* overlapping vertical image — seamless blend, no frame */}
+            <div className="absolute -right-4 -bottom-10 w-[46%] max-w-[260px] sm:-bottom-12 lg:-right-10 lg:-bottom-16 lg:w-[46%] lg:max-w-[320px]">
+              <img
+                src={vertical}
+                alt="Cinematic still — futuristic neon corridor"
+                width={720}
+                height={1280}
+                loading="lazy"
+                className="h-auto w-full object-cover"
+              />
             </div>
           </ScrollReveal>
         </div>
