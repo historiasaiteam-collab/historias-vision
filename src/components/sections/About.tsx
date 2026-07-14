@@ -70,14 +70,14 @@ export function About() {
         {/* RIGHT (obsidian, layered images) */}
         <div className="relative min-h-[420px] lg:min-h-[560px]">
           <ScrollReveal className="relative h-full">
-            <div className="hud-corners relative w-full max-w-[560px] overflow-hidden rounded-md border border-edge/70 cut-corners">
+            <div className="hud-corners relative aspect-square w-full max-w-[560px] overflow-hidden rounded-md border border-edge/70 cut-corners">
               <img
                 src={bts}
                 alt="Historias production crew on set"
-                width={1400}
-                height={1000}
+                width={1200}
+                height={1200}
                 loading="lazy"
-                className="h-auto w-full object-cover"
+                className="h-full w-full object-cover"
               />
               {/* mint connector line */}
               <span
