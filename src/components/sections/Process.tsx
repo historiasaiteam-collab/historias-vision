@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { ArrowRight, Calendar, Clock, MapPin, Sliders } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { PROCESS_STEPS } from "@/data/faq";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
@@ -14,6 +16,14 @@ const CARDS = [
 ];
 
 export function Process() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 80%", "end 30%"],
+  });
+  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
+  const lineWidth = useTransform(progress, [0, 1], ["0%", "100%"]);
+  const lineHeight = useTransform(progress, [0, 1], ["0%", "100%"]);
   return (
     <section
       id="process"
@@ -58,7 +68,7 @@ export function Process() {
         </ScrollReveal>
 
         {/* Timeline */}
-        <div className="mt-16">
+        <div className="mt-16" ref={timelineRef}>
           {/* Desktop horizontal */}
           <div className="hidden lg:block">
             <div className="grid grid-cols-5 gap-6">
@@ -92,24 +102,21 @@ export function Process() {
             </div>
 
             <div className="relative mt-10 h-3">
-              <span className="absolute inset-x-0 top-1/2 h-px bg-obsidian/25" />
-              <span
+              <span aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-obsidian/25" />
+              <motion.span
+                aria-hidden
                 className="absolute inset-y-0 left-0 h-px mint-line"
-                style={{ width: "48%", top: "50%" }}
+                style={{ width: lineWidth, top: "50%" }}
               />
               {PROCESS_STEPS.map((_, i) => {
                 const left = `${(i / (PROCESS_STEPS.length - 1)) * 100}%`;
-                const active = i === 2;
+                const stepThreshold = i / (PROCESS_STEPS.length - 1);
                 return (
-                  <span
+                  <ProcessNode
                     key={i}
-                    className={
-                      "absolute -translate-x-1/2 -translate-y-1/2 " +
-                      (active
-                        ? "top-1/2 h-4 w-4 rounded-full border-2 border-mint bg-obsidian shadow-[0_0_10px_rgba(37,255,196,0.6)]"
-                        : "top-1/2 h-3 w-3 rounded-full border border-mint/60 bg-cream")
-                    }
-                    style={{ left }}
+                    left={left}
+                    threshold={stepThreshold}
+                    progress={progress}
                   />
                 );
               })}
@@ -122,22 +129,29 @@ export function Process() {
               aria-hidden
               className="absolute top-0 bottom-0 left-2 w-px bg-obsidian/25"
             />
-            {PROCESS_STEPS.map((s, i) => (
-              <li key={s.number} className="relative pl-8">
-                <span
-                  className={
-                    "absolute left-1.5 top-1 h-3 w-3 rounded-full " +
-                    (i === 2
-                      ? "border-2 border-mint bg-obsidian shadow-[0_0_10px_rgba(37,255,196,0.6)]"
-                      : "border border-mint/60 bg-cream")
-                  }
-                />
-                <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
-                  {s.number} · {s.title}
-                </div>
-                <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
-              </li>
-            ))}
+            <motion.span
+              aria-hidden
+              className="absolute left-2 top-0 w-px mint-line"
+              style={{ height: lineHeight }}
+            />
+            {PROCESS_STEPS.map((s, i) => {
+              const stepThreshold = i / Math.max(PROCESS_STEPS.length - 1, 1);
+              return (
+                <li key={s.number} className="relative pl-8">
+                  <ProcessNode
+                    left="8px"
+                    top="4px"
+                    threshold={stepThreshold}
+                    progress={progress}
+                    mobile
+                  />
+                  <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
+                    {s.number} · {s.title}
+                  </div>
+                  <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
+                </li>
+              );
+            })}
           </ol>
         </div>
 
@@ -203,4 +217,45 @@ function Feature({ icon, label }: { icon: React.ReactNode; label: string }) {
 
 function Divider() {
   return <span aria-hidden className="hidden h-4 w-px bg-cream/20 sm:block" />;
+}
+
+function ProcessNode({
+  left,
+  top = "50%",
+  threshold,
+  progress,
+  mobile = false,
+}: {
+  left: string;
+  top?: string;
+  threshold: number;
+  progress: ReturnType<typeof useSpring>;
+  mobile?: boolean;
+}) {
+  const scale = useTransform(progress, (v) => (v >= threshold - 0.02 ? 1.15 : 1));
+  const bg = useTransform(progress, (v) =>
+    v >= threshold - 0.02 ? "var(--color-obsidian)" : "var(--color-cream)",
+  );
+  const boxShadow = useTransform(progress, (v) =>
+    v >= threshold - 0.02
+      ? "0 0 12px rgba(37,255,196,0.65)"
+      : "0 0 0 rgba(0,0,0,0)",
+  );
+  return (
+    <motion.span
+      aria-hidden
+      style={{
+        left,
+        top,
+        scale,
+        backgroundColor: bg,
+        boxShadow,
+      }}
+      className={
+        mobile
+          ? "absolute h-3 w-3 -translate-x-1/2 rounded-full border-2 border-mint"
+          : "absolute h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-mint"
+      }
+    />
+  );
 }

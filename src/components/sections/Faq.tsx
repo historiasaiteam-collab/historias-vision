@@ -86,12 +86,15 @@ export function Faq() {
         </div>
 
         {/* RIGHT obsidian accordion */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3" role="list">
           {FAQ_ITEMS.map((f) => {
             const open = openId === f.number;
+            const panelId = `faq-panel-${f.number}`;
+            const btnId = `faq-btn-${f.number}`;
             return (
               <div
                 key={f.number}
+                role="listitem"
                 className={cn(
                   "rounded-md border transition cut-corners",
                   open
@@ -99,34 +102,43 @@ export function Faq() {
                     : "border-edge bg-graphite/60 text-cream",
                 )}
               >
-                <button
-                  onClick={() => setOpenId(open ? "" : f.number)}
-                  className="flex w-full items-start gap-5 px-5 py-4 text-left sm:px-6"
-                >
-                  <span
-                    className={cn(
-                      "font-mono text-lg leading-none",
-                      open ? "text-obsidian" : "text-smoke",
-                    )}
+                <h3 className="m-0">
+                  <button
+                    id={btnId}
+                    aria-expanded={open}
+                    aria-controls={panelId}
+                    onClick={() => setOpenId(open ? "" : f.number)}
+                    className="flex w-full items-start gap-5 px-5 py-4 text-left focus-visible:outline-none focus-visible:ring-mint sm:px-6"
                   >
-                    {f.number}
-                    <span className="text-mint">.</span>
-                  </span>
-                  <span
-                    className={cn(
-                      "flex-1 text-sm font-semibold uppercase leading-snug tracking-[0.06em] sm:text-[15px]",
-                      open ? "text-obsidian" : "text-cream",
-                    )}
-                  >
-                    {f.question}
-                  </span>
-                  <span className={open ? "mt-0.5 text-mint" : "mt-0.5 text-cream/60"}>
-                    {open ? <Minus size={16} /> : <Plus size={16} />}
-                  </span>
-                </button>
+                    <span
+                      className={cn(
+                        "font-mono text-lg leading-none",
+                        open ? "text-obsidian" : "text-smoke",
+                      )}
+                      aria-hidden
+                    >
+                      {f.number}
+                      <span className="text-mint">.</span>
+                    </span>
+                    <span
+                      className={cn(
+                        "flex-1 text-sm font-semibold uppercase leading-snug tracking-[0.06em] sm:text-[15px]",
+                        open ? "text-obsidian" : "text-cream",
+                      )}
+                    >
+                      {f.question}
+                    </span>
+                    <span aria-hidden className={open ? "mt-0.5 text-mint" : "mt-0.5 text-cream/60"}>
+                      {open ? <Minus size={16} /> : <Plus size={16} />}
+                    </span>
+                  </button>
+                </h3>
                 <AnimatePresence initial={false}>
                   {open ? (
                     <motion.div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={btnId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

@@ -17,11 +17,19 @@ export const FOOTER_NAV: NavItem[] = [
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 
-// DEMO CONTENT — swap for real handles once brand accounts are confirmed.
-export const SOCIAL_LINKS = [
-  { label: "Instagram", href: "" },
-  { label: "YouTube", href: "" },
-  { label: "LinkedIn", href: "" },
+// Social + legal links live in one place. Empty `href` renders as a visible
+// but non-interactive item — no fake destinations. Drop a real URL in when
+// the brand accounts / policy pages are ready.
+export type SocialLink = {
+  label: string;
+  href: string;
+  handle?: string; // display text, e.g. "@historias.studio"
+};
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { label: "Instagram", href: "", handle: "Coming Soon" },
+  { label: "YouTube", href: "", handle: "Coming Soon" },
+  { label: "LinkedIn", href: "", handle: "Coming Soon" },
 ];
 
 export const LEGAL_LINKS = [

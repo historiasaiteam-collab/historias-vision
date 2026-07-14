@@ -77,17 +77,23 @@ export function Why() {
             <ul className="divide-y divide-edge/70">
               {WHY_REASONS.map((r) => {
                 const open = openId === r.number;
+                const panelId = `why-panel-${r.number}`;
+                const btnId = `why-btn-${r.number}`;
                 return (
                   <li key={r.number}>
                     <button
+                      id={btnId}
+                      aria-expanded={open}
+                      aria-controls={panelId}
                       onClick={() => setOpenId(open ? "" : r.number)}
-                      className="flex w-full items-center gap-4 py-4 text-left"
+                      className="flex w-full items-center gap-4 py-4 text-left focus-visible:outline-none focus-visible:ring-mint"
                     >
                       <span
                         className={cn(
                           "font-mono text-sm",
                           open ? "text-cream" : "text-smoke",
                         )}
+                        aria-hidden
                       >
                         {r.number}
                       </span>
@@ -99,13 +105,23 @@ export function Why() {
                       >
                         {r.title}
                       </span>
-                      <span className={open ? "text-mint" : "text-cream/60"}>
+                      {open ? (
+                        <motion.span
+                          layoutId="why-active-line"
+                          className="h-px w-6 mint-line"
+                          aria-hidden
+                        />
+                      ) : null}
+                      <span aria-hidden className={open ? "text-mint" : "text-cream/60"}>
                         {open ? <Minus size={14} /> : <Plus size={14} />}
                       </span>
                     </button>
                     <AnimatePresence initial={false}>
                       {open ? (
                         <motion.div
+                          id={panelId}
+                          role="region"
+                          aria-labelledby={btnId}
                           key="content"
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
