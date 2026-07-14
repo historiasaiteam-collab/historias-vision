@@ -60,44 +60,60 @@ export function Testimonials() {
               into films people remember.
             </p>
 
-            {/* Featured testimonial + image */}
+            {/* Featured testimonial + image — perspective depth stack */}
             <div
               className="mt-10 grid gap-4 md:grid-cols-[1.05fr_1fr]"
               aria-live="polite"
               aria-atomic="true"
             >
-              <AnimatePresence mode="wait">
+              <div
+                className="relative"
+                style={{ perspective: "1400px" }}
+              >
+                {/* Next slide sits farther back */}
                 <motion.div
-                  key={active.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.35 }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.25}
-                  onDragEnd={(_, info) => {
-                    if (info.offset.x < -60 || info.velocity.x < -400) go(1);
-                    else if (info.offset.x > 60 || info.velocity.x > 400) go(-1);
-                  }}
-                  className="relative touch-pan-y bg-cream p-6 text-obsidian cut-corners-lg select-none sm:p-8"
-                >
-                  <div className="mb-4 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-mint">
-                    <span className="h-px w-4 bg-mint" /> Client Testimonial
-                  </div>
-                  <p className="text-lg leading-relaxed text-obsidian sm:text-xl">
-                    &ldquo;{active.quote}&rdquo;
-                  </p>
-                  <div className="mt-6 h-px w-10 mint-line" />
-                  <div className="mt-4 text-sm font-semibold text-obsidian">
-                    {active.client}
-                  </div>
-                  <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
-                    {active.role}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-              <div className="hud-corners relative overflow-hidden rounded-md border border-edge cut-corners-lg">
+                  key={`ghost-${active.id}`}
+                  aria-hidden
+                  initial={{ opacity: 0, z: -80, y: 14, scale: 0.94 }}
+                  animate={{ opacity: 0.35, z: -80, y: 14, scale: 0.94 }}
+                  transition={{ duration: 0.5 }}
+                  className="pointer-events-none absolute inset-0 bg-cream/70 cut-corners-lg shadow-depth"
+                  style={{ transformStyle: "preserve-3d" }}
+                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active.id}
+                    initial={{ opacity: 0, y: 20, rotateX: 8, z: -40 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
+                    exit={{ opacity: 0, y: -12, rotateX: -6, z: -20 }}
+                    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.25}
+                    onDragEnd={(_, info) => {
+                      if (info.offset.x < -60 || info.velocity.x < -400) go(1);
+                      else if (info.offset.x > 60 || info.velocity.x > 400) go(-1);
+                    }}
+                    className="relative touch-pan-y bg-cream p-6 text-obsidian cut-corners-lg select-none sm:p-8 shadow-depth"
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    <div className="mb-4 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-mint">
+                      <span className="h-px w-4 bg-mint" /> Client Testimonial
+                    </div>
+                    <p className="text-lg leading-relaxed text-obsidian sm:text-xl">
+                      &ldquo;{active.quote}&rdquo;
+                    </p>
+                    <div className="mt-6 h-px w-10 mint-line" />
+                    <div className="mt-4 text-sm font-semibold text-obsidian">
+                      {active.client}
+                    </div>
+                    <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
+                      {active.role}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              <div className="hud-corners relative overflow-hidden rounded-md border border-edge cut-corners-lg shadow-depth">
                 <img
                   src={arch}
                   alt="Cinematic architectural still"
@@ -105,6 +121,10 @@ export function Testimonials() {
                   height={1000}
                   loading="lazy"
                   className="h-full min-h-[260px] w-full object-cover"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent"
                 />
                 <CornerMarkers color="mint" />
               </div>

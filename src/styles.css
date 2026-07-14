@@ -262,3 +262,42 @@
   outline: 2px solid var(--color-mint);
   outline-offset: 2px;
 }
+
+/* -------- Atmosphere: soft fog wash -------- */
+@utility bg-fog {
+  background-image:
+    radial-gradient(ellipse 70% 50% at 30% 20%, color-mix(in oklab, var(--color-cream) 8%, transparent), transparent 65%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, color-mix(in oklab, var(--color-mint) 5%, transparent), transparent 65%);
+}
+
+/* baked ground reflection: soft mirrored gradient */
+@utility ground-reflection {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--color-cream) 6%, transparent) 0%,
+    transparent 60%
+  );
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+/* premium depth shadow (baked, no runtime cost) */
+@utility shadow-depth {
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.55),
+    0 12px 30px -8px rgba(0, 0, 0, 0.35),
+    0 0 0 1px color-mix(in oklab, var(--color-cream) 6%, transparent);
+}
+
+/* atmospheric dust drift — used by <Particles /> */
+@keyframes drift {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(6px, -18px, 0); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -8px, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes drift { from, to { transform: none; } }
+  @keyframes float-slow { from, to { transform: none; } }
+}

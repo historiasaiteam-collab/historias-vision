@@ -2,6 +2,8 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero.jpg";
 import { CtaButton } from "@/components/ui/CtaButton";
+import { Parallax } from "@/components/animations/Parallax";
+import { Particles } from "@/components/animations/Particles";
 import { CLIENT_STRIP } from "@/data/clients";
 
 export function Hero() {
@@ -15,21 +17,25 @@ export function Hero() {
       id="hero"
       className="relative isolate min-h-screen w-full overflow-hidden bg-obsidian text-cream"
     >
-      {/* Background image */}
-      <img
-        src={heroImage}
-        alt=""
-        aria-hidden
-        width={1920}
-        height={1280}
-        className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
-      />
+      {/* Background image — slower parallax than foreground */}
+      <Parallax offset={-30} className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden
+          width={1920}
+          height={1280}
+          className="h-full w-full object-cover object-center opacity-90"
+        />
+      </Parallax>
       {/* Left dark overlay + subtle wash */}
       <div
         aria-hidden
         className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,7,0.96)_0%,rgba(5,8,7,0.82)_38%,rgba(5,8,7,0.35)_65%,rgba(5,8,7,0)_100%)]"
       />
       <div aria-hidden className="absolute inset-0 bg-grid opacity-40" />
+      <div aria-hidden className="absolute inset-0 bg-fog opacity-60" />
+      <Particles count={16} color="cream" />
 
       {/* Left vertical rail label */}
       <div
@@ -45,13 +51,13 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Outlined section number */}
-      <div
-        aria-hidden
+      {/* Outlined section number — slower parallax */}
+      <Parallax
+        offset={-40}
         className="pointer-events-none absolute top-24 left-4 lg:left-14"
       >
         <span className="section-number text-cream/25">01</span>
-      </div>
+      </Parallax>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1500px] flex-col justify-end px-6 pt-32 pb-32 sm:px-8 lg:px-14 lg:pb-40">
