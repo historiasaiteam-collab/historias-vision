@@ -36,6 +36,7 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-0 bg-grid opacity-40" />
       <div aria-hidden className="absolute inset-0 bg-fog opacity-60" />
+      <ThreeBackground />
       <Particles count={16} color="cream" />
 
       {/* Left vertical rail label */}
