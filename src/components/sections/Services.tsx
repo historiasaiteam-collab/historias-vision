@@ -1,7 +1,21 @@
 import { useState } from "react";
 import { ArrowRight, Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import serviceImg from "@/assets/service-car.jpg";
+import serviceCommercial from "@/assets/service-car.jpg";
+import serviceProduct from "@/assets/service-product.jpg";
+import serviceHybrid from "@/assets/service-hybrid.jpg";
+import servicePost from "@/assets/service-post.jpg";
+import serviceUgc from "@/assets/service-ugc.jpg";
+import serviceContent from "@/assets/service-content.jpg";
+
+const SERVICE_IMAGES: Record<string, string> = {
+  commercial: serviceCommercial,
+  product: serviceProduct,
+  hybrid: serviceHybrid,
+  post: servicePost,
+  ugc: serviceUgc,
+  content: serviceContent,
+};
 import { SERVICES } from "@/data/services";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { cn } from "@/lib/utils";
@@ -74,8 +88,8 @@ export function Services() {
           <div className="relative">
             <div className="hud-corners relative overflow-hidden rounded-md border border-edge cut-corners-lg">
               <img
-                src={serviceImg}
-                alt="Cinematic still — commercial production"
+                src={SERVICE_IMAGES[active.id] ?? serviceCommercial}
+                alt={`Cinematic still — ${active.title}`}
                 width={1400}
                 height={1000}
                 loading="lazy"
