@@ -182,7 +182,7 @@ export function Process() {
               className="aspect-[16/9] w-full object-cover"
             />
             <div className="absolute left-4 top-4 text-[10px] font-medium uppercase tracking-[0.22em] text-cream">
-              {PROCESS_STEPS[activeStep].number} · {PROCESS_STEPS[activeStep].title}
+              {PROCESS_STEPS[activeStep].title}
             </div>
             <div className="absolute left-4 bottom-4 text-[9px] font-medium uppercase tracking-[0.22em] text-cream/85">
               {STEP_IMAGES[activeStep].caption}
