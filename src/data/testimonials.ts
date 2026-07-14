@@ -1,11 +1,18 @@
 // DEMO CONTENT — testimonials and collaboration list. Replace with real
 // approved quotes and client names before publishing.
 
+import ebayImg from "@/assets/collabs/ebay.jpg";
+import ekrafImg from "@/assets/collabs/ekraf.jpg";
+import flimtyImg from "@/assets/collabs/flimty.jpg";
+import adrielleImg from "@/assets/collabs/adrielle.jpg";
+import aputureImg from "@/assets/collabs/aputure.jpg";
+
 export type Testimonial = {
   id: string;
   client: string;
   quote: string;
   role: string;
+  image: string;
 };
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -15,6 +22,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Client Testimonial",
     quote:
       "Historias consistently delivers every project on time, with visuals that always feel realistic and cinematic.",
+    image: ebayImg,
   },
   {
     id: "ekraf",
@@ -22,6 +30,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Public Sector Partner",
     quote:
       "A production partner that understands storytelling at a national scale — the craft never gets lost in the technology.",
+    image: ekrafImg,
   },
   {
     id: "flimty",
@@ -29,6 +38,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Brand Campaign",
     quote:
       "They turned a fast-moving brief into a hero campaign that outperformed every internal benchmark we set.",
+    image: flimtyImg,
   },
   {
     id: "adrielle",
@@ -36,6 +46,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Talent Collaboration",
     quote:
       "The team treats every frame like it matters. That's rare, and it shows on screen from the first cut.",
+    image: adrielleImg,
   },
   {
     id: "aputure",
@@ -43,5 +54,6 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Product Story",
     quote:
       "Precision, taste, and speed in one team — the exact combination this category asks for.",
+    image: aputureImg,
   },
 ];
