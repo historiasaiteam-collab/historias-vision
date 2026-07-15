@@ -26,10 +26,22 @@ export function Process() {
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
 
   const [activeStep, setActiveStep] = useState(0);
-  const stepProgress = activeStep / Math.max(PROCESS_STEPS.length - 1, 1);
-  const combined = useTransform(progress, (v) => Math.max(v, stepProgress));
+  const clickProgress = useMotionValue(0);
+  const combined = useTransform([progress, clickProgress] as MotionValue<number>[], (values) => {
+    const [p, c] = values as number[];
+    return Math.max(p, c);
+  });
   const lineWidth = useTransform(combined, [0, 1], ["0%", "100%"]);
   const lineHeight = useTransform(combined, [0, 1], ["0%", "100%"]);
+
+  const selectStep = (i: number) => {
+    setActiveStep(i);
+    const target = i / Math.max(PROCESS_STEPS.length - 1, 1);
+    animate(clickProgress, target, {
+      duration: 0.9 + Math.abs(target - clickProgress.get()) * 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    });
+  };
 
   return (
     <section
