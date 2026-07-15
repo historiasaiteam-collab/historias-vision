@@ -75,13 +75,10 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="text-display text-cream">
-            We make
-            <br />
-            impossible
-            <br />
-            stories <span className="italic-serif text-cream">visible.</span>
-          </h1>
+          <SplitText as="h1" className="text-display text-cream" stagger={0.08} delay={0.15}>
+            {"We make impossible stories "}
+            <span className="italic-serif text-cream">visible.</span>
+          </SplitText>
 
           <p className="mt-8 max-w-[520px] text-body">
             Cinematic, photorealistic visuals—without the artificial AI look.
