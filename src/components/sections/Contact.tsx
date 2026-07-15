@@ -7,6 +7,7 @@ import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SplitText } from "@/components/animations/SplitText";
 import monolith from "@/assets/contact-monolith.jpg";
 import logo from "@/assets/logo-h.png.asset.json";
 
