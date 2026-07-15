@@ -148,7 +148,7 @@ export function Services() {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Inactive services collapse indicator (mobile helper) */}
