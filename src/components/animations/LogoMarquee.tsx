@@ -2,7 +2,7 @@ import ebay from "@/assets/logos/ebay.png";
 import flimty from "@/assets/logos/flimty.png";
 import duaBelibis from "@/assets/logos/dua-belibis.png";
 import ekraf from "@/assets/logos/ekraf.png";
-import dremina from "@/assets/logos/Dremina.png";
+import dremina from "@/assets/logos/dreamina.png";
 
 const LOGOS: { src: string; alt: string }[] = [
   { src: ebay, alt: "eBay" },
