@@ -3,18 +3,18 @@ import { ArrowRight, Calendar, Clock, Clapperboard, MapPin } from "lucide-react"
 import { animate, motion, useMotionValue, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
 import { PROCESS_STEPS } from "@/data/faq";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import step01 from "@/assets/process-01-discover.jpg";
-import step02 from "@/assets/process-02-concept.jpg";
-import step03 from "@/assets/process-03-production.jpg";
-import step04 from "@/assets/process-04-post.jpg";
-import step05 from "@/assets/process-05-delivery.jpg";
+import step01 from "@/assets/process-discover.png.asset.json";
+import step02 from "@/assets/process-concept.png.asset.json";
+import step03 from "@/assets/process-production.png.asset.json";
+import step04 from "@/assets/process-post.png.asset.json";
+import step05 from "@/assets/process-delivery.png.asset.json";
 
 const STEP_IMAGES = [
-  { src: step01, caption: "ALIGNMENT · BRIEF & OBJECTIVE" },
-  { src: step02, caption: "TREATMENT · REFERENCES & PLAN" },
-  { src: step03, caption: "ACTIVE PRODUCTION STILL" },
-  { src: step04, caption: "EDIT · COLOR · SOUND" },
-  { src: step05, caption: "MULTI-FORMAT MASTERS" },
+  { src: step01.url, caption: "ALIGNMENT · BRIEF & OBJECTIVE" },
+  { src: step02.url, caption: "TREATMENT · REFERENCES & PLAN" },
+  { src: step03.url, caption: "ACTIVE PRODUCTION STILL" },
+  { src: step04.url, caption: "EDIT · COLOR · SOUND" },
+  { src: step05.url, caption: "MULTI-FORMAT MASTERS" },
 ];
 
 export function Process() {
