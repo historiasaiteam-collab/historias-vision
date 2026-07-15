@@ -136,7 +136,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CursorSpotlight />
       <Outlet />
     </QueryClientProvider>
   );
