@@ -55,6 +55,7 @@ export function Services() {
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           {/* Service list */}
+          <ScrollReveal as="div" delay={0.1}>
           <ul className="divide-y divide-edge/70 border-y border-edge/70">
             {SERVICES.map((s) => {
               const isActive = s.id === activeId;
