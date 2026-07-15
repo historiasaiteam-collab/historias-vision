@@ -67,7 +67,7 @@ export function Contact({ scrollRef }: ContactProps = {}) {
           <FeatureItem icon={<Clock size={14} />} label="Flexible Timelines" />
           <Divider />
           <FeatureItem icon={<Shield size={14} />} label="Confidential Briefs Welcome" />
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
