@@ -3,6 +3,7 @@ import { ArrowRight, Plus, Minus, Users, Cpu, Film, Sparkles } from "lucide-reac
 import { motion, AnimatePresence } from "framer-motion";
 import { WHY_REASONS } from "@/data/faq";
 import { CtaButton } from "@/components/ui/CtaButton";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-h.png.asset.json";
 
