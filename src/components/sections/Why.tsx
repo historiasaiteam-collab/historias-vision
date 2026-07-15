@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { WHY_REASONS } from "@/data/faq";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { SplitText } from "@/components/animations/SplitText";
+
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-h.png.asset.json";
 
