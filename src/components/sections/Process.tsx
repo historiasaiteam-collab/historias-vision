@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { ArrowRight, Calendar, Clock, Clapperboard, MapPin } from "lucide-react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
 import { PROCESS_STEPS } from "@/data/faq";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import step01 from "@/assets/process-01-discover.jpg";
@@ -24,10 +24,12 @@ export function Process() {
     offset: ["start 80%", "end 30%"],
   });
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
-  const lineWidth = useTransform(progress, [0, 1], ["0%", "100%"]);
-  const lineHeight = useTransform(progress, [0, 1], ["0%", "100%"]);
 
   const [activeStep, setActiveStep] = useState(0);
+  const stepProgress = activeStep / Math.max(PROCESS_STEPS.length - 1, 1);
+  const combined = useTransform(progress, (v) => Math.max(v, stepProgress));
+  const lineWidth = useTransform(combined, [0, 1], ["0%", "100%"]);
+  const lineHeight = useTransform(combined, [0, 1], ["0%", "100%"]);
 
   return (
     <section
@@ -108,7 +110,7 @@ export function Process() {
                     key={i}
                     left={left}
                     threshold={stepThreshold}
-                    progress={progress}
+                    progress={combined}
                     active={i === activeStep}
                     onClick={() => setActiveStep(i)}
                     label={s.title}
@@ -143,7 +145,7 @@ export function Process() {
                       left="8px"
                       top="4px"
                       threshold={stepThreshold}
-                      progress={progress}
+                      progress={combined}
                       mobile
                       active={isActive}
                       label={s.title}
@@ -304,7 +306,7 @@ function ProcessNode({
   left: string;
   top?: string;
   threshold: number;
-  progress: ReturnType<typeof useSpring>;
+  progress: MotionValue<number>;
   mobile?: boolean;
   active?: boolean;
   onClick?: () => void;
