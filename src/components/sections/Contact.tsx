@@ -40,9 +40,10 @@ export function Contact({ scrollRef }: ContactProps = {}) {
 
         <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <ScrollReveal as="div" delay={0.1}>
-            <h2 className="text-h1 text-cream">
-              Your next story <span className="italic-serif">starts here.</span>
-            </h2>
+            <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
+              {"Your next story "}
+              <span className="italic-serif">starts here.</span>
+            </SplitText>
             <p className="mt-6 max-w-[520px] text-body">
               Tell us what you are building, launching, or imagining. We'll
               shape the right production approach around your brief.
