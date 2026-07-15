@@ -31,7 +31,7 @@ export function Why() {
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-24 sm:px-8 lg:px-14 lg:pt-28 lg:pb-32">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr_1fr] lg:gap-10">
           {/* LEFT: headline */}
-          <div>
+          <ScrollReveal>
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-6 bg-mint" />
               <span className="text-eyebrow text-mint">Why Historias</span>
@@ -45,7 +45,7 @@ export function Why() {
               Technology moves fast. Our standard stays the same: every frame
               must feel intentional, believable, and worth watching.
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* CENTER: monumental H logo */}
           <div className="relative grid min-h-[380px] place-items-center">
