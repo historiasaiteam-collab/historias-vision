@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { ArrowRight, Calendar, Clock, Clapperboard, MapPin } from "lucide-react";
-import { motion, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
+import { animate, motion, useMotionValue, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
 import { PROCESS_STEPS } from "@/data/faq";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import step01 from "@/assets/process-01-discover.jpg";
@@ -26,10 +26,22 @@ export function Process() {
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
 
   const [activeStep, setActiveStep] = useState(0);
-  const stepProgress = activeStep / Math.max(PROCESS_STEPS.length - 1, 1);
-  const combined = useTransform(progress, (v) => Math.max(v, stepProgress));
+  const clickProgress = useMotionValue(0);
+  const combined = useTransform([progress, clickProgress] as MotionValue<number>[], (values) => {
+    const [p, c] = values as number[];
+    return Math.max(p, c);
+  });
   const lineWidth = useTransform(combined, [0, 1], ["0%", "100%"]);
   const lineHeight = useTransform(combined, [0, 1], ["0%", "100%"]);
+
+  const selectStep = (i: number) => {
+    setActiveStep(i);
+    const target = i / Math.max(PROCESS_STEPS.length - 1, 1);
+    animate(clickProgress, target, {
+      duration: 0.9 + Math.abs(target - clickProgress.get()) * 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    });
+  };
 
   return (
     <section
@@ -78,7 +90,7 @@ export function Process() {
                   <button
                     key={s.number}
                     type="button"
-                    onClick={() => setActiveStep(i)}
+                    onClick={() => selectStep(i)}
                     className={
                       "group text-left transition " +
                       (isActive ? "text-obsidian" : "text-obsidian hover:opacity-90")
@@ -112,7 +124,7 @@ export function Process() {
                     threshold={stepThreshold}
                     progress={combined}
                     active={i === activeStep}
-                    onClick={() => setActiveStep(i)}
+                    onClick={() => selectStep(i)}
                     label={s.title}
                   />
                 );
@@ -138,7 +150,7 @@ export function Process() {
                 <li key={s.number} className="relative pl-8">
                   <button
                     type="button"
-                    onClick={() => setActiveStep(i)}
+                    onClick={() => selectStep(i)}
                     className="block text-left"
                   >
                     <ProcessNode
@@ -200,7 +212,7 @@ export function Process() {
                 <button
                   key={i}
                   type="button"
-                  onClick={() => setActiveStep(i)}
+                  onClick={() => selectStep(i)}
                   aria-label={`Show ${PROCESS_STEPS[i].number} ${PROCESS_STEPS[i].title}`}
                   className={
                     "group relative overflow-hidden rounded-sm border transition " +
