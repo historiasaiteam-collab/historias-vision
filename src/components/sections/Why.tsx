@@ -128,7 +128,7 @@ export function Why() {
                 );
               })}
             </ul>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Bottom feature bar */}
