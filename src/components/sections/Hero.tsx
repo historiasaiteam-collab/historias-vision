@@ -35,6 +35,22 @@ export function Hero() {
       {/* 3D sky layer */}
       <SkyBackground />
 
+      {/* Monolith backdrop — softly visible, vignetted into the corners */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: `url(${heroMonolith.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center right",
+          opacity: 0.35,
+          maskImage:
+            "radial-gradient(ellipse 75% 70% at 65% 50%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0) 85%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 75% 70% at 65% 50%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0) 85%)",
+        }}
+      />
+
       {/* Left dark overlay + subtle wash */}
       <div
         aria-hidden
