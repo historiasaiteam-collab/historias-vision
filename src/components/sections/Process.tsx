@@ -145,7 +145,7 @@ export function Process() {
                       left="8px"
                       top="4px"
                       threshold={stepThreshold}
-                      progress={progress}
+                      progress={combined}
                       mobile
                       active={isActive}
                       label={s.title}
