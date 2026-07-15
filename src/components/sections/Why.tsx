@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { WHY_REASONS } from "@/data/faq";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SplitText } from "@/components/animations/SplitText";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-h.png.asset.json";
 
@@ -31,21 +32,22 @@ export function Why() {
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-24 sm:px-8 lg:px-14 lg:pt-28 lg:pb-32">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr_1fr] lg:gap-10">
           {/* LEFT: headline */}
-          <ScrollReveal>
-            <div className="mb-6 flex items-center gap-3">
+          <div>
+            <ScrollReveal className="mb-6 flex items-center gap-3">
               <span className="h-px w-6 bg-mint" />
               <span className="text-eyebrow text-mint">Why Historias</span>
-            </div>
-            <h2 className="text-h1 text-cream">
-              Cinematic quality.
-              <br />
+            </ScrollReveal>
+            <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
+              {"Cinematic quality. "}
               <span className="italic-serif">Built differently.</span>
-            </h2>
-            <p className="mt-8 max-w-[400px] text-body">
-              Technology moves fast. Our standard stays the same: every frame
-              must feel intentional, believable, and worth watching.
-            </p>
-          </ScrollReveal>
+            </SplitText>
+            <ScrollReveal delay={0.25}>
+              <p className="mt-8 max-w-[400px] text-body">
+                Technology moves fast. Our standard stays the same: every frame
+                must feel intentional, believable, and worth watching.
+              </p>
+            </ScrollReveal>
+          </div>
 
           {/* CENTER: monumental H logo */}
           <ScrollReveal delay={0.15} className="relative grid min-h-[380px] place-items-center">

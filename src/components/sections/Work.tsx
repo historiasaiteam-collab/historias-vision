@@ -7,6 +7,7 @@ import { VideoModal } from "@/components/ui/VideoModal";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { HudFrame } from "@/components/layout/HudFrame";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SplitText } from "@/components/animations/SplitText";
 import { cn } from "@/lib/utils";
 
 export function Work() {
@@ -47,11 +48,10 @@ export function Work() {
               <span className="h-px w-6 bg-mint" />
               <span className="text-eyebrow text-mint">Selected Work</span>
             </div>
-            <h2 className="text-h1 text-cream">
-              Stories worth
-              <br />
+            <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
+              {"Stories worth "}
               <span className="italic-serif">stopping for.</span>
-            </h2>
+            </SplitText>
           </div>
           <div className="hidden md:block" />
           <div className="flex flex-col gap-6 md:items-end">

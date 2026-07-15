@@ -5,6 +5,7 @@ import { TESTIMONIALS } from "@/data/testimonials";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SplitText } from "@/components/animations/SplitText";
 import { cn } from "@/lib/utils";
 
 export function Testimonials() {
@@ -45,11 +46,10 @@ export function Testimonials() {
                 <span className="h-px w-6 bg-mint" />
                 <span className="text-eyebrow text-mint">Client Stories</span>
               </div>
-              <h2 className="text-h1 text-cream">
-                Trusted with
-                <br />
+              <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
+                {"Trusted with "}
                 <span className="italic-serif">ambitious stories.</span>
-              </h2>
+              </SplitText>
               <p className="mt-6 max-w-[520px] text-body">
                 We collaborate with brands and institutions to turn complex ideas
                 into films people remember.
