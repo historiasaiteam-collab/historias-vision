@@ -90,7 +90,7 @@ export function Services() {
           <ScrollReveal as="div" delay={0.2} className="relative">
             <div className="hud-corners relative overflow-hidden rounded-md border border-edge cut-corners-lg">
               <img
-                src={SERVICE_IMAGES[active.id] ?? serviceCommercial}
+                src={SERVICE_IMAGES[active.id] ?? serviceCommercial.url}
                 alt={`Cinematic still — ${active.title}`}
                 width={1400}
                 height={1000}
