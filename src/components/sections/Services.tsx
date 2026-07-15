@@ -18,6 +18,7 @@ const SERVICE_IMAGES: Record<string, string> = {
 };
 import { SERVICES } from "@/data/services";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export function Services() {
