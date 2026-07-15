@@ -6,6 +6,7 @@ import { DEMO_VIDEOS } from "@/data/videos";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { HudFrame } from "@/components/layout/HudFrame";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export function Work() {
@@ -40,7 +41,7 @@ export function Work() {
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-20 sm:px-8 lg:px-16 lg:pt-28 lg:pb-24">
         {/* Header */}
-        <div className="grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-end md:gap-12">
+        <ScrollReveal as="div" className="grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-end md:gap-12">
           <div className="md:pl-24 lg:pl-32">
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-6 bg-mint" />
@@ -70,7 +71,7 @@ export function Work() {
               <ArrowRight size={16} />
             </a>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Filters */}
         <div

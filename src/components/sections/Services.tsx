@@ -18,6 +18,7 @@ const SERVICE_IMAGES: Record<string, string> = {
 };
 import { SERVICES } from "@/data/services";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export function Services() {
@@ -37,21 +38,24 @@ export function Services() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-28 sm:px-8 lg:px-14 lg:pt-28 lg:pb-32">
-        <div className="mb-6 flex items-center gap-3">
-          <span className="h-px w-6 bg-mint" />
-          <span className="text-eyebrow text-mint">Services</span>
-        </div>
+        <ScrollReveal>
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-px w-6 bg-mint" />
+            <span className="text-eyebrow text-mint">Services</span>
+          </div>
 
-        <h2 className="max-w-[900px] text-h1 text-cream">
-          One studio.
-          <br />
-          Every way to
-          <br />
-          <span className="italic-serif">bring a story to life.</span>
-        </h2>
+          <h2 className="max-w-[900px] text-h1 text-cream">
+            One studio.
+            <br />
+            Every way to
+            <br />
+            <span className="italic-serif">bring a story to life.</span>
+          </h2>
+        </ScrollReveal>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           {/* Service list */}
+          <ScrollReveal as="div" delay={0.1}>
           <ul className="divide-y divide-edge/70 border-y border-edge/70">
             {SERVICES.map((s) => {
               const isActive = s.id === activeId;
@@ -83,9 +87,10 @@ export function Services() {
               );
             })}
           </ul>
+          </ScrollReveal>
 
           {/* Right: image + active card */}
-          <div className="relative">
+          <ScrollReveal as="div" delay={0.2} className="relative">
             <div className="hud-corners relative overflow-hidden rounded-md border border-edge cut-corners-lg">
               <img
                 src={SERVICE_IMAGES[active.id] ?? serviceCommercial}
@@ -143,7 +148,7 @@ export function Services() {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Inactive services collapse indicator (mobile helper) */}

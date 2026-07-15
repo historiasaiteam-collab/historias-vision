@@ -3,6 +3,7 @@ import { ArrowRight, Plus, Minus, Users, Cpu, Film, Sparkles } from "lucide-reac
 import { motion, AnimatePresence } from "framer-motion";
 import { WHY_REASONS } from "@/data/faq";
 import { CtaButton } from "@/components/ui/CtaButton";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-h.png.asset.json";
 
@@ -30,7 +31,7 @@ export function Why() {
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-24 sm:px-8 lg:px-14 lg:pt-28 lg:pb-32">
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr_1fr] lg:gap-10">
           {/* LEFT: headline */}
-          <div>
+          <ScrollReveal>
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-6 bg-mint" />
               <span className="text-eyebrow text-mint">Why Historias</span>
@@ -44,10 +45,10 @@ export function Why() {
               Technology moves fast. Our standard stays the same: every frame
               must feel intentional, believable, and worth watching.
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* CENTER: monumental H logo */}
-          <div className="relative grid min-h-[380px] place-items-center">
+          <ScrollReveal delay={0.15} className="relative grid min-h-[380px] place-items-center">
             <div
               aria-hidden
               className="absolute inset-0"
@@ -64,10 +65,10 @@ export function Why() {
               loading="lazy"
               className="relative w-[70%] max-w-[420px] object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
             />
-          </div>
+          </ScrollReveal>
 
           {/* RIGHT: accordion */}
-          <div className="rounded-lg border border-edge bg-graphite/40 p-4 sm:p-6 cut-corners-lg">
+          <ScrollReveal delay={0.25} className="rounded-lg border border-edge bg-graphite/40 p-4 sm:p-6 cut-corners-lg">
             <ul className="divide-y divide-edge/70">
               {WHY_REASONS.map((r) => {
                 const open = openId === r.number;
@@ -127,11 +128,11 @@ export function Why() {
                 );
               })}
             </ul>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Bottom feature bar */}
-        <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+        <ScrollReveal className="mt-14 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 rounded-full border border-edge bg-graphite/60 px-6 py-4">
             <FeatureItem icon={<Users size={14} />} label="Live-Action Crew" />
             <Divider />
@@ -152,7 +153,7 @@ export function Why() {
           >
             Meet Historias
           </CtaButton>
-        </div>
+        </ScrollReveal>
 
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
           <span>Client Stories</span>

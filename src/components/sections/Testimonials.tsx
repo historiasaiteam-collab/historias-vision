@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TESTIMONIALS } from "@/data/testimonials";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export function Testimonials() {
@@ -39,19 +40,21 @@ export function Testimonials() {
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
           {/* LEFT header + testimonial */}
           <div>
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-6 bg-mint" />
-              <span className="text-eyebrow text-mint">Client Stories</span>
-            </div>
-            <h2 className="text-h1 text-cream">
-              Trusted with
-              <br />
-              <span className="italic-serif">ambitious stories.</span>
-            </h2>
-            <p className="mt-6 max-w-[520px] text-body">
-              We collaborate with brands and institutions to turn complex ideas
-              into films people remember.
-            </p>
+            <ScrollReveal>
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-px w-6 bg-mint" />
+                <span className="text-eyebrow text-mint">Client Stories</span>
+              </div>
+              <h2 className="text-h1 text-cream">
+                Trusted with
+                <br />
+                <span className="italic-serif">ambitious stories.</span>
+              </h2>
+              <p className="mt-6 max-w-[520px] text-body">
+                We collaborate with brands and institutions to turn complex ideas
+                into films people remember.
+              </p>
+            </ScrollReveal>
 
             {/* Featured testimonial + image — perspective depth stack */}
             <div
@@ -164,7 +167,7 @@ export function Testimonials() {
           </div>
 
           {/* RIGHT client list */}
-          <div>
+          <ScrollReveal as="div" delay={0.15}>
             <div className="mb-6 text-eyebrow text-mint">Selected Collaborations</div>
             <ul className="flex flex-col gap-3">
               {TESTIMONIALS.map((t, i) => {
@@ -194,7 +197,7 @@ export function Testimonials() {
                 );
               })}
             </ul>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Bottom feature bar */}

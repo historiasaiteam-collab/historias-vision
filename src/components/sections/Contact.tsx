@@ -6,6 +6,7 @@ import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import monolith from "@/assets/contact-monolith.jpg";
 import logo from "@/assets/logo-h.png.asset.json";
 
@@ -31,13 +32,13 @@ export function Contact({ scrollRef }: ContactProps = {}) {
       />
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-16 sm:px-8 lg:px-14 lg:pt-28 lg:pb-20">
-        <div className="mb-6 flex items-center gap-3">
+        <ScrollReveal className="mb-6 flex items-center gap-3">
           <span className="h-px w-6 bg-mint" />
           <span className="text-eyebrow text-mint">Start a Project</span>
-        </div>
+        </ScrollReveal>
 
         <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
-          <div>
+          <ScrollReveal as="div" delay={0.1}>
             <h2 className="text-h1 text-cream">
               Your next story <span className="italic-serif">starts here.</span>
             </h2>
@@ -49,14 +50,16 @@ export function Contact({ scrollRef }: ContactProps = {}) {
             <div className="mt-10">
               <ContactForm />
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Monumental H logo scene — layered depth, no WebGL */}
-          <MonumentalScene />
+          <ScrollReveal as="div" delay={0.2}>
+            <MonumentalScene />
+          </ScrollReveal>
         </div>
 
         {/* Bottom feature bar */}
-        <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 rounded-full border border-edge bg-graphite/60 px-6 py-4">
+        <ScrollReveal className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 rounded-full border border-edge bg-graphite/60 px-6 py-4">
           <FeatureItem icon={<Sparkles size={14} />} label="Corporate & Brand Projects" />
           <Divider />
           <FeatureItem icon={<Zap size={14} />} label="Live Action + AI" />
@@ -64,7 +67,7 @@ export function Contact({ scrollRef }: ContactProps = {}) {
           <FeatureItem icon={<Clock size={14} />} label="Flexible Timelines" />
           <Divider />
           <FeatureItem icon={<Shield size={14} />} label="Confidential Briefs Welcome" />
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
