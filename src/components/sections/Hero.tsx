@@ -31,6 +31,9 @@ export function Hero() {
           className="h-full w-full object-cover object-center opacity-90"
         />
       </Parallax>
+      {/* 3D sky layer */}
+      <SkyBackground />
+
       {/* Left dark overlay + subtle wash */}
       <div
         aria-hidden
