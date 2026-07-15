@@ -63,7 +63,7 @@ export function Process() {
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
             <span className="text-eyebrow text-obsidian/80">
-              Process · <span className="text-mint">#25FFC4</span>
+              Process · <span className="text-mint">
             </span>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start">
