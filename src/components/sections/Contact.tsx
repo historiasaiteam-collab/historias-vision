@@ -7,7 +7,7 @@ import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { SplitText } from "@/components/animations/SplitText";
+
 import monolith from "@/assets/contact-monolith.jpg";
 import logo from "@/assets/logo-h.png.asset.json";
 
@@ -40,10 +40,9 @@ export function Contact({ scrollRef }: ContactProps = {}) {
 
         <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <ScrollReveal as="div" delay={0.1}>
-            <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
-              {"Your next story "}
-              <span className="italic-serif">starts here.</span>
-            </SplitText>
+            <h2 className="text-h1 text-cream">
+              Your next story <span className="italic-serif">starts here.</span>
+            </h2>
             <p className="mt-6 max-w-[520px] text-body">
               Tell us what you are building, launching, or imagining. We'll
               shape the right production approach around your brief.

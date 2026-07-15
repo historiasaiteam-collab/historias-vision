@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { WHY_REASONS } from "@/data/faq";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { SplitText } from "@/components/animations/SplitText";
+
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-h.png.asset.json";
 
@@ -37,10 +37,9 @@ export function Why() {
               <span className="h-px w-6 bg-mint" />
               <span className="text-eyebrow text-mint">Why Historias</span>
             </ScrollReveal>
-            <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
-              {"Cinematic quality. "}
-              <span className="italic-serif">Built differently.</span>
-            </SplitText>
+            <h2 className="text-h1 text-cream">
+              Cinematic quality. <span className="italic-serif">Built differently.</span>
+            </h2>
             <ScrollReveal delay={0.25}>
               <p className="mt-8 max-w-[400px] text-body">
                 Technology moves fast. Our standard stays the same: every frame
