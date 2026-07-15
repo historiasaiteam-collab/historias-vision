@@ -167,7 +167,7 @@ export function Testimonials() {
           </div>
 
           {/* RIGHT client list */}
-          <div>
+          <ScrollReveal as="div" delay={0.15}>
             <div className="mb-6 text-eyebrow text-mint">Selected Collaborations</div>
             <ul className="flex flex-col gap-3">
               {TESTIMONIALS.map((t, i) => {
