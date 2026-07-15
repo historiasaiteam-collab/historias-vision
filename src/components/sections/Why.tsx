@@ -132,7 +132,7 @@ export function Why() {
         </div>
 
         {/* Bottom feature bar */}
-        <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+        <ScrollReveal className="mt-14 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 rounded-full border border-edge bg-graphite/60 px-6 py-4">
             <FeatureItem icon={<Users size={14} />} label="Live-Action Crew" />
             <Divider />
