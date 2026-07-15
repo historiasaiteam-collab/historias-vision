@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { CursorSpotlight } from "@/components/animations/CursorSpotlight";
+
 
 function NotFoundComponent() {
   return (
@@ -136,7 +136,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CursorSpotlight />
       <Outlet />
     </QueryClientProvider>
   );
