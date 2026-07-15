@@ -68,7 +68,7 @@ export function Why() {
           </ScrollReveal>
 
           {/* RIGHT: accordion */}
-          <div className="rounded-lg border border-edge bg-graphite/40 p-4 sm:p-6 cut-corners-lg">
+          <ScrollReveal delay={0.25} className="rounded-lg border border-edge bg-graphite/40 p-4 sm:p-6 cut-corners-lg">
             <ul className="divide-y divide-edge/70">
               {WHY_REASONS.map((r) => {
                 const open = openId === r.number;
