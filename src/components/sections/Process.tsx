@@ -44,26 +44,21 @@ export function Process() {
   };
 
   return (
-    <section
-      id="process"
-      className="relative isolate w-full overflow-hidden bg-cream text-obsidian"
-    >
+    <section id="process" className="relative isolate w-full overflow-hidden bg-cream text-obsidian">
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(180deg, #F8EEE3 0%, #F8EEE3 62%, #0f1413 78%, #050807 100%)",
+          background: "linear-gradient(180deg, #F8EEE3 0%, #F8EEE3 62%, #0f1413 78%, #050807 100%)",
         }}
       />
-
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-16 sm:px-8 lg:px-14 lg:pt-28 lg:pb-20">
         <ScrollReveal>
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
             <span className="text-eyebrow text-obsidian/80">
-              Process · <span className="text-mint">
+              Process · <span className="text-mint">#25FFC4</span>
             </span>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start">
@@ -73,8 +68,7 @@ export function Process() {
               to <span className="italic-serif">final frame.</span>
             </h2>
             <p className="max-w-[440px] pt-3 text-[0.98rem] leading-relaxed text-obsidian/80 lg:pt-6">
-              One integrated workflow—creative direction, real production,
-              generative technology, and post.
+              One integrated workflow—creative direction, real production, generative technology, and post.
             </p>
           </div>
         </ScrollReveal>
@@ -92,16 +86,13 @@ export function Process() {
                     type="button"
                     onClick={() => selectStep(i)}
                     className={
-                      "group text-left transition " +
-                      (isActive ? "text-obsidian" : "text-obsidian hover:opacity-90")
+                      "group text-left transition " + (isActive ? "text-obsidian" : "text-obsidian hover:opacity-90")
                     }
                   >
                     <div className="mb-2 text-[13px] font-medium tracking-[0.14em]">
                       <span className="uppercase">{s.title}</span>
                     </div>
-                    <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">
-                      {s.body}
-                    </p>
+                    <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">{s.body}</p>
                   </button>
                 );
               })}
@@ -134,25 +125,14 @@ export function Process() {
 
           {/* Mobile vertical */}
           <ol className="relative flex flex-col gap-8 lg:hidden">
-            <span
-              aria-hidden
-              className="absolute top-0 bottom-0 left-2 w-px bg-obsidian/25"
-            />
-            <motion.span
-              aria-hidden
-              className="absolute left-2 top-0 w-px mint-line"
-              style={{ height: lineHeight }}
-            />
+            <span aria-hidden className="absolute top-0 bottom-0 left-2 w-px bg-obsidian/25" />
+            <motion.span aria-hidden className="absolute left-2 top-0 w-px mint-line" style={{ height: lineHeight }} />
             {PROCESS_STEPS.map((s, i) => {
               const stepThreshold = i / Math.max(PROCESS_STEPS.length - 1, 1);
               const isActive = i === activeStep;
               return (
                 <li key={s.number} className="relative pl-8">
-                  <button
-                    type="button"
-                    onClick={() => selectStep(i)}
-                    className="block text-left"
-                  >
+                  <button type="button" onClick={() => selectStep(i)} className="block text-left">
                     <ProcessNode
                       left="8px"
                       top="4px"
@@ -276,18 +256,16 @@ export function Process() {
 }
 
 function CardCornerMarkers({ tone }: { tone: "mint" | "cream" | "dark" }) {
-  const color =
-    tone === "mint"
-      ? "border-mint"
-      : tone === "cream"
-        ? "border-cream/60"
-        : "border-obsidian/50";
+  const color = tone === "mint" ? "border-mint" : tone === "cream" ? "border-cream/60" : "border-obsidian/50";
   return (
     <>
       <span aria-hidden className={`pointer-events-none absolute left-0 top-0 h-2 w-2 border-l border-t ${color}`} />
       <span aria-hidden className={`pointer-events-none absolute right-0 top-0 h-2 w-2 border-r border-t ${color}`} />
       <span aria-hidden className={`pointer-events-none absolute left-0 bottom-0 h-2 w-2 border-l border-b ${color}`} />
-      <span aria-hidden className={`pointer-events-none absolute right-0 bottom-0 h-2 w-2 border-r border-b ${color}`} />
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute right-0 bottom-0 h-2 w-2 border-r border-b ${color}`}
+      />
     </>
   );
 }
@@ -325,13 +303,9 @@ function ProcessNode({
   label?: string;
 }) {
   const scale = useTransform(progress, (v) => (v >= threshold - 0.02 ? 1.1 : 1));
-  const bg = useTransform(progress, (v) =>
-    v >= threshold - 0.02 ? "var(--color-mint)" : "var(--color-cream)",
-  );
+  const bg = useTransform(progress, (v) => (v >= threshold - 0.02 ? "var(--color-mint)" : "var(--color-cream)"));
   const boxShadow = useTransform(progress, (v) =>
-    v >= threshold - 0.02
-      ? "0 0 14px rgba(37,255,196,0.75)"
-      : "0 0 0 rgba(0,0,0,0)",
+    v >= threshold - 0.02 ? "0 0 14px rgba(37,255,196,0.75)" : "0 0 0 rgba(0,0,0,0)",
   );
 
   if (mobile) {
@@ -351,10 +325,7 @@ function ProcessNode({
       style={{ left: "50%", top: "50%" }}
     >
       <span
-        className={
-          "block rounded-full border " +
-          (active ? "h-8 w-8 border-mint/70" : "h-6 w-6 border-obsidian/25")
-        }
+        className={"block rounded-full border " + (active ? "h-8 w-8 border-mint/70" : "h-6 w-6 border-obsidian/25")}
       />
       <span
         className={
@@ -365,10 +336,7 @@ function ProcessNode({
       />
       <motion.span
         style={{ backgroundColor: bg, boxShadow, scale }}
-        className={
-          "absolute inset-0 m-auto rounded-full " +
-          (active ? "h-2.5 w-2.5" : "h-2 w-2")
-        }
+        className={"absolute inset-0 m-auto rounded-full " + (active ? "h-2.5 w-2.5" : "h-2 w-2")}
       />
     </span>
   );
