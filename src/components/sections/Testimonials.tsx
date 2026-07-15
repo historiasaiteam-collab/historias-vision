@@ -197,7 +197,7 @@ export function Testimonials() {
                 );
               })}
             </ul>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Bottom feature bar */}
