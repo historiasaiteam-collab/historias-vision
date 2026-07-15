@@ -1,6 +1,5 @@
-// DEMO CONTENT — Selected Work items. Placeholder brand names + titles per
-// category so every filter tab renders a full featured + 2 side card layout.
-// Swap `href` and eventually `image` with real deliverables when ready.
+// Selected Work items. Each project links to a real YouTube video played
+// via the VideoModal (see src/data/videos.ts for id → provider mapping).
 
 import commercial1 from "@/assets/work/commercial-1.jpg";
 import commercial2 from "@/assets/work/commercial-2.jpg";
@@ -61,62 +60,191 @@ const CATEGORY_IMAGES: Record<ProjectCategory, string[]> = {
 };
 
 type Seed = {
+  id: string;
   brand: string;
   title: string;
   type: string;
   year: string;
+  href: string;
   featured?: boolean;
 };
 
-// Three placeholder items per category so the composition stays consistent.
 const CATEGORY_SEEDS: Record<ProjectCategory, Seed[]> = {
   Commercial: [
-    { brand: "FLIMTY", title: "Unstoppable / Brand Campaign", type: "Commercial", year: "2026", featured: true },
-    { brand: "AURION", title: "Kinetic Territory", type: "Brand Film", year: "2026" },
-    { brand: "NORDVEIL", title: "Silent Machines", type: "Brand Film", year: "2025" },
+    {
+      id: "commercial-dua-belibis",
+      brand: "DUA BELIBIS",
+      title: "Commercial Film",
+      type: "Commercial",
+      year: "2025",
+      href: "https://youtu.be/gkhJrp13jYw",
+      featured: true,
+    },
+    {
+      id: "commercial-sunpride",
+      brand: "SUNPRIDE",
+      title: "Commercial Film",
+      type: "Commercial",
+      year: "2025",
+      href: "https://youtu.be/VrMel_6tR-s",
+    },
+    {
+      id: "commercial-sanqing",
+      brand: "SANQING",
+      title: "Commercial Film",
+      type: "Commercial",
+      year: "2025",
+      href: "https://youtu.be/nRMczp-ZUdw",
+    },
   ],
   "Digital Ads": [
-    { brand: "DUA BELIBIS", title: "The Heat Within", type: "Product Film", year: "2026", featured: true },
-    { brand: "DREMINA AI", title: "Intelligence, Made Human", type: "Digital Campaign", year: "2026" },
-    { brand: "LUMEN CO", title: "Signal in the Noise", type: "Digital Spot", year: "2026" },
+    {
+      id: "digital-pegadaian-pd-aja",
+      brand: "PEGADAIAN",
+      title: "PD Aja!",
+      type: "Digital Ad",
+      year: "2025",
+      href: "https://youtu.be/Cbzu5JnBA9Q",
+      featured: true,
+    },
+    {
+      id: "digital-pegadaian-tabungan",
+      brand: "PEGADAIAN",
+      title: "Tabungan",
+      type: "Digital Ad",
+      year: "2025",
+      href: "https://youtu.be/jPIyN0_LCbw",
+    },
+    {
+      id: "digital-grand-mercure",
+      brand: "GRAND MERCURE",
+      title: "Digital Short",
+      type: "Digital Ad",
+      year: "2025",
+      href: "https://www.youtube.com/shorts/fngy479UACo",
+    },
   ],
   "Social Content": [
-    { brand: "OKTA STUDIO", title: "Everyday Motion", type: "Series", year: "2026", featured: true },
-    { brand: "NOVA LABS", title: "Between Frames", type: "Reels", year: "2026" },
-    { brand: "GRAVITAS", title: "Ambient Feed", type: "Vertical Set", year: "2025" },
+    {
+      id: "social-adrielle-kumar",
+      brand: "ADRIELLE IMAN",
+      title: "Kumar",
+      type: "Social Content",
+      year: "2025",
+      href: "https://www.youtube.com/shorts/uJEMWnOtyZY",
+      featured: true,
+    },
+    {
+      id: "social-desa-presiden-pildun",
+      brand: "DESA PRESIDEN",
+      title: "Pildun",
+      type: "Social Content",
+      year: "2025",
+      href: "https://www.youtube.com/shorts/rvlaqxyXWoc",
+    },
+    {
+      id: "social-desa-presiden-damai",
+      brand: "DESA PRESIDEN",
+      title: "Damai",
+      type: "Social Content",
+      year: "2025",
+      href: "https://youtube.com/shorts/Kw32BLFBWD8",
+    },
   ],
   "Short Film": [
-    { brand: "HISTORIAS", title: "Obsidian / A Short Film", type: "Short Film", year: "2026", featured: true },
-    { brand: "MERIDIAN", title: "Cold Light", type: "Short Film", year: "2025" },
-    { brand: "AXIS PROJECT", title: "The Long Now", type: "Short Film", year: "2025" },
+    {
+      id: "short-waaqimusholah",
+      brand: "WAAQIMUSHOLAH",
+      title: "Short Film",
+      type: "Short Film",
+      year: "2025",
+      href: "https://youtu.be/XsvQMInsQxQ",
+      featured: true,
+    },
+    {
+      id: "short-katanya-mau-berangkat-bareng",
+      brand: "KATANYA MAU BERANGKAT BARENG",
+      title: "Short Film",
+      type: "Short Film",
+      year: "2025",
+      href: "https://youtu.be/KLqbiSWDcW4",
+    },
+    {
+      id: "short-puskurjar-telaah-makna",
+      brand: "PUSKURJAR",
+      title: "Telaah Makna",
+      type: "Short Film",
+      year: "2025",
+      href: "https://youtu.be/-qo2qCqNA4Y",
+    },
   ],
   "AI UGC": [
-    { brand: "AVA COLLECTIVE", title: "Synthetic Diaries", type: "AI UGC", year: "2026", featured: true },
-    { brand: "HELIX", title: "Prompt / Response", type: "AI UGC", year: "2026" },
-    { brand: "MIRRA", title: "Voices of the Model", type: "AI UGC", year: "2026" },
+    {
+      id: "ai-adrielle-kumar",
+      brand: "ADRIELLE IMAN",
+      title: "Kumar",
+      type: "AI UGC",
+      year: "2025",
+      href: "https://www.youtube.com/shorts/uJEMWnOtyZY",
+      featured: true,
+    },
+    {
+      id: "ai-desa-presiden-pildun",
+      brand: "DESA PRESIDEN",
+      title: "Pildun",
+      type: "AI UGC",
+      year: "2025",
+      href: "https://www.youtube.com/shorts/rvlaqxyXWoc",
+    },
+    {
+      id: "ai-desa-presiden-damai",
+      brand: "DESA PRESIDEN",
+      title: "Damai",
+      type: "AI UGC",
+      year: "2025",
+      href: "https://youtube.com/shorts/Kw32BLFBWD8",
+    },
   ],
   "Hybrid Production": [
-    { brand: "KAIROS", title: "Live Action × Generative", type: "Hybrid Production", year: "2026", featured: true },
-    { brand: "BLACKFRAME", title: "Between the Cuts", type: "Hybrid Production", year: "2026" },
-    { brand: "SEED / STORY", title: "Composite Reality", type: "Hybrid Production", year: "2025" },
+    {
+      id: "hybrid-pt-kasa",
+      brand: "PT KASA",
+      title: "Company Profile",
+      type: "Hybrid Production",
+      year: "2025",
+      href: "https://www.youtube.com/watch?v=XyTHYhBslFw",
+      featured: true,
+    },
+    {
+      id: "hybrid-bukit-asam",
+      brand: "BUKIT ASAM",
+      title: "Company Profile",
+      type: "Hybrid Production",
+      year: "2025",
+      href: "https://youtu.be/SfElh23O7hs",
+    },
+    {
+      id: "hybrid-rewind-indonesia-2025",
+      brand: "REWIND INDONESIA",
+      title: "Rewind Indonesia 2025",
+      type: "Hybrid Production",
+      year: "2025",
+      href: "https://youtu.be/opNv7BMKleE",
+    },
   ],
 };
-
-function slug(s: string): string {
-  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
 
 export const PROJECTS: Project[] = (Object.keys(CATEGORY_SEEDS) as ProjectCategory[]).flatMap(
   (category) =>
     CATEGORY_SEEDS[category].map((seed, i) => ({
-      id: `${slug(category)}-${slug(seed.brand)}`,
+      id: seed.id,
       brand: seed.brand,
       title: seed.title,
       type: seed.type,
       year: seed.year,
       category,
       image: CATEGORY_IMAGES[category][i % CATEGORY_IMAGES[category].length],
-      href: "#",
+      href: seed.href,
       featured: seed.featured,
     })),
 );
