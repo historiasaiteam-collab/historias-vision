@@ -306,7 +306,7 @@ function ProcessNode({
   left: string;
   top?: string;
   threshold: number;
-  progress: ReturnType<typeof useSpring>;
+  progress: MotionValue<number>;
   mobile?: boolean;
   active?: boolean;
   onClick?: () => void;
