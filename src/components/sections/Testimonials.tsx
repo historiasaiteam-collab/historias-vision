@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TESTIMONIALS } from "@/data/testimonials";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export function Testimonials() {
