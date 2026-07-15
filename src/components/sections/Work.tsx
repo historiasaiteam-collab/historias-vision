@@ -48,11 +48,10 @@ export function Work() {
               <span className="h-px w-6 bg-mint" />
               <span className="text-eyebrow text-mint">Selected Work</span>
             </div>
-            <h2 className="text-h1 text-cream">
-              Stories worth
-              <br />
+            <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
+              {"Stories worth "}
               <span className="italic-serif">stopping for.</span>
-            </h2>
+            </SplitText>
           </div>
           <div className="hidden md:block" />
           <div className="flex flex-col gap-6 md:items-end">
