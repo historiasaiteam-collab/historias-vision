@@ -46,11 +46,10 @@ export function Testimonials() {
                 <span className="h-px w-6 bg-mint" />
                 <span className="text-eyebrow text-mint">Client Stories</span>
               </div>
-              <h2 className="text-h1 text-cream">
-                Trusted with
-                <br />
+              <SplitText as="h2" className="text-h1 text-cream" stagger={0.07}>
+                {"Trusted with "}
                 <span className="italic-serif">ambitious stories.</span>
-              </h2>
+              </SplitText>
               <p className="mt-6 max-w-[520px] text-body">
                 We collaborate with brands and institutions to turn complex ideas
                 into films people remember.
