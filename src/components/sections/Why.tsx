@@ -48,7 +48,7 @@ export function Why() {
           </ScrollReveal>
 
           {/* CENTER: monumental H logo */}
-          <div className="relative grid min-h-[380px] place-items-center">
+          <ScrollReveal delay={0.15} className="relative grid min-h-[380px] place-items-center">
             <div
               aria-hidden
               className="absolute inset-0"
@@ -65,7 +65,7 @@ export function Why() {
               loading="lazy"
               className="relative w-[70%] max-w-[420px] object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
             />
-          </div>
+          </ScrollReveal>
 
           {/* RIGHT: accordion */}
           <div className="rounded-lg border border-edge bg-graphite/40 p-4 sm:p-6 cut-corners-lg">
