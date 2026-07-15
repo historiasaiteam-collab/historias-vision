@@ -8,7 +8,7 @@ import { Particles } from "@/components/animations/Particles";
 import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
-import monolith from "@/assets/contact-monolith.jpg";
+import monolith from "@/assets/contact-monolith.png.asset.json";
 import logo from "@/assets/logo-h.png.asset.json";
 
 type ContactProps = {
@@ -96,7 +96,7 @@ function MonumentalScene() {
 
       {/* Architectural midground — the monolith image, blurred + darkened */}
       <motion.img
-        src={monolith}
+        src={monolith.url}
         alt=""
         aria-hidden
         width={1400}
