@@ -5,6 +5,8 @@ import { CtaButton } from "@/components/ui/CtaButton";
 import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { LogoMarquee } from "@/components/animations/LogoMarquee";
+import { SkyBackground } from "@/components/animations/SkyBackground";
+
 
 
 export function Hero() {
@@ -29,6 +31,9 @@ export function Hero() {
           className="h-full w-full object-cover object-center opacity-90"
         />
       </Parallax>
+      {/* 3D sky layer */}
+      <SkyBackground />
+
       {/* Left dark overlay + subtle wash */}
       <div
         aria-hidden
