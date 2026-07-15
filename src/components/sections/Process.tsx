@@ -110,7 +110,7 @@ export function Process() {
                     key={i}
                     left={left}
                     threshold={stepThreshold}
-                    progress={progress}
+                    progress={combined}
                     active={i === activeStep}
                     onClick={() => setActiveStep(i)}
                     label={s.title}
