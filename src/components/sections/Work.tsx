@@ -7,6 +7,7 @@ import { VideoModal } from "@/components/ui/VideoModal";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { HudFrame } from "@/components/layout/HudFrame";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SplitText } from "@/components/animations/SplitText";
 import { cn } from "@/lib/utils";
 
 export function Work() {
