@@ -24,10 +24,12 @@ export function Process() {
     offset: ["start 80%", "end 30%"],
   });
   const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
-  const lineWidth = useTransform(progress, [0, 1], ["0%", "100%"]);
-  const lineHeight = useTransform(progress, [0, 1], ["0%", "100%"]);
 
   const [activeStep, setActiveStep] = useState(0);
+  const stepProgress = activeStep / Math.max(PROCESS_STEPS.length - 1, 1);
+  const combined = useTransform(progress, (v) => Math.max(v, stepProgress));
+  const lineWidth = useTransform(combined, [0, 1], ["0%", "100%"]);
+  const lineHeight = useTransform(combined, [0, 1], ["0%", "100%"]);
 
   return (
     <section
