@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { ArrowRight, Calendar, Clock, Clapperboard, MapPin } from "lucide-react";
-import { motion, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
+import { animate, motion, useMotionValue, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
 import { PROCESS_STEPS } from "@/data/faq";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import step01 from "@/assets/process-01-discover.jpg";
