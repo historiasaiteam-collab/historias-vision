@@ -45,10 +45,9 @@ export function Services() {
             <span className="text-eyebrow text-mint">Services</span>
           </ScrollReveal>
 
-          <SplitText as="h2" className="max-w-[900px] text-h1 text-cream" stagger={0.06}>
-            {"One studio. Every way to "}
-            <span className="italic-serif">bring a story to life.</span>
-          </SplitText>
+          <h2 className="max-w-[900px] text-h1 text-cream">
+            One studio. Every way to <span className="italic-serif">bring a story to life.</span>
+          </h2>
         </div>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
