@@ -6,6 +6,7 @@ import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { LogoMarquee } from "@/components/animations/LogoMarquee";
 import { SkyBackground } from "@/components/animations/SkyBackground";
+import { SplitText } from "@/components/animations/SplitText";
 
 
 
