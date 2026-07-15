@@ -153,7 +153,7 @@ export function Why() {
           >
             Meet Historias
           </CtaButton>
-        </div>
+        </ScrollReveal>
 
         <div className="mt-14 flex items-center gap-3 text-meta text-cream/60">
           <span>Client Stories</span>
