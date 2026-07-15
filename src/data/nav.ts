@@ -27,9 +27,9 @@ export type SocialLink = {
 };
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { label: "Instagram", href: "", handle: "Coming Soon" },
-  { label: "YouTube", href: "", handle: "Coming Soon" },
-  { label: "LinkedIn", href: "", handle: "Coming Soon" },
+  { label: "Instagram", href: "https://www.instagram.com/historias.aistudio/", handle: "@historias.aistudio" },
+  { label: "YouTube", href: "https://www.youtube.com/@historiasstudio", handle: "@historiasstudio" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/historias-ai-studio/", handle: "Historias AI Studio" },
 ];
 
 export const LEGAL_LINKS = [
