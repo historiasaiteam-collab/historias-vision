@@ -1,15 +1,15 @@
-import ebay from "@/assets/logos/ebay.png.asset.json";
-import flimty from "@/assets/logos/flimty.png.asset.json";
-import duaBelibis from "@/assets/logos/dua-belibis.png.asset.json";
-import ekraf from "@/assets/logos/ekraf.png.asset.json";
-import dremina from "@/assets/logos/dremina.png.asset.json";
+import ebay from "@/assets/logos/ebay.png";
+import flimty from "@/assets/logos/flimty.png";
+import duaBelibis from "@/assets/logos/dua-belibis.png";
+import ekraf from "@/assets/logos/ekraf.png";
+import dremina from "@/assets/logos/Dremina.png";
 
 const LOGOS: { src: string; alt: string }[] = [
-  { src: ebay.url, alt: "eBay" },
-  { src: flimty.url, alt: "Flimty" },
-  { src: duaBelibis.url, alt: "Dua Belibis" },
-  { src: ekraf.url, alt: "Kementerian Ekonomi Kreatif" },
-  { src: dremina.url, alt: "Dremina AI" },
+  { src: ebay, alt: "eBay" },
+  { src: flimty, alt: "Flimty" },
+  { src: duaBelibis, alt: "Dua Belibis" },
+  { src: ekraf, alt: "Kementerian Ekonomi Kreatif" },
+  { src: dremina, alt: "Dremina AI" },
 ];
 
 export function LogoMarquee() {
