@@ -26,20 +26,20 @@ export const Route = createFileRoute("/")({
         content:
           "Historias AI Studio produces cinematic, photorealistic commercials, product films, and brand stories — a unified live-action and generative AI pipeline for corporate brands.",
       },
-      { property: "og:title", content: "Historias AI Studio — Cinematic AI Video Production" },
+      { property: "og:title", content: "Historias AI Studio — Cinematic AI Video Production House" },
       {
         property: "og:description",
         content:
-          "Cinematic, photorealistic visuals — without the artificial AI look. Creative direction, live action, generative production, and post.",
+          "Historias AI Studio produces cinematic, photorealistic commercials, product films, and brand stories — a unified live-action and generative AI pipeline for corporate brands.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Historias AI Studio" },
+      { name: "twitter:title", content: "Historias AI Studio — Cinematic AI Video Production House" },
       {
         name: "twitter:description",
         content:
-          "AI Video Production House — cinematic realism, story-first direction.",
+          "Historias AI Studio produces cinematic, photorealistic commercials, product films, and brand stories — a unified live-action and generative AI pipeline for corporate brands.",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],

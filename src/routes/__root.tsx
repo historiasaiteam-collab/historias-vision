@@ -80,21 +80,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Historias AI Studio — AI Video Production House" },
+      { title: "Historias AI Studio — Cinematic AI Video Production House" },
       {
         name: "description",
         content:
-          "Historias AI Studio makes impossible stories visible. Cinematic, photorealistic visuals — creative direction, live-action production, generative technology, and post — built for corporate brands that refuse to look ordinary.",
+          "Historias AI Studio produces cinematic, photorealistic commercials, product films, and brand stories — a unified live-action and generative AI pipeline for corporate brands.",
       },
       { name: "author", content: "Historias AI Studio" },
-      { property: "og:title", content: "Historias AI Studio — AI Video Production House" },
+      { property: "og:title", content: "Historias AI Studio — Cinematic AI Video Production House" },
       {
         property: "og:description",
         content:
-          "Cinematic, photorealistic visuals — without the artificial AI look. From creative direction and live action to generative production and post.",
+          "Historias AI Studio produces cinematic, photorealistic commercials, product films, and brand stories — a unified live-action and generative AI pipeline for corporate brands.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Historias AI Studio — Cinematic AI Video Production House" },
+      { name: "twitter:description", content: "Historias AI Studio produces cinematic, photorealistic commercials, product films, and brand stories — a unified live-action and generative AI pipeline for corporate brands." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cb7d2556-74ef-4a64-bd32-77141d675302/id-preview-52f876e5--c8f2d406-2abf-4adc-88ab-97f82f196adb.lovable.app-1784125726788.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cb7d2556-74ef-4a64-bd32-77141d675302/id-preview-52f876e5--c8f2d406-2abf-4adc-88ab-97f82f196adb.lovable.app-1784125726788.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
