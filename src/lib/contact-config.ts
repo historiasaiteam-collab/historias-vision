@@ -5,8 +5,8 @@
 
 export const CONTACT_CONFIG = {
   supportEmail: "",
-  whatsappNumber: "", // e.g. "+62..."
-  whatsappUrl: "",    // e.g. "https://wa.me/62..."
+  whatsappNumber: "+62 851-7310-2113",
+  whatsappUrl: "https://wa.me/085173102113",
   officeAddress: "",
   instagramUrl: "",
   youtubeUrl: "",
