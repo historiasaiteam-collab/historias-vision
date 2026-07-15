@@ -90,7 +90,7 @@ export function Process() {
                   <button
                     key={s.number}
                     type="button"
-                    onClick={() => setActiveStep(i)}
+                    onClick={() => selectStep(i)}
                     className={
                       "group text-left transition " +
                       (isActive ? "text-obsidian" : "text-obsidian hover:opacity-90")
@@ -124,7 +124,7 @@ export function Process() {
                     threshold={stepThreshold}
                     progress={combined}
                     active={i === activeStep}
-                    onClick={() => setActiveStep(i)}
+                    onClick={() => selectStep(i)}
                     label={s.title}
                   />
                 );
@@ -150,7 +150,7 @@ export function Process() {
                 <li key={s.number} className="relative pl-8">
                   <button
                     type="button"
-                    onClick={() => setActiveStep(i)}
+                    onClick={() => selectStep(i)}
                     className="block text-left"
                   >
                     <ProcessNode
@@ -212,7 +212,7 @@ export function Process() {
                 <button
                   key={i}
                   type="button"
-                  onClick={() => setActiveStep(i)}
+                  onClick={() => selectStep(i)}
                   aria-label={`Show ${PROCESS_STEPS[i].number} ${PROCESS_STEPS[i].title}`}
                   className={
                     "group relative overflow-hidden rounded-sm border transition " +
