@@ -96,7 +96,7 @@ function MonumentalScene() {
 
       {/* Architectural midground — the monolith image, blurred + darkened */}
       <motion.img
-        src={monolith}
+        src={monolith.url}
         alt=""
         aria-hidden
         width={1400}
