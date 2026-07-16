@@ -19,12 +19,11 @@ import {
 import { PROCESS_STEPS } from "@/data/faq";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
-import step01 from "@/assets/process-01-discover.jpg";
-import step02 from "@/assets/process-02-concept.jpg";
-import step03 from "@/assets/process-03-production.jpg";
-import step04 from "@/assets/process-04-post.jpg";
-import step05 from "@/assets/process-05-delivery.jpg";
-
+import step01 from "@/assets/process-01-discover.png";
+import step02 from "@/assets/process-02-concept.png";
+import step03 from "@/assets/process-03-production.png";
+import step04 from "@/assets/process-04-post.png";
+import step05 from "@/assets/process-05-delivery.png";
 const STEP_IMAGES = [
   { src: step01, caption: "ALIGNMENT · BRIEF & OBJECTIVE" },
   { src: step02, caption: "TREATMENT · REFERENCES & PLAN" },
