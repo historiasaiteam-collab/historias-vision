@@ -56,14 +56,14 @@ export const Route = createFileRoute("/")({
               description:
                 "AI Video Production House — creative direction, live action, generative production, and post.",
               url: "/",
-              logo: "/favicon.ico",
+              logo: "/favicon.png",
               sameAs: [],
             },
             {
               "@type": "ProfessionalService",
               "@id": "#service",
               name: "Historias AI Studio",
-              image: "/favicon.ico",
+             image: "/favicon.png",
               url: "/",
               serviceType: "AI Video Production",
               areaServed: "Worldwide",
