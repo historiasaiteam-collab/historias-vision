@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import heroImage from "@/assets/hero.jpg";
 import heroMonolith from "@/assets/hero-monolith.png.asset.json";
 import { CtaButton } from "@/components/ui/CtaButton";
@@ -78,12 +77,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1500px] flex-col justify-end px-6 pt-32 pb-32 sm:px-8 lg:px-14 lg:pb-40">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[820px]"
-        >
+        <div className="max-w-[820px]">
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
             <span className="text-eyebrow text-mint">
@@ -123,7 +117,7 @@ export function Hero() {
               Get Free Consultation
             </CtaButton>
           </div>
-        </motion.div>
+       </div>
 
         {/* Client strip */}
         <div className="mt-16 lg:mt-24">
