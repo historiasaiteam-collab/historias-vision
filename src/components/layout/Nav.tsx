@@ -7,7 +7,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo-h.png.asset.json";
+import logo from "@/assets/logo-h.png";
 
 const IDS = NAV_ITEMS.map((n) => n.id).concat("contact");
 
@@ -67,7 +67,7 @@ export function Nav() {
             aria-label="Historias AI Studio home"
           >
             <img
-              src={logo.url}
+             src={logo}
               alt="Historias AI Studio"
               width={44}
               height={44}

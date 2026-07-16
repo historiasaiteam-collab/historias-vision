@@ -9,7 +9,7 @@ import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 import monolith from "@/assets/contact-monolith.png.asset.json";
-import logo from "@/assets/logo-h.png.asset.json";
+import logo from "@/assets/logo-h.png";
 
 type ContactProps = {
   /** Optional shared scroll target so the diagonal line continues from FAQ. */
@@ -134,7 +134,7 @@ function MonumentalScene() {
 
       {/* Foreground: official H logo — untouched, slow push-in only */}
       <motion.img
-        src={logo.url}
+        src={logo}
         alt=""
         aria-hidden
         width={520}

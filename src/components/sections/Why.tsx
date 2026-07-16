@@ -6,7 +6,7 @@ import { CtaButton } from "@/components/ui/CtaButton";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo-h.png.asset.json";
+import logo from "@/assets/logo-h.png";
 
 export function Why() {
   const [openId, setOpenId] = useState(WHY_REASONS[0].number);
@@ -59,7 +59,7 @@ export function Why() {
               }}
             />
             <img
-              src={logo.url}
+              src={logo}
               alt="Historias H mark"
               width={520}
               height={520}

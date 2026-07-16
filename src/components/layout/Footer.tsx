@@ -1,6 +1,6 @@
 import { ArrowUp, Instagram, Youtube, Linkedin, type LucideIcon } from "lucide-react";
 import { FOOTER_NAV, SOCIAL_LINKS, LEGAL_LINKS } from "@/data/nav";
-import logo from "@/assets/logo-h.png.asset.json";
+import logo from "@/assets/logo-h.png";
 import { cn } from "@/lib/utils";
 
 const SOCIAL_ICONS: Record<string, LucideIcon> = {
@@ -30,7 +30,7 @@ export function Footer() {
             className="justify-self-start focus-visible:outline-none focus-visible:ring-mint rounded"
           >
             <img
-              src={logo.url}
+              src={logo}
               alt="Historias AI Studio"
               width={56}
               height={56}

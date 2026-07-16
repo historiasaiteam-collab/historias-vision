@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import logo from "@/assets/logo-h.png.asset.json";
+import logo from "@/assets/logo-h.png";
 
 const SESSION_KEY = "historias:loading:shown";
 
@@ -62,7 +62,7 @@ export function LoadingScreen() {
             className="relative z-10 flex flex-col items-center gap-6"
           >
             <img
-              src={logo.url}
+              src={logo}
               alt="Historias AI Studio"
               width={220}
               height={220}
