@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { ArrowRight, Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import serviceCommercial from "@/assets/service-car.jpg";
-import serviceHybrid from "@/assets/service-hybrid.jpg";
-import serviceContent from "@/assets/service-content.jpg";
+import serviceCommercial from "@/assets/service-commercial.png";
+import serviceProduct from "@/assets/service-product.png";
+import serviceHybrid from "@/assets/service-hybrid.png";
+import servicePost from "@/assets/service-post.png";
+import serviceUgc from "@/assets/service-ugc.png";
+import serviceContent from "@/assets/service-content.png";
 
 const SERVICE_IMAGES: Record<string, string> = {
   commercial: serviceCommercial,
-  product: serviceCommercial,
+  product: serviceProduct,
   hybrid: serviceHybrid,
-  post: serviceHybrid,
-  ugc: serviceContent,
+  post: servicePost,
+  ugc: serviceUgc,
   content: serviceContent,
 };
 import { SERVICES } from "@/data/services";
