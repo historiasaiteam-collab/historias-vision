@@ -85,7 +85,13 @@ export function Testimonials() {
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     dragElastic={0.25}
-                    onDragEnd={(_, info) => {
+                   onDragEnd={(
+  _event: unknown,
+  info: {
+  offset: { x: number };
+  velocity: { x: number };
+},
+) => {
                       if (info.offset.x < -60 || info.velocity.x < -400) go(1);
                       else if (info.offset.x > 60 || info.velocity.x > 400) go(-1);
                     }}
