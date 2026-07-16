@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import bts from "@/assets/about-bts.jpg";
-import vertical from "@/assets/about-vertical.jpg";
+import bts from "@/assets/about-bts.png";
+import vertical from "@/assets/about-vertical.png";
 import { CornerMarkers } from "@/components/layout/CornerMarkers";
 import { HudFrame } from "@/components/layout/HudFrame";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
