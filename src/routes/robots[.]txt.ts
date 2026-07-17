@@ -5,7 +5,7 @@ import { createFileRoute } from "@tanstack/react-router";
 const BODY = `User-agent: *
 Allow: /
 
-# Add "Sitemap: https://your-domain/sitemap.xml" once the canonical host is set.
+Sitemap: https://historiasaistudio.com/sitemap.xml
 `;
 
 export const Route = createFileRoute("/robots.txt")({
