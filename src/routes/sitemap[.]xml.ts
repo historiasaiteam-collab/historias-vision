@@ -5,7 +5,7 @@ import { createFileRoute } from "@tanstack/react-router";
 const BODY = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/</loc>
+    <loc>https://historiasaistudio.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
