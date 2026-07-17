@@ -20,6 +20,8 @@ export function Hero() {
       id="hero"
       className="relative isolate min-h-screen w-full overflow-hidden bg-obsidian text-cream"
     >
+         {/* 3D sky layer */}
+      <SkyBackground />
       {/* Background image — slower parallax than foreground */}
       <Parallax offset={-30} className="absolute inset-0">
         <img
@@ -31,9 +33,7 @@ export function Hero() {
           className="h-full w-full object-cover object-center opacity-90"
         />
       </Parallax>
-      {/* 3D sky layer */}
-      <SkyBackground />
-
+      
       {/* Monolith backdrop — softly visible, vignetted into the corners */}
       <div
         aria-hidden
