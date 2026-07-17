@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero.jpg";
+import heroImage from "@/assets/hero-right.png";
 import heroMonolith from "@/assets/hero-monolith.png.asset.json";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { Parallax } from "@/components/animations/Parallax";
