@@ -1,20 +1,51 @@
-import ebay from "@/assets/logos/ebay.png";
-import flimty from "@/assets/logos/flimty.png";
-import duaBelibis from "@/assets/logos/dua-belibis.png";
-import ekraf from "@/assets/logos/ekraf.png";
-import dremina from "@/assets/logos/dreamina.png";
+const logoModules = {
+  ...import.meta.glob(
+    "/src/assets/logos/*.{png,jpg,jpeg,webp,svg}",
+    {
+      eager: true,
+      import: "default",
+      query: "?url",
+    },
+  ),
+  ...import.meta.glob(
+    "/src/assets/??-*.{png,jpg,jpeg,webp,svg}",
+    {
+      eager: true,
+      import: "default",
+      query: "?url",
+    },
+  ),
+} as Record<string, string>;
 
-const LOGOS: { src: string; alt: string }[] = [
-  { src: ebay, alt: "eBay" },
-  { src: flimty, alt: "Flimty" },
-  { src: duaBelibis, alt: "Dua Belibis" },
-  { src: ekraf, alt: "Kementerian Ekonomi Kreatif" },
-  { src: dremina, alt: "Dremina AI" },
-];
+function filenameToAlt(path: string) {
+  const filename =
+    path.split("/").pop()?.replace(/\.[^.]+$/, "") ?? "Brand";
+
+  return filename
+    .replace(/^\d+-/, "")
+    .replace(
+      /-(hd|logo|old|raster|source|watermarked)/gi,
+      "",
+    )
+    .split("-")
+    .map((word) =>
+      word.length <= 3
+        ? word.toUpperCase()
+        : word.charAt(0).toUpperCase() + word.slice(1),
+    )
+    .join(" ");
+}
+
+const LOGOS = Object.entries(logoModules)
+  .sort(([pathA], [pathB]) => pathA.localeCompare(pathB))
+  .map(([path, src]) => ({
+    src,
+    alt: filenameToAlt(path),
+  }));
 
 export function LogoMarquee() {
-  // Duplicate the list so the -50% translate creates a seamless loop.
   const row = [...LOGOS, ...LOGOS];
+
   return (
     <div
       className="relative overflow-hidden"
@@ -27,15 +58,15 @@ export function LogoMarquee() {
     >
       <div
         className="flex w-max items-center gap-10 motion-reduce:animate-none sm:gap-14"
-        style={{ animation: "marquee-right 40s linear infinite" }}
+        style={{ animation: "marquee-right 70s linear infinite" }}
       >
-        {row.map((logo, i) => (
+        {row.map((logo, index) => (
           <img
-            key={`${logo.alt}-${i}`}
+            key={`${logo.alt}-${index}`}
             src={logo.src}
             alt={logo.alt}
             loading="lazy"
-            className="h-10 w-auto shrink-0 object-contain transition-transform hover:scale-[1.03] sm:h-12 md:h-14"
+            className="h-10 max-w-[140px] shrink-0 object-contain transition-transform hover:scale-[1.03] sm:h-12 sm:max-w-[170px] md:h-14 md:max-w-[190px]"
           />
         ))}
       </div>
