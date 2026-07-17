@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// Single-page site — one URL. We use a relative path so the sitemap stays
-// correct when hosted under a custom domain without editing this file.
 const BODY = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
