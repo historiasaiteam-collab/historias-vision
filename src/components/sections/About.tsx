@@ -37,11 +37,12 @@ export function About() {
             direct the <span className="italic-serif">story.</span>
           </h2>
 
-          <p className="mt-8 max-w-[520px] text-[0.98rem] leading-relaxed text-obsidian/80">
-            Historias AI Studio brings together creative direction, live-action
-            production, and generative technology to create cinematic work that
-            feels real, original, and unmistakably human.
-          </p>
+          <p className="text-body">
+  Historias AI Studio is a creative production house that merges traditional
+  video production with generative artificial intelligence. The studio
+  specializes in creating visual content, end-to-end video editing, and digital
+  campaigns by utilizing AI tools.
+</p>
 
           <p className="mt-6 max-w-[520px] font-medium text-obsidian">
             Built for corporate brands that refuse to look ordinary.
