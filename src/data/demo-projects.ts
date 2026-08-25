@@ -1,24 +1,21 @@
 // Selected Work items. Each project links to a real YouTube video played
 // via the VideoModal (see src/data/videos.ts for id → provider mapping).
 
-import commercial1 from "@/assets/work/commercial-1.jpg";
-import commercial2 from "@/assets/work/commercial-2.jpg";
-import commercial3 from "@/assets/work/commercial-3.jpg";
-import digital1 from "@/assets/work/digital-1.jpg";
-import digital2 from "@/assets/work/digital-2.jpg";
-import digital3 from "@/assets/work/digital-3.jpg";
-import social1 from "@/assets/work/social-1.jpg";
-import social2 from "@/assets/work/social-2.jpg";
-import social3 from "@/assets/work/social-3.jpg";
-import short1 from "@/assets/work/short-1.jpg";
-import short2 from "@/assets/work/short-2.jpg";
-import short3 from "@/assets/work/short-3.jpg";
-import ai1 from "@/assets/work/ai-1.jpg";
-import ai2 from "@/assets/work/ai-2.jpg";
-import ai3 from "@/assets/work/ai-3.jpg";
-import hybrid1 from "@/assets/work/hybrid-1.jpg";
-import hybrid2 from "@/assets/work/hybrid-2.jpg";
-import hybrid3 from "@/assets/work/hybrid-3.jpg";
+import commercial1 from "@/assets/work/Commercial - Wardah.png";
+import commercial2 from "@/assets/work/Commercial - Sunpride.png";
+import commercial3 from "@/assets/work/Commercial - Sanqing.png";
+import digital1 from "@/assets/work/Digital Ads - Pegadaian PD Aja.png";
+import digital2 from "@/assets/work/Digital Ads - Pegadaian Tabungan.png";
+import digital3 from "@/assets/work/Digital Ads - Mercure.png";
+import ai1 from "@/assets/work/Social Content - Kumar.png";
+import ai2 from "@/assets/work/Social Content - Desa Presiden Pildun.png";
+import ai3 from "@/assets/work/Social Content - Desa Presiden Damai.png";
+import short1 from "@/assets/work/Short Film - Wa Aqimussolah.png";
+import short2 from "@/assets/work/Short Film - Adrielle Iman My Wife.png";
+import short3 from "@/assets/work/Short Film - Telaah Makna.png";
+import hybrid1 from "@/assets/work/Hybrid - Kasa.png";
+import hybrid2 from "@/assets/work/Hybrid - Bukit Asam.png";
+import hybrid3 from "@/assets/work/Hybrid - Rewind AI.png";
 
 export type ProjectCategory =
   | "Commercial"
@@ -55,10 +52,9 @@ const CATEGORY_IMAGES: Record<ProjectCategory, string[]> = {
   "Digital Ads": [digital1, digital2, digital3],
   "Social Content": [social1, social2, social3],
   "Short Film": [short1, short2, short3],
-  "AI UGC": [ai1, ai2, ai3],
+  "AI UGC": [social1, social2, social3],
   "Hybrid Production": [hybrid1, hybrid2, hybrid3],
 };
-
 type Seed = {
   id: string;
   brand: string;
@@ -71,15 +67,15 @@ type Seed = {
 
 const CATEGORY_SEEDS: Record<ProjectCategory, Seed[]> = {
   Commercial: [
-    {
-      id: "commercial-dua-belibis",
-      brand: "DUA BELIBIS",
-      title: "Commercial Film",
-      type: "Commercial",
-      year: "2025",
-      href: "https://youtu.be/gkhJrp13jYw",
-      featured: true,
-    },
+{
+  id: "commercial-wardah",
+  brand: "WARDAH",
+  title: "Commercial Film",
+  type: "Commercial",
+  year: "2025",
+  href: "https://youtu.be/hXglYO9bWjI",
+  featured: true,
+},
     {
       id: "commercial-sunpride",
       brand: "SUNPRIDE",
@@ -152,32 +148,32 @@ const CATEGORY_SEEDS: Record<ProjectCategory, Seed[]> = {
     },
   ],
   "Short Film": [
-    {
-      id: "short-waaqimusholah",
-      brand: "WAAQIMUSHOLAH",
-      title: "Short Film",
-      type: "Short Film",
-      year: "2025",
-      href: "https://youtu.be/XsvQMInsQxQ",
-      featured: true,
-    },
-    {
-      id: "short-katanya-mau-berangkat-bareng",
-      brand: "KATANYA MAU BERANGKAT BARENG",
-      title: "Short Film",
-      type: "Short Film",
-      year: "2025",
-      href: "https://youtu.be/KLqbiSWDcW4",
-    },
-    {
-      id: "short-puskurjar-telaah-makna",
-      brand: "PUSKURJAR",
-      title: "Telaah Makna",
-      type: "Short Film",
-      year: "2025",
-      href: "https://youtu.be/-qo2qCqNA4Y",
-    },
-  ],
+  {
+    id: "short-waaqimusholah",
+    brand: "WAAQIMUSHOLAH",
+    title: "Short Film",
+    type: "Short Film",
+    year: "2025",
+    href: "https://youtu.be/XsvQMInsQxQ",
+    featured: true,
+  },
+  {
+    id: "short-adrielle-iman-my-wife",
+    brand: "ADRIELLE IMAN",
+    title: "My Wife",
+    type: "Short Film",
+    year: "2025",
+    href: "https://youtu.be/SDx1cS8sTRc",
+  },
+  {
+    id: "short-puskurjar-telaah-makna",
+    brand: "PUSKURJAR",
+    title: "Telaah Makna",
+    type: "Short Film",
+    year: "2025",
+    href: "https://youtu.be/-qo2qCqNA4Y",
+  },
+],
   "AI UGC": [
     {
       id: "ai-adrielle-kumar",
