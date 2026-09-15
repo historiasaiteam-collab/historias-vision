@@ -11,25 +11,17 @@ export function About() {
       id="about"
       className="relative isolate w-full overflow-hidden bg-obsidian"
     >
-      {/* Split background: cream left, obsidian right */}
-      <div
-        aria-hidden
-        className="absolute inset-0 grid grid-cols-1 lg:grid-cols-[55%_45%]"
-      >
-        <div className="bg-cream" />
-        <div className="bg-obsidian-depth" />
-      </div>
-
-
+      {/* Continuous dark surface with a restrained mint glow. */}
+      <div aria-hidden className="absolute inset-0 bg-obsidian-depth" />
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-16 px-6 pt-28 pb-24 sm:px-8 lg:grid-cols-[55%_45%] lg:gap-10 lg:px-14 lg:pt-32 lg:pb-32">
-        {/* LEFT (cream) */}
-        <ScrollReveal className="text-obsidian">
+        {/* LEFT (dark surface) */}
+        <ScrollReveal className="text-cream">
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
             <span className="text-eyebrow text-mint">About Historias</span>
           </div>
-          <h2 className="text-h1 text-obsidian">
+          <h2 className="text-h1 text-cream">
             We direct technology.
             <br />
             We don't let it
@@ -37,19 +29,19 @@ export function About() {
             direct the <span className="italic-serif">story.</span>
           </h2>
 
-    <p className="mt-8 max-w-[520px] text-[0.98rem] leading-relaxed text-obsidian/80">
+    <p className="mt-8 max-w-[520px] text-[0.98rem] leading-relaxed text-cream/80">
   Historias AI Studio is a creative production house that merges traditional
   video production with generative artificial intelligence. The studio
   specializes in creating visual content, end-to-end video editing, and digital
   campaigns by utilizing AI tools.
 </p>
 
-<p className="mt-6 max-w-[520px] font-medium text-obsidian">
+<p className="mt-6 max-w-[520px] font-medium text-cream">
   Built for corporate brands that refuse to look ordinary.
 </p>
 
           {/* Stats */}
-          <div className="mt-12 flex flex-wrap items-start gap-x-8 gap-y-6 border-t border-obsidian/15 pt-8">
+          <div className="mt-12 flex flex-wrap items-start gap-x-8 gap-y-6 border-t border-cream/15 pt-8">
             <Stat label="Crafting stories" value="6 Years" />
             <Divider />
             <Stat label="One production pipeline" value="Live + AI" />
@@ -63,7 +55,7 @@ export function About() {
               e.preventDefault();
               document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="mt-10 inline-flex items-center gap-3 border-b border-obsidian/30 pb-1 text-sm font-medium text-obsidian transition hover:border-mint hover:text-mint"
+            className="mt-10 inline-flex items-center gap-3 border-b border-cream/30 pb-1 text-sm font-medium text-cream transition hover:border-mint hover:text-mint"
           >
             Discover Our Studio
             <ArrowRight size={16} />
@@ -132,10 +124,10 @@ export function About() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <div className="text-lg font-semibold uppercase tracking-wide text-obsidian">
+      <div className="text-lg font-semibold uppercase tracking-wide text-cream">
         {value}
       </div>
-      <div className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
+      <div className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-cream/60">
         {label}
       </div>
     </div>
@@ -143,5 +135,5 @@ function Stat({ value, label }: { value: string; label: string }) {
 }
 
 function Divider() {
-  return <span aria-hidden className="mt-1 hidden h-8 w-px bg-obsidian/25 sm:block" />;
+  return <span aria-hidden className="mt-1 hidden h-8 w-px bg-cream/25 sm:block" />;
 }

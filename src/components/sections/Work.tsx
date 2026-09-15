@@ -219,17 +219,17 @@ function FeaturedPill() {
       animate={{ opacity: 1, scaleY: 1 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
       style={{ transformOrigin: "center" }}
-      className="relative flex h-full min-h-[420px] w-[92px] flex-col items-center justify-between rounded-full bg-cream px-3 py-6 text-obsidian shadow-depth"
+      className="relative flex h-full min-h-[420px] w-[92px] flex-col items-center justify-between rounded-full border border-edge bg-graphite px-3 py-6 text-cream shadow-depth"
     >
       <div className="flex flex-col items-center gap-3">
         <span className="h-px w-6 bg-mint" />
-        <div className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.22em] text-obsidian/70">
+        <div className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.22em] text-cream/70">
           Featured
           <br />
           Project
         </div>
       </div>
-      <div aria-hidden className="my-4 h-full w-px flex-1 bg-obsidian/10" />
+      <div aria-hidden className="my-4 h-full w-px flex-1 bg-cream/20" />
       <div className="flex flex-col items-center gap-3 pb-2">
         <motion.div
           animate={{ y: [0, 6, 0] }}
@@ -237,7 +237,7 @@ function FeaturedPill() {
         >
           <ArrowDown size={14} className="text-mint" />
         </motion.div>
-        <div className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.22em] text-obsidian/70">
+        <div className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.22em] text-cream/70">
           Scroll to
           <br />
           Explore

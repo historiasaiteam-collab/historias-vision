@@ -72,7 +72,7 @@ export function Testimonials() {
                   initial={{ opacity: 0, z: -80, y: 14, scale: 0.94 }}
                   animate={{ opacity: 0.35, z: -80, y: 14, scale: 0.94 }}
                   transition={{ duration: 0.5 }}
-                  className="pointer-events-none absolute inset-0 bg-cream/70 cut-corners-lg shadow-depth"
+                  className="pointer-events-none absolute inset-0 bg-graphite/70 cut-corners-lg shadow-depth"
                   style={{ transformStyle: "preserve-3d" }}
                 />
                 <AnimatePresence mode="wait">
@@ -95,20 +95,20 @@ export function Testimonials() {
                       if (info.offset.x < -60 || info.velocity.x < -400) go(1);
                       else if (info.offset.x > 60 || info.velocity.x > 400) go(-1);
                     }}
-                    className="relative touch-pan-y bg-cream p-6 text-obsidian cut-corners-lg select-none sm:p-8 shadow-depth"
+                    className="relative touch-pan-y border border-edge bg-graphite p-6 text-cream cut-corners-lg select-none sm:p-8 shadow-depth"
                     style={{ transformStyle: "preserve-3d" }}
                   >
                     <div className="mb-4 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-mint">
                       <span className="h-px w-4 bg-mint" /> Client Testimonial
                     </div>
-                    <p className="text-lg leading-relaxed text-obsidian sm:text-xl">
+                    <p className="text-lg leading-relaxed text-cream sm:text-xl">
                       &ldquo;{active.quote}&rdquo;
                     </p>
                     <div className="mt-6 h-px w-10 mint-line" />
-                    <div className="mt-4 text-sm font-semibold text-obsidian">
+                    <div className="mt-4 text-sm font-semibold text-cream">
                       {active.client}
                     </div>
-                    <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-obsidian/60">
+                    <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-cream/60">
                       {active.role}
                     </div>
                   </motion.div>

@@ -22,13 +22,13 @@ export function Faq({ scrollRef }: FaqProps = {}) {
       id="faq"
       className="relative isolate w-full overflow-hidden"
     >
-      {/* diagonal split cream(left) → obsidian(right) */}
+      {/* Subtle graphite-to-obsidian gradient */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(112deg, #F8EEE3 0%, #F8EEE3 44%, #1a1f1e 55%, #050807 100%)",
+            "linear-gradient(112deg, #111716 0%, #0b1110 44%, #080d0b 65%, #050807 100%)",
         }}
       />
       {/* soft fog + scroll-driven diagonal line spanning FAQ→Contact */}
@@ -43,24 +43,24 @@ export function Faq({ scrollRef }: FaqProps = {}) {
 
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-14 px-6 pt-24 pb-24 sm:px-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-14 lg:pt-28 lg:pb-28">
-        {/* LEFT cream copy */}
+        {/* LEFT copy */}
         <div className="relative">
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
-            <span className="text-eyebrow text-obsidian/80">FAQ</span>
+            <span className="text-eyebrow text-cream/80">FAQ</span>
           </div>
-          <h2 className="text-h1 text-obsidian">
+          <h2 className="text-h1 text-cream">
             Questions,
             <br />
             <span className="italic-serif">clearly answered.</span>
           </h2>
-          <p className="mt-8 max-w-[440px] text-[0.98rem] leading-relaxed text-obsidian/75">
+          <p className="mt-8 max-w-[440px] text-[0.98rem] leading-relaxed text-cream/75">
             Everything you need to know before we start making something
             extraordinary.
           </p>
 
           <div className="mt-12">
-            <p className="text-sm font-semibold text-obsidian">
+            <p className="text-sm font-semibold text-cream">
               Still have a question?
             </p>
             <a
@@ -69,7 +69,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
                 e.preventDefault();
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="mt-1 inline-flex items-center gap-3 border-b border-obsidian/40 pb-1 text-sm font-medium text-obsidian transition hover:border-mint hover:text-mint"
+              className="mt-1 inline-flex items-center gap-3 border-b border-cream/40 pb-1 text-sm font-medium text-cream transition hover:border-mint hover:text-mint"
             >
               Talk to Our Team
               <ArrowRight size={16} />
@@ -79,7 +79,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
           {/* progress */}
           <div className="mt-12 hidden lg:block">
             <div className="flex items-start gap-4">
-              <div className="relative h-40 w-px bg-obsidian/30">
+              <div className="relative h-40 w-px bg-cream/30">
                 <motion.span
                   className="absolute left-0 top-0 w-px mint-line"
                   animate={{ height: `${(counter / FAQ_ITEMS.length) * 100}%` }}
@@ -87,7 +87,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
                 />
               </div>
               <div className="flex flex-col gap-1 pt-1">
-                <div className="text-meta text-obsidian/60">Scroll Questions</div>
+                <div className="text-meta text-cream/60">Scroll Questions</div>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
                 className={cn(
                   "rounded-md border transition cut-corners",
                   open
-                    ? "border-mint bg-cream text-obsidian"
+                    ? "border-mint/60 bg-graphite text-cream"
                     : "border-edge bg-graphite/60 text-cream",
                 )}
               >
@@ -128,7 +128,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
                     <span
                       className={cn(
                         "flex-1 text-sm font-semibold uppercase leading-snug tracking-[0.06em] sm:text-[15px]",
-                        open ? "text-obsidian" : "text-cream",
+                        open ? "text-cream" : "text-cream",
                       )}
                     >
                       {f.question}
@@ -152,7 +152,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
                     >
                       <div className="px-5 pb-5 pl-14 sm:px-6 sm:pl-16">
                         <div className="mb-3 h-px w-12 mint-line" />
-                        <p className="max-w-[540px] text-[13.5px] leading-relaxed text-obsidian/80">
+                        <p className="max-w-[540px] text-[13.5px] leading-relaxed text-cream/80">
                           {f.answer}
                         </p>
                       </div>

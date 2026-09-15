@@ -59,12 +59,12 @@ export function Process() {
   };
 
   return (
-    <section id="process" className="relative isolate w-full overflow-hidden bg-cream text-obsidian">
+    <section id="process" className="relative isolate w-full overflow-hidden bg-obsidian text-cream">
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(180deg, #F8EEE3 0%, #F8EEE3 62%, #0f1413 78%, #050807 100%)",
+          background: "linear-gradient(180deg, #050807 0%, #111716 38%, #0b1110 70%, #050807 100%)",
         }}
       />
 
@@ -72,17 +72,17 @@ export function Process() {
         <ScrollReveal>
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
-            <span className="text-eyebrow text-obsidian/80">
+            <span className="text-eyebrow text-cream/80">
               Process · <span className="text-mint">#25FFC4</span>
             </span>
           </div>
           <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-start">
-            <h2 className="text-h1 text-obsidian">
+            <h2 className="text-h1 text-cream">
               From first thought
               <br />
               to <span className="italic-serif">final frame.</span>
             </h2>
-            <p className="max-w-[440px] pt-3 text-[0.98rem] leading-relaxed text-obsidian/80 lg:pt-6">
+            <p className="max-w-[440px] pt-3 text-[0.98rem] leading-relaxed text-cream/80 lg:pt-6">
               One integrated workflow—creative direction, real production, generative technology, and post.
             </p>
           </div>
@@ -101,20 +101,20 @@ export function Process() {
                     type="button"
                     onClick={() => selectStep(i)}
                     className={
-                      "group text-left transition " + (isActive ? "text-obsidian" : "text-obsidian hover:opacity-90")
+                      "group text-left transition " + (isActive ? "text-cream" : "text-cream hover:opacity-90")
                     }
                   >
                     <div className="mb-2 text-[13px] font-medium tracking-[0.14em]">
                       <span className="uppercase">{s.title}</span>
                     </div>
-                    <p className="max-w-[220px] text-[13px] leading-relaxed text-obsidian/75">{s.body}</p>
+                    <p className="max-w-[220px] text-[13px] leading-relaxed text-cream/75">{s.body}</p>
                   </button>
                 );
               })}
             </div>
 
             <div className="relative mt-8 h-6">
-              <span aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-obsidian/25" />
+              <span aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-cream/25" />
               <motion.span
                 aria-hidden
                 className="absolute left-0 h-px mint-line"
@@ -140,7 +140,7 @@ export function Process() {
 
           {/* Mobile vertical */}
           <ol className="relative flex flex-col gap-8 lg:hidden">
-            <span aria-hidden className="absolute top-0 bottom-0 left-2 w-px bg-obsidian/25" />
+            <span aria-hidden className="absolute top-0 bottom-0 left-2 w-px bg-cream/25" />
             <motion.span aria-hidden className="absolute left-2 top-0 w-px mint-line" style={{ height: lineHeight }} />
             {PROCESS_STEPS.map((s, i) => {
               const stepThreshold = i / Math.max(PROCESS_STEPS.length - 1, 1);
@@ -160,12 +160,12 @@ export function Process() {
                     <div
                       className={
                         "text-[11px] font-medium uppercase tracking-[0.22em] " +
-                        (isActive ? "text-mint" : "text-obsidian/60")
+                        (isActive ? "text-mint" : "text-cream/60")
                       }
                     >
                       {s.title}
                     </div>
-                    <p className="mt-1 text-sm text-obsidian/80">{s.body}</p>
+                    <p className="mt-1 text-sm text-cream/80">{s.body}</p>
                   </button>
                 </li>
               );
@@ -248,14 +248,14 @@ export function Process() {
           <button
             type="button"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-cream px-8 py-4 text-sm font-medium text-obsidian transition hover:bg-cream/90"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-mint px-8 py-4 text-sm font-medium text-obsidian transition hover:bg-mint/90"
           >
             Start a Project
             <ArrowRight size={16} className="transition group-hover:translate-x-1" />
           </button>
         </div>
 
-        <div className="mt-6 flex items-center gap-3 text-sm text-obsidian">
+        <div className="mt-6 flex items-center gap-3 text-sm text-cream">
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />
           <span>Every timeline is built around the brief.</span>
         </div>
@@ -271,7 +271,7 @@ export function Process() {
 }
 
 function CardCornerMarkers({ tone }: { tone: "mint" | "cream" | "dark" }) {
-  const color = tone === "mint" ? "border-mint" : tone === "cream" ? "border-cream/60" : "border-obsidian/50";
+  const color = tone === "mint" ? "border-mint" : tone === "cream" ? "border-cream/60" : "border-cream/50";
   return (
     <>
       <span aria-hidden className={`pointer-events-none absolute left-0 top-0 h-2 w-2 border-l border-t ${color}`} />
@@ -355,12 +355,12 @@ const boxShadow = useTransform(
       style={{ left: "50%", top: "50%" }}
     >
       <span
-        className={"block rounded-full border " + (active ? "h-8 w-8 border-mint/70" : "h-6 w-6 border-obsidian/25")}
+        className={"block rounded-full border " + (active ? "h-8 w-8 border-mint/70" : "h-6 w-6 border-cream/25")}
       />
       <span
         className={
           "absolute inset-0 m-auto rounded-full border " +
-          (active ? "h-5 w-5 border-mint/60" : "h-4 w-4 border-obsidian/30")
+          (active ? "h-5 w-5 border-mint/60" : "h-4 w-4 border-cream/30")
         }
         style={{ top: 0, left: 0, right: 0, bottom: 0 }}
       />
