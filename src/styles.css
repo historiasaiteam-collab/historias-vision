@@ -336,3 +336,49 @@
   @keyframes drift { from, to { transform: none; } }
   @keyframes float-slow { from, to { transform: none; } }
 }
+
+/* One continuous canvas: section boundaries no longer restart the lighting. */
+#main-content {
+  background-color: var(--color-obsidian);
+  background-image:
+    radial-gradient(ellipse 85% 10% at 5% 15%, rgb(37 255 196 / 0.055), transparent 75%),
+    radial-gradient(ellipse 100% 14% at 100% 38%, rgb(91 125 113 / 0.09), transparent 75%),
+    radial-gradient(ellipse 90% 13% at 0% 62%, rgb(37 255 196 / 0.045), transparent 75%),
+    radial-gradient(ellipse 100% 12% at 90% 83%, rgb(91 125 113 / 0.075), transparent 75%);
+}
+
+#main-content section {
+  background: transparent;
+}
+
+/* These sections previously painted full-size, independent backdrops. */
+#about > .absolute.inset-0.bg-obsidian-depth,
+#process > .absolute.inset-0,
+#faq > .absolute.inset-0:not(.bg-fog) {
+  display: none;
+}
+
+/* Fade decorative textures only; content and interactive cards stay crisp. */
+#main-content section:not(#hero) > .bg-grid,
+#main-content section:not(#hero) > .bg-fog,
+#why::after {
+  mask-image: linear-gradient(to bottom, transparent, black 160px, black calc(100% - 160px), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 160px, black calc(100% - 160px), transparent);
+}
+
+/* Let the hero imagery dissolve into the same canvas as the studio section. */
+#hero > .absolute.inset-0 {
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+
+/* The FAQ handoff and footer no longer introduce solid horizontal bands. */
+#faq > .relative.z-10:last-child {
+  background: transparent;
+  border-top-color: transparent;
+}
+
+#main-content + footer {
+  background: var(--color-obsidian);
+  border-top-color: transparent;
+}
