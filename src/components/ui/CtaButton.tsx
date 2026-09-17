@@ -39,7 +39,7 @@ export const CtaButton = forwardRef<HTMLButtonElement, Props>(function CtaButton
   };
 
   const base =
-    "group relative inline-flex items-center justify-center gap-3 overflow-hidden font-medium tracking-wide transition-colors duration-300 focus-visible:outline-none focus-visible:ring-mint";
+    "glass-light-button group relative inline-flex items-center justify-center gap-3 overflow-hidden font-medium tracking-wide transition-colors duration-300 focus-visible:outline-none focus-visible:ring-mint";
   const sizes: Record<Size, string> = {
     md: "px-5 py-3 text-sm",
     lg: "px-7 py-4 text-[15px]",
