@@ -69,7 +69,7 @@ export function Why() {
           </ScrollReveal>
 
           {/* RIGHT: accordion */}
-          <ScrollReveal delay={0.25} className="rounded-lg border border-edge bg-graphite/40 p-4 sm:p-6 cut-corners-lg">
+          <ScrollReveal delay={0.25} className="why-glass-panel rounded-lg border p-4 sm:p-6 cut-corners-lg">
             <ul className="divide-y divide-edge/70">
               {WHY_REASONS.map((r) => {
                 const open = openId === r.number;
@@ -134,7 +134,7 @@ export function Why() {
 
         {/* Bottom feature bar */}
         <ScrollReveal className="mt-14 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 rounded-full border border-edge bg-graphite/60 px-6 py-4">
+          <div className="why-glass-strip flex flex-wrap items-center gap-x-8 gap-y-3 rounded-full border px-6 py-4">
             <FeatureItem icon={<Users size={14} />} label="Live-Action Crew" />
             <Divider />
             <FeatureItem icon={<Cpu size={14} />} label="AI-Native Pipeline" />
