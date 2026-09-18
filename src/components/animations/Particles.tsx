@@ -22,12 +22,12 @@ export function Particles({ count = 18, className, color = "cream" }: Props) {
         const seed = (i + 1) * 9301;
         const rnd = (n: number) => ((Math.sin(seed * n) + 1) / 2);
         return {
-          left: `${rnd(1.1) * 100}%`,
-          top: `${rnd(2.3) * 100}%`,
-          size: 1 + rnd(3.7) * 2, // 1-3 px
-          delay: rnd(4.9) * -18,
-          duration: 14 + rnd(5.5) * 12, // 14-26s
-          opacity: 0.15 + rnd(6.7) * 0.35,
+          left: `${(rnd(1.1) * 100).toFixed(4)}%`,
+          top: `${(rnd(2.3) * 100).toFixed(4)}%`,
+          size: (1 + rnd(3.7) * 2).toFixed(4), // 1-3 px
+          delay: (rnd(4.9) * -18).toFixed(4),
+          duration: (14 + rnd(5.5) * 12).toFixed(4), // 14-26s
+          opacity: (0.15 + rnd(6.7) * 0.35).toFixed(4),
         };
       }),
     [count],
