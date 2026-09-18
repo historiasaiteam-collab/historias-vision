@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { fadeUp } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -20,14 +20,15 @@ export function ScrollReveal({
   amount = 0.2,
   as = "div",
 }: Props) {
+  const reduce = useReducedMotion();
   const Comp = motion[as];
   return (
     <Comp
       className={cn(className)}
-      initial="hidden"
-      whileInView="show"
+      initial={reduce ? false : "hidden"}
+      whileInView={reduce ? undefined : "show"}
       viewport={{ once: true, amount }}
-      variants={variants}
+      variants={reduce ? undefined : variants}
       transition={{ delay }}
     >
       {children}

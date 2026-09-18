@@ -636,3 +636,138 @@ header.backdrop-blur-xl {
     animation: none;
   }
 }
+
+/* The opening frame clears quickly while the hero comes into focus behind it. */
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  overflow: hidden;
+  animation: intro-dismiss 1.5s steps(1, end) forwards;
+}
+
+.site-intro__panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 56%;
+  background:
+    radial-gradient(ellipse 85% 70% at 50% 50%, rgb(27 55 45 / 0.55), transparent 72%),
+    #050807;
+  will-change: transform;
+}
+
+.site-intro__panel--left {
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 7vw) 100%, 0 100%);
+  animation: intro-left 1.05s cubic-bezier(0.76, 0, 0.24, 1) 0.35s both;
+}
+
+.site-intro__panel--right {
+  right: 0;
+  clip-path: polygon(7vw 0, 100% 0, 100% 100%, 0 100%);
+  animation: intro-right 1.05s cubic-bezier(0.76, 0, 0.24, 1) 0.35s both;
+}
+
+.site-intro__center {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--color-cream);
+  animation: intro-mark 0.88s ease both;
+}
+
+.site-intro__logo {
+  width: clamp(112px, 15vw, 170px);
+  height: auto;
+  filter: drop-shadow(0 0 40px rgb(37 255 196 / 0.17));
+}
+
+.site-intro__label,
+.site-intro__caption {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+.site-intro__label { color: var(--color-mint); }
+.site-intro__caption { color: rgb(248 238 227 / 0.65); }
+
+.site-intro__line {
+  width: min(220px, 42vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-mint), transparent);
+  transform-origin: center;
+  animation: intro-line 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes intro-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-110%); }
+}
+
+@keyframes intro-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(110%); }
+}
+
+@keyframes intro-mark {
+  0% { opacity: 0; transform: translateY(12px) scale(0.97); }
+  25%, 60% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes intro-line {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes intro-dismiss {
+  0%, 99% { visibility: visible; }
+  100% { visibility: hidden; }
+}
+
+/* Each hero beat follows the opening seam, then the shared scroll reveals take over. */
+.site-nav-enter { animation: hero-fade-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both; }
+.hero-scene { animation: hero-scene-in 1.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-kicker { animation: hero-fade-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.64s both; }
+.hero-line { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.hero-line__inner { display: block; animation: hero-line-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-line:nth-child(1) .hero-line__inner { animation-delay: 0.67s; }
+.hero-line:nth-child(2) .hero-line__inner { animation-delay: 0.78s; }
+.hero-line:nth-child(3) .hero-line__inner { animation-delay: 0.89s; }
+.hero-description { animation: hero-fade-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.03s both; }
+.hero-actions { animation: hero-fade-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.15s both; }
+.hero-clients { animation: hero-fade-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.28s both; }
+
+@keyframes hero-scene-in {
+  from { scale: 1.055; opacity: 0.65; }
+  to { scale: 1; opacity: 0.9; }
+}
+
+@keyframes hero-line-in {
+  from { opacity: 0; transform: translateY(105%); filter: blur(7px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(22px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-intro { display: none; }
+  :is(.site-nav-enter, .hero-scene, .hero-kicker, .hero-line__inner, .hero-description, .hero-actions, .hero-clients) {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    scale: 1;
+  }
+}

@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { FAQ_ITEMS } from "@/data/faq";
 import { Parallax } from "@/components/animations/Parallax";
 import { ScrollDiagonalLine } from "@/components/animations/ScrollDiagonalLine";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 type FaqProps = {
@@ -44,7 +45,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] gap-14 px-6 pt-24 pb-24 sm:px-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-14 lg:pt-28 lg:pb-28">
         {/* LEFT copy */}
-        <div className="relative">
+        <ScrollReveal className="relative">
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
             <span className="text-eyebrow text-cream/80">FAQ</span>
@@ -91,7 +92,7 @@ export function Faq({ scrollRef }: FaqProps = {}) {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* RIGHT obsidian accordion — enters slowly from visual depth */}
         <motion.div

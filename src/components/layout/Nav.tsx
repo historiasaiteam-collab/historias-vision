@@ -50,7 +50,7 @@ export function Nav() {
       </a>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          "site-nav-enter fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
             ? "backdrop-blur-xl bg-obsidian/75 border-b border-edge/60"
             : "bg-transparent",

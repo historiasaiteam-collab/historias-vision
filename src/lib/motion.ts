@@ -3,11 +3,12 @@ import type { Variants, Transition } from "framer-motion";
 export const easeOut: Transition["ease"] = [0.22, 1, 0.36, 1];
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 32, filter: "blur(6px)" },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: easeOut },
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: easeOut },
   },
 };
 

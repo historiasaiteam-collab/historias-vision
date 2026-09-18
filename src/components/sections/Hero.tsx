@@ -30,7 +30,7 @@ export function Hero() {
           aria-hidden
           width={1920}
           height={1280}
-          className="h-full w-full object-cover object-center opacity-90"
+          className="hero-scene h-full w-full object-cover object-center opacity-90"
         />
       </Parallax>
       
@@ -78,7 +78,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1500px] flex-col justify-end px-6 pt-32 pb-32 sm:px-8 lg:px-14 lg:pb-40">
         <div className="max-w-[820px]">
-          <div className="mb-6 flex items-center gap-3">
+          <div className="hero-kicker mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
             <span className="text-eyebrow text-mint">
               AI Video Production House
@@ -86,20 +86,18 @@ export function Hero() {
           </div>
 
           <h1 className="text-display text-cream">
-            We make
-            <br />
-            impossible
-            <br />
-            stories <span className="italic-serif text-cream">visible.</span>
+            <span className="hero-line"><span className="hero-line__inner">We make</span></span>
+            <span className="hero-line"><span className="hero-line__inner">impossible</span></span>
+            <span className="hero-line"><span className="hero-line__inner">stories <span className="italic-serif text-cream">visible.</span></span></span>
           </h1>
 
-          <p className="mt-8 max-w-[520px] text-body">
+          <p className="hero-description mt-8 max-w-[520px] text-body">
             Cinematic, photorealistic visuals—without the artificial AI look.
             From creative direction and live action to generative production
             and post.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="hero-actions mt-10 flex flex-wrap items-center gap-4">
             <CtaButton
               size="lg"
               variant="primary"
@@ -120,7 +118,7 @@ export function Hero() {
        </div>
 
         {/* Client strip */}
-        <div className="mt-16 lg:mt-24">
+        <div className="hero-clients mt-16 lg:mt-24">
           <div className="mb-4 flex items-center gap-3">
             <span className="text-meta text-cream/60">Trusted by leading brands</span>
             <span className="h-px flex-1 bg-cream/20" />

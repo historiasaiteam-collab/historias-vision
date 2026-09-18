@@ -89,7 +89,8 @@ export function Process() {
         </ScrollReveal>
 
         {/* Timeline */}
-        <div className="mt-16" ref={timelineRef}>
+        <ScrollReveal className="mt-16">
+        <div ref={timelineRef}>
           {/* Desktop */}
           <div className="hidden lg:block">
             <div className="grid grid-cols-5 gap-6">
@@ -172,9 +173,10 @@ export function Process() {
             })}
           </ol>
         </div>
+        </ScrollReveal>
 
         {/* Active step image */}
-        <div className="mt-14">
+        <ScrollReveal className="mt-14">
           <motion.div
             key={activeStep}
             initial={{ opacity: 0, y: 12 }}
@@ -232,10 +234,10 @@ export function Process() {
               );
             })}
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Bottom strip */}
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+        <ScrollReveal className="mt-14 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 rounded-full border border-cream/15 bg-obsidian px-6 py-4 text-cream">
             <Feature icon={<Clapperboard size={14} />} label="Flexible by Design" />
             <Divider />
@@ -253,7 +255,7 @@ export function Process() {
             Start a Project
             <ArrowRight size={16} className="transition group-hover:translate-x-1" />
           </button>
-        </div>
+        </ScrollReveal>
 
         <div className="mt-6 flex items-center gap-3 text-sm text-cream">
           <span className="h-1.5 w-1.5 rounded-full bg-mint" />

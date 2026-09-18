@@ -56,11 +56,8 @@ export function Testimonials() {
             </ScrollReveal>
 
             {/* Featured testimonial + image — perspective depth stack */}
-            <div
-              className="mt-10 grid gap-4 md:grid-cols-[1.05fr_1fr]"
-              aria-live="polite"
-              aria-atomic="true"
-            >
+            <ScrollReveal className="mt-10">
+              <div className="grid gap-4 md:grid-cols-[1.05fr_1fr]" aria-live="polite" aria-atomic="true">
               <div
                 className="relative"
                 style={{ perspective: "1400px" }}
@@ -136,7 +133,8 @@ export function Testimonials() {
                 />
                 <CornerMarkers color="mint" />
               </div>
-            </div>
+              </div>
+            </ScrollReveal>
 
             {/* controls */}
             <div className="mt-8 grid gap-4 sm:grid-cols-[auto_1fr_auto] sm:items-center">

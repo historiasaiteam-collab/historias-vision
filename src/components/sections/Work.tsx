@@ -109,7 +109,7 @@ export function Work() {
         </div>
 
         {/* HUD-framed grid */}
-        <div className="relative mt-8 p-4 sm:p-6">
+        <ScrollReveal className="relative mt-8 p-4 sm:p-6">
           <CornerMarkers className="!inset-0" color="cream" />
 
           <div
@@ -159,10 +159,10 @@ export function Work() {
               </motion.div>
             </AnimatePresence>
           </LayoutGroup>
-        </div>
+        </ScrollReveal>
 
         {/* Bottom timeline */}
-        <div className="mt-10 flex items-center gap-6">
+        <ScrollReveal className="mt-10 flex items-center gap-6">
           <span className="whitespace-nowrap text-meta text-cream/50">Process</span>
           <div className="relative h-px flex-1">
             <div className="absolute inset-0 bg-cream/15" />
@@ -193,7 +193,7 @@ export function Work() {
             </div>
           </div>
           <span className="h-1.5 w-1.5 rounded-full bg-mint shadow-[0_0_8px_var(--color-mint)]" />
-        </div>
+        </ScrollReveal>
       </div>
 
       <VideoModal

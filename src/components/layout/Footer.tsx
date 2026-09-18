@@ -2,6 +2,7 @@ import { ArrowUp, Instagram, Youtube, Linkedin, type LucideIcon } from "lucide-r
 import { FOOTER_NAV, SOCIAL_LINKS, LEGAL_LINKS } from "@/data/nav";
 import logo from "@/assets/logo-h.png";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 const SOCIAL_ICONS: Record<string, LucideIcon> = {
   Instagram,
@@ -19,7 +20,7 @@ export function Footer() {
   return (
     <footer className="relative border-t border-edge/60 bg-obsidian-depth text-cream">
       <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-14">
-        <div className="grid gap-10 py-14 md:grid-cols-[auto_1fr_auto] md:items-center">
+        <ScrollReveal className="grid gap-10 py-14 md:grid-cols-[auto_1fr_auto] md:items-center">
           <a
             href="#hero"
             onClick={(e) => {
@@ -90,9 +91,9 @@ export function Footer() {
               );
             })}
           </ul>
-        </div>
+        </ScrollReveal>
 
-        <div className="flex flex-col gap-4 border-t border-edge/60 py-6 text-meta text-smoke md:flex-row md:items-center md:justify-between">
+        <ScrollReveal delay={0.1} className="flex flex-col gap-4 border-t border-edge/60 py-6 text-meta text-smoke md:flex-row md:items-center md:justify-between">
           <span>AI Video Production House</span>
           <span className="order-last md:order-none">
             © 2026 Historias AI Studio
@@ -127,7 +128,7 @@ export function Footer() {
               Back to Top
             </button>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </footer>
   );
