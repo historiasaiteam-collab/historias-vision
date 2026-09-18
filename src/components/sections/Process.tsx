@@ -176,7 +176,7 @@ export function Process() {
         </ScrollReveal>
 
         {/* Active step image */}
-        <ScrollReveal className="mt-14">
+        <ScrollReveal cinematic className="mt-14">
           <motion.div
             key={activeStep}
             initial={{ opacity: 0, y: 12 }}

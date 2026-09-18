@@ -45,9 +45,11 @@ export function Services() {
             <span className="text-eyebrow text-mint">Services</span>
           </ScrollReveal>
 
-          <h2 className="max-w-[900px] text-h1 text-cream">
-            One studio. Every way to <span className="italic-serif">bring a story to life.</span>
-          </h2>
+          <ScrollReveal as="div" delay={0.1}>
+            <h2 className="max-w-[900px] text-h1 text-cream">
+              One studio. Every way to <span className="italic-serif">bring a story to life.</span>
+            </h2>
+          </ScrollReveal>
         </div>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
@@ -87,7 +89,7 @@ export function Services() {
           </ScrollReveal>
 
           {/* Right: image + active card */}
-          <ScrollReveal as="div" delay={0.2} className="relative">
+          <ScrollReveal as="div" cinematic delay={0.2} className="relative">
             <div className="hud-corners relative overflow-hidden rounded-md border border-edge cut-corners-lg">
               <img
                 src={SERVICE_IMAGES[active.id] ?? serviceCommercial}

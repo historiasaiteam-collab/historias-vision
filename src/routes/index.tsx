@@ -12,6 +12,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
 import { LoadingScreen } from "@/components/animations/LoadingScreen";
+import { ScrollProgress } from "@/components/animations/ScrollProgress";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -81,6 +82,7 @@ function Index() {
   return (
     <div className="relative min-h-screen bg-obsidian text-cream">
       <LoadingScreen />
+      <ScrollProgress />
       <Nav />
       <main id="main-content">
         <Hero />

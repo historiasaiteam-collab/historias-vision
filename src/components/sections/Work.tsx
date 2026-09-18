@@ -109,7 +109,7 @@ export function Work() {
         </div>
 
         {/* HUD-framed grid */}
-        <ScrollReveal className="relative mt-8 p-4 sm:p-6">
+        <ScrollReveal cinematic className="relative mt-8 p-4 sm:p-6">
           <CornerMarkers className="!inset-0" color="cream" />
 
           <div

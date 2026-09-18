@@ -64,7 +64,7 @@ export function About() {
 
         {/* RIGHT (obsidian, HUD-framed overlapping images) */}
         <div className="relative min-h-[420px] lg:min-h-[620px]">
-          <ScrollReveal className="relative h-full">
+          <ScrollReveal cinematic className="relative h-full">
             {/* Perspective grid backdrop */}
             <div
               aria-hidden

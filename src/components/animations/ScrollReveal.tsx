@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
-import { fadeUp } from "@/lib/motion";
+import { cinematicReveal, fadeUp } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -10,6 +10,7 @@ type Props = {
   delay?: number;
   amount?: number;
   as?: "div" | "section" | "span";
+  cinematic?: boolean;
 };
 
 export function ScrollReveal({
@@ -19,6 +20,7 @@ export function ScrollReveal({
   delay = 0,
   amount = 0.2,
   as = "div",
+  cinematic = false,
 }: Props) {
   const reduce = useReducedMotion();
   const Comp = motion[as];
@@ -28,7 +30,7 @@ export function ScrollReveal({
       initial={reduce ? false : "hidden"}
       whileInView={reduce ? undefined : "show"}
       viewport={{ once: true, amount }}
-      variants={reduce ? undefined : variants}
+      variants={reduce ? undefined : cinematic ? cinematicReveal : variants}
       transition={{ delay }}
     >
       {children}

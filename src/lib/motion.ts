@@ -12,6 +12,17 @@ export const fadeUp: Variants = {
   },
 };
 
+export const cinematicReveal: Variants = {
+  hidden: { opacity: 0, y: 48, scale: 0.965, clipPath: "inset(9% 0 0 0)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    clipPath: "inset(-8% -8% -8% -8%)",
+    transition: { duration: 1.15, ease: easeOut },
+  },
+};
+
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { duration: 0.6, ease: easeOut } },

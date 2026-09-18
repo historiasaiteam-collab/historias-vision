@@ -56,7 +56,7 @@ export function Testimonials() {
             </ScrollReveal>
 
             {/* Featured testimonial + image — perspective depth stack */}
-            <ScrollReveal className="mt-10">
+            <ScrollReveal cinematic className="mt-10">
               <div className="grid gap-4 md:grid-cols-[1.05fr_1fr]" aria-live="polite" aria-atomic="true">
               <div
                 className="relative"
