@@ -1,13 +1,10 @@
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-right.png";
-import heroMonolith from "@/assets/hero-monolith.png.asset.json";
+import heroImage from "@/assets/hero-cinematic-4k.png";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { LogoMarquee } from "@/components/animations/LogoMarquee";
 import { SkyBackground } from "@/components/animations/SkyBackground";
-
-
 
 export function Hero() {
   const scrollTo = (id: string) => {
@@ -20,7 +17,7 @@ export function Hero() {
       id="hero"
       className="relative isolate min-h-screen w-full overflow-hidden bg-obsidian text-cream"
     >
-         {/* 3D sky layer */}
+      {/* 3D sky layer */}
       <SkyBackground />
       {/* Background image — slower parallax than foreground */}
       <Parallax offset={-30} className="absolute inset-0">
@@ -28,27 +25,11 @@ export function Hero() {
           src={heroImage}
           alt=""
           aria-hidden
-          width={1920}
-          height={1280}
-          className="hero-scene h-full w-full object-cover object-center opacity-90"
+          width={1672}
+          height={941}
+          className="hero-scene h-full w-full object-cover object-[68%_center] opacity-95"
         />
       </Parallax>
-      
-      {/* Monolith backdrop — softly visible, vignetted into the corners */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: `url(${heroMonolith.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center right",
-          opacity: 0.35,
-          maskImage:
-            "radial-gradient(ellipse 75% 70% at 65% 50%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0) 85%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 75% 70% at 65% 50%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0) 85%)",
-        }}
-      />
 
       {/* Left dark overlay + subtle wash */}
       <div
@@ -57,7 +38,7 @@ export function Hero() {
       />
       <div aria-hidden className="absolute inset-0 bg-grid opacity-40" />
       <div aria-hidden className="absolute inset-0 bg-fog opacity-60" />
-      
+
       <Particles count={16} color="cream" />
 
       {/* Left vertical rail label */}
@@ -74,27 +55,31 @@ export function Hero() {
         </div>
       </div>
 
-
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1500px] flex-col justify-end px-6 pt-32 pb-32 sm:px-8 lg:px-14 lg:pb-40">
         <div className="max-w-[820px]">
           <div className="hero-kicker mb-6 flex items-center gap-3">
             <span className="h-px w-6 bg-mint" />
-            <span className="text-eyebrow text-mint">
-              AI Video Production House
-            </span>
+            <span className="text-eyebrow text-mint">AI Video Production House</span>
           </div>
 
           <h1 className="text-display text-cream">
-            <span className="hero-line"><span className="hero-line__inner">We make</span></span>
-            <span className="hero-line"><span className="hero-line__inner">impossible</span></span>
-            <span className="hero-line"><span className="hero-line__inner">stories <span className="italic-serif text-cream">visible.</span></span></span>
+            <span className="hero-line">
+              <span className="hero-line__inner">We make</span>
+            </span>
+            <span className="hero-line">
+              <span className="hero-line__inner">impossible</span>
+            </span>
+            <span className="hero-line">
+              <span className="hero-line__inner">
+                stories <span className="italic-serif text-cream">visible.</span>
+              </span>
+            </span>
           </h1>
 
           <p className="hero-description mt-8 max-w-[520px] text-body">
-            Cinematic, photorealistic visuals—without the artificial AI look.
-            From creative direction and live action to generative production
-            and post.
+            Cinematic, photorealistic visuals—without the artificial AI look. From creative
+            direction and live action to generative production and post.
           </p>
 
           <div className="hero-actions mt-10 flex flex-wrap items-center gap-4">
@@ -106,16 +91,11 @@ export function Hero() {
             >
               View Our Portfolio
             </CtaButton>
-            <CtaButton
-              size="lg"
-              variant="secondary"
-              dot
-              onClick={() => scrollTo("contact")}
-            >
+            <CtaButton size="lg" variant="secondary" dot onClick={() => scrollTo("contact")}>
               Get Free Consultation
             </CtaButton>
           </div>
-       </div>
+        </div>
 
         {/* Client strip */}
         <div className="hero-clients mt-16 lg:mt-24">
@@ -124,7 +104,6 @@ export function Hero() {
             <span className="h-px flex-1 bg-cream/20" />
           </div>
           <LogoMarquee />
-
         </div>
       </div>
     </section>

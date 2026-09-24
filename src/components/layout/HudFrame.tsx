@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
  * HUD frame overlay: chamfered/notched rounded rectangle drawn with SVG so it
  * can animate its stroke on mount. Sits absolutely inside a positioned parent.
  *
- * The frame shape: rounded top-left corner, small 45° notches on top-right and
- * bottom-left, rounded bottom-right corner. Mint L-brackets are drawn at every
- * corner and stroke-in on mount.
+ * The frame and its bright corner accents share the same four chamfers, so the
+ * accent never drifts away from the clipped card below it.
  */
 export function HudFrame({
   className,
@@ -43,26 +42,26 @@ export function HudFrame({
       preserveAspectRatio="none"
       viewBox="0 0 100 100"
     >
-      {/* Chamfered rounded frame path — non-scaling stroke keeps it crisp. */}
+      {/* Chamfered frame path — non-scaling stroke keeps it crisp. */}
       <motion.path
         d={framePath(radius, notch)}
         fill="none"
         stroke={stroke}
-        strokeOpacity={0.35}
-        strokeWidth={0.35}
+        strokeOpacity={0.5}
+        strokeWidth={0.55}
         vectorEffect="non-scaling-stroke"
         initial={animate ? { pathLength: 0, opacity: 0 } : false}
         animate={animate ? { pathLength: 1, opacity: 1 } : undefined}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay }}
       />
-      {/* Solid mint corner brackets on top of the faint frame line. */}
-      {cornerBrackets(bracketSize).map((d, i) => (
+      {/* Bright accents trace the exact same corner geometry. */}
+      {cornerBrackets(bracketSize, notch).map((d, i) => (
         <motion.path
           key={i}
           d={d}
           fill="none"
           stroke={stroke}
-          strokeWidth={0.9}
+          strokeWidth={1.05}
           strokeLinecap="square"
           vectorEffect="non-scaling-stroke"
           initial={animate ? { pathLength: 0, opacity: 0 } : false}
@@ -79,38 +78,28 @@ export function HudFrame({
 }
 
 /**
- * Build the outline path in a 0..100 coordinate space:
- *   TL: rounded (radius)
- *   TR: 45° notch (size = notch)
- *   BR: rounded (radius)
- *   BL: 45° notch
+ * Build a four-corner chamfer in a 0..100 coordinate space.
  */
-function framePath(r: number, n: number): string {
-  // Coord space is 0..100 in both axes; treat r / n as percentages.
+function framePath(_r: number, n: number): string {
   return [
-    `M 0 ${r}`,
-    `Q 0 0 ${r} 0`, // top-left rounded
+    `M ${n} 0`,
     `L ${100 - n} 0`,
-    `L 100 ${n}`, // top-right notch
-    `L 100 ${100 - r}`,
-    `Q 100 100 ${100 - r} 100`, // bottom-right rounded
+    `L 100 ${n}`,
+    `L 100 ${100 - n}`,
+    `L ${100 - n} 100`,
     `L ${n} 100`,
-    `L 0 ${100 - n}`, // bottom-left notch
+    `L 0 ${100 - n}`,
+    `L 0 ${n}`,
     `Z`,
   ].join(" ");
 }
 
-/** L-shape brackets at each corner, ~bracketSize % of the box. */
-function cornerBrackets(s: number): string[] {
-  const S = s;
+/** Accents that follow the top/diagonal/side run of each chamfer. */
+function cornerBrackets(s: number, n: number): string[] {
   return [
-    // top-left
-    `M 0 ${S} L 0 0 L ${S} 0`,
-    // top-right
-    `M ${100 - S} 0 L 100 0 L 100 ${S}`,
-    // bottom-right
-    `M 100 ${100 - S} L 100 100 L ${100 - S} 100`,
-    // bottom-left
-    `M ${S} 100 L 0 100 L 0 ${100 - S}`,
+    `M 0 ${s} L 0 ${n} L ${n} 0 L ${s} 0`,
+    `M ${100 - s} 0 L ${100 - n} 0 L 100 ${n} L 100 ${s}`,
+    `M 100 ${100 - s} L 100 ${100 - n} L ${100 - n} 100 L ${100 - s} 100`,
+    `M ${s} 100 L ${n} 100 L 0 ${100 - n} L 0 ${100 - s}`,
   ];
 }

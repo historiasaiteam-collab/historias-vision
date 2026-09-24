@@ -26,7 +26,7 @@ export function Work() {
   const closeVideo = () => setActiveVideo(null);
 
   const filterIndex = Math.max(0, FILTERS.indexOf(filter));
-  const progressPct = ((filterIndex + 1) / FILTERS.length) * 100;
+  const progressPct = (filterIndex / Math.max(FILTERS.length - 1, 1)) * 100;
 
   // Force AnimatePresence to remount cards when the filter changes so the
   // full entrance animation (staggered brackets + image reveal) plays again.
@@ -39,10 +39,12 @@ export function Work() {
     >
       <div aria-hidden className="absolute inset-0 bg-grid opacity-30" />
 
-
       <div className="relative z-10 mx-auto max-w-[1500px] px-6 pt-24 pb-20 sm:px-8 lg:px-16 lg:pt-28 lg:pb-24">
         {/* Header */}
-        <ScrollReveal as="div" className="grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-end md:gap-12">
+        <ScrollReveal
+          as="div"
+          className="grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-end md:gap-12"
+        >
           <div className="md:pl-24 lg:pl-32">
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-6 bg-mint" />
@@ -55,8 +57,8 @@ export function Work() {
           <div className="hidden md:block" />
           <div className="flex flex-col gap-6 md:items-end">
             <p className="max-w-[320px] text-body md:text-right">
-              A selection of commercial films, digital campaigns, social
-              content, and AI-native stories.
+              A selection of commercial films, digital campaigns, social content, and AI-native
+              stories.
             </p>
             <a
               href="#contact"
@@ -76,7 +78,7 @@ export function Work() {
         <div
           role="tablist"
           aria-label="Filter projects"
-          className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-3 rounded-full border border-edge/70 bg-graphite/40 px-5 py-3 sm:gap-x-6"
+          className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-full border border-edge/70 bg-graphite/40 px-7 py-3 sm:gap-x-6"
         >
           {FILTERS.map((f, i) => {
             const isActive = f === filter;
@@ -87,7 +89,7 @@ export function Work() {
                   aria-selected={isActive}
                   onClick={() => setFilter(f)}
                   className={cn(
-                    "relative min-h-11 text-eyebrow transition-colors focus-visible:outline-none focus-visible:text-mint",
+                    "relative flex min-h-11 items-center pb-1 text-eyebrow transition-colors focus-visible:outline-none focus-visible:text-mint",
                     isActive ? "text-mint" : "text-cream/60 hover:text-cream",
                   )}
                 >
@@ -95,7 +97,7 @@ export function Work() {
                   {isActive ? (
                     <motion.span
                       layoutId="work-filter"
-                      className="absolute -bottom-2 left-0 h-0.5 w-full mint-line"
+                      className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 mint-line"
                       aria-hidden
                     />
                   ) : null}
@@ -109,7 +111,7 @@ export function Work() {
         </div>
 
         {/* HUD-framed grid */}
-        <ScrollReveal cinematic className="relative mt-8 p-4 sm:p-6">
+        <ScrollReveal cinematic className="relative mt-8 border border-cream/10 p-4 sm:p-6">
           <CornerMarkers className="!inset-0" color="cream" />
 
           <div
@@ -161,13 +163,19 @@ export function Work() {
           </LayoutGroup>
         </ScrollReveal>
 
-        {/* Bottom timeline */}
-        <ScrollReveal className="mt-10 flex items-center gap-6">
-          <span className="whitespace-nowrap text-meta text-cream/50">Process</span>
-          <div className="relative h-px flex-1">
-            <div className="absolute inset-0 bg-cream/15" />
+        {/* Interactive project index */}
+        <ScrollReveal className="mt-10 rounded-full border border-edge/60 bg-graphite/30 px-5 py-4 sm:px-7">
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <span className="whitespace-nowrap text-meta text-cream/50">Project Index</span>
+            <span className="text-meta text-mint">
+              {String(filterIndex + 1).padStart(2, "0")} / {String(FILTERS.length).padStart(2, "0")}{" "}
+              · {filter}
+            </span>
+          </div>
+          <div className="relative h-5">
+            <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-cream/15" />
             <motion.div
-              className="absolute inset-y-0 left-0 mint-line"
+              className="absolute left-0 top-1/2 h-px -translate-y-1/2 mint-line"
               initial={false}
               animate={{ width: `${progressPct}%` }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -175,24 +183,25 @@ export function Work() {
             />
             <div className="absolute inset-0 flex items-center justify-between">
               {FILTERS.map((f, i) => (
-                <motion.span
+                <motion.button
                   key={f}
-                  aria-hidden
+                  type="button"
+                  onClick={() => setFilter(f)}
+                  aria-label={`Show ${f} projects`}
+                  aria-current={i === filterIndex ? "true" : undefined}
                   animate={{
                     scale: i === filterIndex ? 1.6 : 1,
-                    backgroundColor:
-                      i <= filterIndex ? "var(--color-mint)" : "transparent",
+                    backgroundColor: i <= filterIndex ? "var(--color-mint)" : "transparent",
                   }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
-                    "h-1.5 w-1.5 rounded-full border",
+                    "relative z-10 h-2.5 w-2.5 rounded-full border bg-obsidian transition-shadow hover:shadow-[0_0_12px_var(--color-mint)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint",
                     i <= filterIndex ? "border-mint" : "border-cream/30",
                   )}
                 />
               ))}
             </div>
           </div>
-          <span className="h-1.5 w-1.5 rounded-full bg-mint shadow-[0_0_8px_var(--color-mint)]" />
         </ScrollReveal>
       </div>
 
@@ -203,9 +212,7 @@ export function Work() {
         subtitle={activeVideo ? `${activeVideo.type} · ${activeVideo.year}` : undefined}
         poster={activeVideo?.image}
         source={
-          activeVideo
-            ? DEMO_VIDEOS[activeVideo.id] ?? { provider: "demo" }
-            : { provider: "demo" }
+          activeVideo ? (DEMO_VIDEOS[activeVideo.id] ?? { provider: "demo" }) : { provider: "demo" }
         }
       />
     </section>
@@ -258,11 +265,9 @@ function FeaturedCard({ project, onPlay }: { project: Project; onPlay: () => voi
       className="group relative"
     >
       {/* HUD chamfered frame with mint corner brackets */}
-      <HudFrame color="mint" padding={6} bracketSize={16} radius={14} notch={10} />
+      <HudFrame color="mint" padding={5} bracketSize={16} notch={4} />
 
-      <div
-        className="hud-clip-lg relative aspect-[16/10] w-full overflow-hidden bg-graphite shadow-depth"
-      >
+      <div className="hud-clip-lg relative aspect-[16/10] w-full overflow-hidden bg-graphite shadow-depth">
         <motion.img
           src={project.image}
           alt={`${project.brand} — ${project.title}`}
@@ -304,7 +309,7 @@ function FeaturedCard({ project, onPlay }: { project: Project; onPlay: () => voi
           <Play size={22} className="ml-1 text-cream" />
         </motion.button>
 
-        <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6">
+        <div className="absolute bottom-6 left-6 right-6 flex items-end gap-6">
           <div className="max-w-[70%]">
             <h3 className="text-3xl font-semibold uppercase leading-none tracking-tight text-cream sm:text-5xl">
               {project.brand}
@@ -322,10 +327,6 @@ function FeaturedCard({ project, onPlay }: { project: Project; onPlay: () => voi
             <div className="mt-1 text-meta text-cream/60">
               {project.type} · {project.year}
             </div>
-          </div>
-          <div className="flex items-center gap-2 text-meta text-cream/80">
-            YouTube / Watch Film
-            <Play size={12} className="text-mint" />
           </div>
         </div>
       </div>
@@ -349,7 +350,7 @@ function SmallCard({
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay }}
       className="group relative"
     >
-      <HudFrame color="mint" padding={5} bracketSize={22} radius={16} notch={12} delay={delay} />
+      <HudFrame color="mint" padding={5} bracketSize={18} notch={5} delay={delay} />
 
       <div className="hud-clip relative aspect-[16/9] w-full overflow-hidden bg-graphite shadow-depth">
         <motion.img
@@ -387,9 +388,6 @@ function SmallCard({
           <div className="mt-1 text-meta text-cream/60">
             {project.type} · {project.year}
           </div>
-        </div>
-        <div className="absolute bottom-3 right-14 text-[10px] uppercase tracking-[0.16em] text-cream/70">
-          YouTube / Watch Film
         </div>
       </div>
     </motion.article>

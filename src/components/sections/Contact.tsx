@@ -38,23 +38,27 @@ export function Contact({ scrollRef }: ContactProps = {}) {
           <span className="text-eyebrow text-mint">Start a Project</span>
         </ScrollReveal>
 
-        <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
-          <ScrollReveal as="div" delay={0.1}>
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:grid-rows-[auto_auto] lg:gap-x-16 lg:gap-y-10">
+          <ScrollReveal as="div" delay={0.1} className="lg:col-start-1 lg:row-start-1">
             <h2 className="text-h1 text-cream">
               Your next story <span className="italic-serif">starts here.</span>
             </h2>
             <p className="mt-6 max-w-[520px] text-body">
-              Tell us what you are building, launching, or imagining. We'll
-              shape the right production approach around your brief.
+              Tell us what you are building, launching, or imagining. We'll shape the right
+              production approach around your brief.
             </p>
+          </ScrollReveal>
 
-            <div className="mt-10">
-              <ContactForm />
-            </div>
+          <ScrollReveal as="div" delay={0.16} className="lg:col-start-1 lg:row-start-2">
+            <ContactForm />
           </ScrollReveal>
 
           {/* Monumental H logo scene — layered depth, no WebGL */}
-          <ScrollReveal as="div" delay={0.2}>
+          <ScrollReveal
+            as="div"
+            delay={0.2}
+            className="lg:col-start-2 lg:row-start-2 lg:self-start"
+          >
             <MonumentalScene />
           </ScrollReveal>
         </div>
@@ -147,18 +151,9 @@ function MonumentalScene() {
         className="absolute left-1/2 top-[44%] w-[58%] max-w-[360px] -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_40px_100px_rgba(0,0,0,0.95)] motion-safe:[animation:float-slow_9s_ease-in-out_infinite]"
       />
 
-
-
-
       {/* Ground reflection band + hard ground line */}
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 h-[26%] ground-reflection"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-[26%] h-px bg-cream/10"
-      />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-[26%] ground-reflection" />
+      <div aria-hidden className="absolute inset-x-0 bottom-[26%] h-px bg-cream/10" />
 
       {/* Subtle metallic vignette */}
       <div
