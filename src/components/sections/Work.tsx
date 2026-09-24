@@ -285,16 +285,6 @@ function FeaturedCard({ project, onPlay }: { project: Project; onPlay: () => voi
           className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent"
         />
 
-        {/* Faint HUD crosshair */}
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-40 mix-blend-screen"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, transparent calc(50% - 0.5px), color-mix(in oklab, var(--color-mint) 30%, transparent) 50%, transparent calc(50% + 0.5px)), linear-gradient(to bottom, transparent calc(50% - 0.5px), color-mix(in oklab, var(--color-mint) 30%, transparent) 50%, transparent calc(50% + 0.5px))",
-          }}
-        />
-
         <motion.button
           onClick={onPlay}
           aria-label={`Play ${project.brand} — ${project.title}`}
