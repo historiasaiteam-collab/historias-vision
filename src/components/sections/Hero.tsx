@@ -1,10 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-cinematic-4k.png";
 import { CtaButton } from "@/components/ui/CtaButton";
-import { Parallax } from "@/components/animations/Parallax";
 import { Particles } from "@/components/animations/Particles";
 import { LogoMarquee } from "@/components/animations/LogoMarquee";
-import { SkyBackground } from "@/components/animations/SkyBackground";
 
 export function Hero() {
   const scrollTo = (id: string) => {
@@ -17,27 +15,27 @@ export function Hero() {
       id="hero"
       className="relative isolate min-h-screen w-full overflow-hidden bg-obsidian text-cream"
     >
-      {/* 3D sky layer */}
-      <SkyBackground />
-      {/* Background image — slower parallax than foreground */}
-      <Parallax offset={-30} className="absolute inset-0">
+      {/* Full-resolution hero image. Kept free of transforms so it stays crisp. */}
+      <div className="absolute inset-0">
         <img
           src={heroImage}
           alt=""
           aria-hidden
           width={1672}
           height={941}
-          className="hero-scene h-full w-full object-cover object-[68%_center] opacity-95"
+          className="hero-scene h-full w-full object-cover object-[68%_center]"
         />
-      </Parallax>
+      </div>
 
-      {/* Left dark overlay + subtle wash */}
+      {/* Smooth readability fades without fog or blur over the artwork. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,7,0.96)_0%,rgba(5,8,7,0.82)_38%,rgba(5,8,7,0.35)_65%,rgba(5,8,7,0)_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,7,0.98)_0%,rgba(5,8,7,0.86)_30%,rgba(5,8,7,0.28)_55%,rgba(5,8,7,0)_72%)]"
       />
-      <div aria-hidden className="absolute inset-0 bg-grid opacity-40" />
-      <div aria-hidden className="absolute inset-0 bg-fog opacity-60" />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,7,0.06)_0%,rgba(5,8,7,0)_55%,rgba(5,8,7,0.72)_100%)]"
+      />
 
       <Particles count={16} color="cream" />
 
